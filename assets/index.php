@@ -6,7 +6,6 @@
     <title>Document</title>
 </head>
 <body>
-    shibu chor
-    krsort
+    
 </body>
 </html>
