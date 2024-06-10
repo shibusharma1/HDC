@@ -22,6 +22,7 @@ $sql="CREATE TABLE IF NOT EXISTS students(
     fname VARCHAR(30) NOT NULL,
     lname VARCHAR(30) NOT NULL,
     email VARCHAR(30) NOT NULL,
+    address VARCHAR(30) NOT NULL,
     crn varchar(50) NOT NULL,
     gurdian_name VARCHAR(30) NOT NULL,
     phone BIGINT(10) NOT NULL
