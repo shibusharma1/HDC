@@ -11,10 +11,10 @@
     ?>
     <script>
        alert("Please remove the config word from the URL.");
-       <?php
-       header("location: ../index.php");
-        ?>
     </script>
+       <?php
+      header("location: ../index.php");
+        ?>
 
 </body>
 </html>
