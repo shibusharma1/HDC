@@ -11,25 +11,30 @@
 <body>
   <div class="wrapper">
     <form action="" method="POST">
-      <h1>Login</h1>
+      <!-- <img src="assets/logo.png" alt=""> -->
+      <br>
+      <h1>LOGIN</h1>
       <div class="input-box">
         <label for="username">Username</label>
-        <input type="username" placeholder="username" name="username" required>
+        <input type="username" placeholder="Username" name="username" required>
         <box-icon type='solid' name='user'></box-icon>
 
         </div>
+        
       <div class="input-box">
         <label for="password">Password</label>
-        <input type="password" placeholder="password" name="password" required>
+        <input type="password" placeholder="Password" name="password" required>
         <box-icon name='lock'></box-icon>
 </div>
+<br>
 <div class="remember-forget">
   <label><input type="checkbox" required> Remember me</label>
   <a href="#">Forget password?</a>
 </div>
 
 <button type="submit" class="btn">Login</button>
-
+<br>
+<br>
   <div class="register-link">
     <p>Don't have an account? <a href="#">Register</a></p>
   </div>
