@@ -38,7 +38,7 @@ if (mysqli_query($conn, $sql)) {
 //creating table for cregister
 $sql = "CREATE TABLE IF NOT EXISTS sadmin(
     sid INT PRIMARY KEY default 101,
-    adminemail VARCHAR(30) default 'admin1@gmail.com',
+    adminusername VARCHAR(30) default 'admin1@gmail.com',
     adminpassword varchar(10) default 'admin123'
     )";
 
@@ -50,12 +50,12 @@ if (mysqli_query($conn, $sql)) {
     echo "Error Creating table" . mysqli_error($conn);
 }
 
-$sql = "INSERT INTO sadmin(sid,adminemail,adminpassword) VALUES ('101','admin1@gmail.com','admin123')";
+$sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin1','admin123')";
 if (mysqli_query($conn, $sql)) {
     // echo "<br>";
     //echo "Data inserted Successfully.";
 } else {
     echo "<br>";
-    echo "Error Inserting data" . mysqli_error($conn);
+    echo "Error Inserting data".mysqli_error($conn);
 }
 

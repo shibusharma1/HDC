@@ -24,7 +24,6 @@ if (isset($_SESSION['uid'])) {
     <style>
       .bd-navbar{
         min-height: 4rem;
-        /* background-color: #563d7c !important; */
         background-color: #563d7c;
         box-shadow: 0 .5rem 1rem rgba(0, 0, 0, .05), inset 0 -1px 0 rgba(0, 0, 0, .1);
       }
@@ -34,81 +33,37 @@ if (isset($_SESSION['uid'])) {
       }
     </style>
 </head>
-
 <body>
 <nav class="navbar navbar-expand-lg navbar-light bd-navbar">
-  <a class="navbar-brand" href="#">Thrivecart</a>
+  <a class="navbar-brand" href="admindashboard.php">Himalaya Darshan College</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
   <div class="collapse navbar-collapse justify-content-between" id="navbarNavDropdown">
     <ul class="navbar-nav">
       <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+        <a class="nav-link" href="admindashboard.php">Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Features</a>
+        <a class="nav-link" href="managestudent.php">Manage students</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#">Pricing</a>
+        <a class="nav-link" href="#">Manage Complaint</a>
       </li>
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-          Dropdown link
+          More
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="#">Action</a>
-          <a class="dropdown-item" href="#">Another action</a>
-          <a class="dropdown-item" href="#">Something else here</a>
+          <a class="dropdown-item" href="#">Routine</a>
+          <a class="dropdown-item" href="#">Exam</a>
+          <a class="dropdown-item" href="#">Notice</a>
         </div>
       </li>
     </ul>
-    <div class="nav-link">Logout <img src="../assets/logout.gif" height="30" width="30"  alt="error"></div>
+    <div class="nav-link">Logout</div>
   </div>
 </nav>
-
-  <!-- <nav class="navbar navbar-expand-lg navbar-light bg-light">
-    <a class="navbar-brand" href="#" style="color:black">Thrivecart</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
-      aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
-      <span class="navbar-toggler-icon"></span>
-    </button>
-    <div class="collapse navbar-collapse" id="navbarNavDropdown">
-      <ul class="navbar-nav">
-        <li class="nav-item active">
-          <a class="nav-link" href="admindashboard.php">Home <span class="sr-only">(current)</span></a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="customer_table.php">Manage Customer</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="seller_table.php">Manage Seller</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="complaints_table">Manage Complaints</a>
-        </li>
-        <li class="nav-item dropdown">
-          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" data-toggle="dropdown"
-            aria-haspopup="true" aria-expanded="false">
-            More
-          </a>
-          <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-            <!-- <a class="dropdown-item" href="#">More</a> -->
-            <!-- <a class="dropdown-item" href="../cart.php">Cart</a>
-            <a class="dropdown-item" href="../product.php">Product</a>
-            <a class="dropdown-item" href="../payment.php">Payment</a>
-            <a class="dropdown-item" href="../order.php">Order</a>
-          </div>
-        </li>
-        <div class="container d-flex justify-content-center">
-
-          <li class="nav-item">
-            <a class="nav-link" href="../logout.php">LOGOUT</a>
-          </li>
-        </div>
-      </ul>
-    </div>
-  </nav> --> -->
 
   <div class="container d-flex justify-content-center">
     <div class="row">
