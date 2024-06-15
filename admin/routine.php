@@ -1,6 +1,6 @@
 <?php
     include_once('adminheader.php');
 ?>
-managestudent
+Routine
 <?php
     include_once('adminfooter.php');

@@ -25,8 +25,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   if($scount == 1){
       $row = mysqli_fetch_assoc($sresult);
       if($row['adminusername'] == $username && $row['adminpassword'] == $password){
-          $_SESSION['uid'] = $row['id'];
-          header("Location: admin/admindashboard.php");
+          $_SESSION['uid'] = "admin";
+          header("Location: admin/index.php");
       }
     }
 
@@ -86,14 +86,14 @@ include_once 'includes/header.php';
         <box-icon name='lock'></box-icon>
       </div>
       <div class="remember-forget">
-        <label><input type="checkbox" required> Remember me</label>
+        <label><input type="checkbox"> Remember me</label>
         <a href="#">Forget password?</a>
       </div>
 
       <button type="submit" class="btn">Login</button>
 
       <div class="register-link">
-        <p>Don't have an account? <a href="#">Register</a></p>
+        <p>Don't have an account? <a href="register/student_register.php">Register</a></p>
       </div>
 
     </form>
