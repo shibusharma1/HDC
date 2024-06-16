@@ -12,7 +12,6 @@
   $password = $_POST['password'];
   $username = mysqli_real_escape_string($conn,$username);
   
-  $password = md5($password);
   $sql = "select * from sadmin where adminusername = '$username' and adminpassword = '$password'";
   
   $sresult = mysqli_query($conn,$sql);
@@ -30,7 +29,7 @@
       }
     }
 
-  
+  $password = md5($password);
   $sql = "select * from students where username = '$username' and password = '$password'";
   
   $result = mysqli_query($conn,$sql);

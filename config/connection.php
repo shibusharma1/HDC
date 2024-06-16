@@ -96,7 +96,7 @@ $sql="CREATE TABLE IF NOT EXISTS students(
         echo "Error Creating table".mysqli_error($conn);
     }
  
-    //creating table for sadmin
+    //creating table for 
     $sql="CREATE TABLE IF NOT EXISTS sadmin(
     sid INT PRIMARY KEY default 101,
     adminusername VARCHAR(30) default 'admin1@gmail.com',
@@ -111,7 +111,7 @@ $sql="CREATE TABLE IF NOT EXISTS students(
         echo "Error Creating table".mysqli_error($conn);
     }
 
-    $sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin1@gmail.com',md5('admin123'))";
+    $sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin1@gmail.com','admin123')";
     if (mysqli_query($conn, $sql)) {
         // echo "<br>";
         //echo "Data inserted Successfully.";
