@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -28,12 +29,12 @@
         <input type="lastname" placeholder="lastname" name="lastname" required>
       </div><br></br>
       <div class="input-box">
-        <label for="email">EMAIL</label><br></br>
-        <input type="email" placeholder="email" name="email" required>
+        <label for="username">Username</label><br></br>
+        <input type="username" placeholder="username" name="username" required>
       </div><br></br> 
       <div class="input-box">
-        <label for="contact number">CONTACT NUMBER</label><br></br>
-        <input type="phone number" placeholder="phone number" name="phone number" required>
+        <label for="phone">CONTACT NUMBER</label><br></br>
+        <input type="phone" placeholder="phone" name="phone" required>
       </div><br></br>
       <div class="input-box">
         <label for="programs">PROGRAM</label><br></br>
@@ -42,7 +43,7 @@
       <button type="submit" class="btn">Apply</button>
 
 <div class="register-link">
-  <p>Already have an account? <a href="#">Login Here</a></p>
+  <p>Already have an account? <a href="login.php">Login Here</a></p>
 </div>
 </body>
 </html>

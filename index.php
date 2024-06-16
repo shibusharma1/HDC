@@ -1,3 +1,13 @@
+<?php
+session_start();
+//$_SESSION['uid'] = 1;
+
+if (isset($_SESSION['uid'])) {
+  // header("Location:login.php");
+  echo "Student login";
+  echo "<a href='logout.php'>Logout</a>";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -12,6 +22,7 @@
             <div class="logo"></div>
         </div> 
         <a href="login.php">Login</a>
+        
 </div>
 </body>
 </html>

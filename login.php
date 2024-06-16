@@ -2,18 +2,17 @@
   //starting the session
   session_start();
 
-  $title = "Log in";
-  $active = "login";
+  // $title = "Log in";
+  // $active = "login";
   require_once('config/connection.php');
 
-if($_SERVER['REQUEST_METHOD'] == 'POST'){
-  
+  if($_SERVER['REQUEST_METHOD'] == 'POST'){
   #Prevent from mysqli injection
-  
   $username = stripcslashes($_POST['username']);
   $password = $_POST['password'];
   $username = mysqli_real_escape_string($conn,$username);
-
+  
+  $password = md5($password);
   $sql = "select * from sadmin where adminusername = '$username' and adminpassword = '$password'";
   
   $sresult = mysqli_query($conn,$sql);
@@ -25,12 +24,13 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
   if($scount == 1){
       $row = mysqli_fetch_assoc($sresult);
       if($row['adminusername'] == $username && $row['adminpassword'] == $password){
-          $_SESSION['uid'] = "admin";
-          header("Location: admin/index.php");
+          $_SESSION['uid'] = $row['sid'];
+          header("Location: admin/dashboard.php");
+          echo "hello";
       }
     }
 
-  $password = md5($password);
+  
   $sql = "select * from students where username = '$username' and password = '$password'";
   
   $result = mysqli_query($conn,$sql);
@@ -53,7 +53,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
 
 }
 
-include_once 'admin/adminheader.php';
+include_once 'includes/header.php';
 ?>
 
 <!DOCTYPE html>
@@ -87,7 +87,7 @@ include_once 'admin/adminheader.php';
       </div>
       <div class="remember-forget">
         <label><input type="checkbox"> Remember me</label>
-        <a href="#">Forget password?</a>
+        <a href="forgetpassword.php">Forget password?</a>
       </div>
 
       <button type="submit" class="btn">Login</button>

@@ -32,4 +32,3 @@
         echo "<br>";
         echo "Details of Students not found!!!";
     }
-?>

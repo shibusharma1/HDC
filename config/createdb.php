@@ -9,7 +9,7 @@
 
 
      #Create a database 
-    $sql = "CREATE DATABASE IF NOT EXISTS HDC";
+    $sql = "CREATE DATABASE IF NOT EXISTS VOTING";
     $res = mysqli_query($conn , $sql);
     echo "<br>";
     //Check for the database creation success
