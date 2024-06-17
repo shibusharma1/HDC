@@ -92,7 +92,7 @@ include_once 'includes/header.php';
       <button type="submit" class="btn">Login</button>
 
       <div class="register-link">
-        <p>Don't have an account? <a href="student_register.php">Register</a></p>
+        <p>Don't have an account? <a href="student_registration.php">Register</a></p>
       </div>
 
     </form>
