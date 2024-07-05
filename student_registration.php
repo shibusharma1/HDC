@@ -128,7 +128,14 @@ form {
       </div></br>
       <div class="input-box">
         <label for="programs">PROGRAM</label><br></br>
-        <input type="programs" placeholder="programs" name="programs" required>
+        <select name="programs" required>
+          <option value="" disabled>Select a Program</option>
+          <option value="1">BIM</option>
+          <option value="2">BCA</option>
+          <option value="3">Bsc.Csit</option>
+          <option value="4">BHM</option>
+          <option value="5">BBS</option>
+          </select>
       </div><br></br>
       <button type="submit" class="btn">Apply</button>
 

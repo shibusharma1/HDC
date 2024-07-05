@@ -24,7 +24,7 @@
       $row = mysqli_fetch_assoc($sresult);
       if($row['adminusername'] == $username && $row['adminpassword'] == $password){
           $_SESSION['uid'] = $row['sid'];
-          header("Location: admin/dashboard.php");
+          header("Location: dashboard.php");
           echo "hello";
       }
     }
