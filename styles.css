@@ -1,0 +1,157 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.logo-contact {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    background-color: #f7f7f7;
+}
+
+.logo a img {
+    width: 150px;
+    height: auto;
+}
+
+.contacts ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.contacts li {
+    margin-bottom: 10px;
+}
+
+.contacts p {
+    margin: 0;
+    font-weight: bold;
+    color: #333;
+}
+
+.contacts a {
+    text-decoration: none;
+    color: #007bff;
+    transition: color 0.3s ease;
+}
+
+.contacts a:hover {
+    color: #0056b3;
+}
+
+.navbar {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    /* text-align: center; */
+    background-color: #f7f7f7;
+    padding: 10px 40px;
+
+}
+
+/* .navbar-brand a {
+    color: #fff;
+    text-decoration: none;
+    font-size: 1.5em;
+} */
+
+.navbar-links {
+    list-style: none;
+    display: flex;
+   margin: 0;
+    padding: 0;
+}
+
+.navbar-links li {
+    position: relative;
+}
+
+.navbar-links a {
+    color:black;
+    text-decoration: none;
+    padding: 10px 40px;
+    display: block;
+    font-weight: 300;
+}
+.navbar-links a:hover {
+    padding: 10px 40px;
+    font-weight: 350;
+    font-size: large;
+    display: block;
+    color: black;
+    background-color: rgb(169, 184, 202);
+    text-decoration: none;
+}
+
+/**Hero section**/
+.hero-section{
+    background-image: url(assets/hero-img.jpg);
+    background-size: cover;
+    height:600px;
+
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+    /* margin-bottom: 25px; */
+
+}
+.hero-msg{
+    background-color: transparent;
+    color:#ffffff;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    font-size: 3rem;
+    width: 80%;
+    margin-bottom: 100px;  
+}
+.table-content {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+    font-family: Arial, sans-serif;
+}
+
+ .table-title {
+    font-size: 1.25rem;
+    font-weight: 500;
+    text-align: left;
+    padding: 20px;
+    background-color: #f4f4f4;
+    width: 100%;
+} 
+
+.table-row {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    padding: 20px;
+    width: 100%;
+}
+
+
+
+.std-img img {
+    border-radius: 10px;
+    margin-right: 20px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    
+}
+
+.std-description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.std-name {
+    font-size: 1.5rem;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #2c3e50;
+}
