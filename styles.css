@@ -77,11 +77,12 @@ body {
     padding: 10px 40px;
     display: block;
     font-weight: 300;
+    font-size:large ;
 }
 .navbar-links a:hover {
     padding: 10px 40px;
     font-weight: 350;
-    font-size: large;
+    font-size: larger;
     display: block;
     color: black;
     background-color: rgb(169, 184, 202);
@@ -194,7 +195,7 @@ table{
     text-align: center;
     padding: 20px;
     background-color: #f4f4f4;
-    width: 100%;
+    /* width: 100%; */
 }
 
 /**footer**/
@@ -227,10 +228,10 @@ ul a{
 
 .foot-panel2{
     margin: auto;
-    padding-top: 50px;
+    padding-top: 10px;
     background-color: black;
     color: white;
-    height: 100px;
+    height: 30px;
     font-size: 1rem;
     text-align: center;
     border-top: 0.5px solid white;
@@ -238,4 +239,4 @@ ul a{
 }
 .copyright{
     padding-top: 5px;
-    }
+}

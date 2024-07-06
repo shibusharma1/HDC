@@ -46,7 +46,7 @@ if (isset($_SESSION['uid'])) {
             <li><a href="index.php">Home</a></li>
             <li><a href="register.php">Register</a></li>
 
-            <li><a href="contact.php">contact</a></li>
+            <li><a href="contact.php">Contact</a></li>
             <li><a href="vote.php">Vote</a></li>
             <li><a href="about.php">About us</a></li>
         </ul>
@@ -82,7 +82,7 @@ if (isset($_SESSION['uid'])) {
     </table>
     <div class="program-title">
         <p> Programs We Offer
-    </div>
+    </div> 
     <div class="program-section">
         <div class="box1 box">
             <div class="box-content">
