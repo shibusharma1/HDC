@@ -107,7 +107,6 @@
     }
   </style>
 </head>
-
 <body>
   <div class="container">
     <div class="wrapper">
@@ -161,11 +160,13 @@
         <br>
 
         <div class="input-box">
-          <input type="checkbox" name="checkbox" required style="display:inline;"> All the information above are correct as per my knowledge.
+          <input type="checkbox" name="checkbox" required style="display:inline;"> All the information above are correct
+          as per my knowledge.
         </div>
         </br>
 
         </br>
+
 
 
         <button type="submit" class="btn">Apply</button>
@@ -175,6 +176,8 @@
           <p>Already have an account? <a href="login.php">Login Here</a></p>
 
         </div>
+
 </body>
+<button style="background-color:#333;height:30px; width:60px; font-size:larger;"><a href="index.php" style="color:white;">Back</a></button>
 
 </html>

@@ -8,50 +8,10 @@ if (isset($_SESSION['uid'])) {
     echo "<a href='logout.php'>Logout</a>";
 }
 ?>
-<!DOCTYPE html>
-<html lang="en">
+<?php
+include_once 'includes/header.php';
+?>
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | HDC</title>
-    <link rel="stylesheet" href="styles.css">
-</head>
-
-<body>
-
-    <div class="logo-contact">
-        <div class="logo">
-            <a href="">
-                <img src="assets/logo.png" alt="Himalaya Darshan College">
-            </a>
-
-        </div>
-        <div class="contacts">
-            <ul>
-                <li>
-                    <p>Email:</p>
-                    <a href="mailto:himalayadarshan5@gmail.com">himalayadarshan5@gmail.com</a>
-                </li>
-                <li>
-                    <p>Phone Number:</p>
-                    <a href="tel:021-590471">021-590471</a>
-                </li>
-            </ul>
-        </div>
-    </div>
-    <br>
-    <nav class="navbar">
-        <ul class="navbar-links">
-            <li><a href="index.php">Home</a></li>
-            <li><a href="register.php">Register</a></li>
-
-            <li><a href="contact.php">Contact</a></li>
-            <li><a href="vote.php">Vote</a></li>
-            <li><a href="about.php">About us</a></li>
-        </ul>
-    </nav>
-    </div>
     <div class="hero-section">
         <div class="hero-msg">
             <p>Welcome to Himalaya
@@ -119,36 +79,7 @@ if (isset($_SESSION['uid'])) {
             </div>
         </div>
     </div>
-    <footer>
 
-        <div class="foot-panel1">
-            <ul>
-                <p>Contact us</p>
-                <a href="#">Email</a>
-                <a href="mailto:himalayadarshan5@gmail.com">himalayadarshan5@gmail.com</a>
-                <a href="#">Phone Number:</a>
-                <a href="tel:021-590471">021-590471</a>
-
-                <a href="#">Address</a>
-                <a href="#"> Main Road,Biratnagar-09</a>
-
-            </ul>
-            <ul>
-                <p>Follow us</p>
-                <a href="https://www.facebook.com/215660679312132?ref=embed_page" target="_blank"><img
-                        src="assets/facebook.png" height="50" width="50" alt=""></a>
-
-            </ul>
-        </div>
-
-
-        <div class="foot-panel2">
-            <div class="copyright">
-                Copyright &copy; 2019, All rights reserved. Himalaya Darshan College.
-            </div>
-        </div>
-    </footer>
-
-</body>
-
-</html>
+<?php
+include_once 'includes/footer.php';
+?>
