@@ -158,6 +158,31 @@
           </select>
         </div>
         <br>
+        <div class="input-box">
+        <label for="admitted year">ADMITTED YEAR</label><br></br>
+        <input type="admitted year" placeholder="admitted year" name="admitted year" required>
+      </div><br></br>
+
+      <div class="input-box">
+        <label for="dob">DOB</label><br></br>
+        <input type="bod" placeholder="dob" name="dob" required>
+      </div><br></br>
+      
+      <div class="input-box">
+        <label for="passed out year"> PASSED OUT YEAR </label><br></br>
+        <input type="passed out year" placeholder="passed out year" name="passed out year" required>
+      </div><br></br>
+
+      
+
+      <div class="input-box">
+        <label for="reffered by">REFFERED BY</label><br></br>
+        <input type="reffered by" placeholder="reffered by" name="reffered by" required>
+      </div><br></br>
+      <div class="input-box">
+        <label for="gpa">GPA</label><br></br>
+        <input type="gpa" placeholder="gpa" name="gpa" required>
+      </div><br></br>
 
         <div class="input-box">
           <input type="checkbox" name="checkbox" required style="display:inline;"> All the information above are correct
