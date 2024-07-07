@@ -232,3 +232,117 @@ ul a {
 .copyright {
   padding-top: 5px;
 }
+
+
+.social{
+  /* height: 40px; */
+  /* background-color: #222f3d; */
+  display: flex;
+  /* color:white; */
+  align-items: center;
+  justify-content: space-evenly;
+}
+.social li{
+  display: inline;
+  margin-left: 15px;
+}
+
+/* vote box css */
+.boxvote {
+  margin: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: max-content; /* Ensure the box takes up full viewport height */
+  background-color: #f0f0f0; /* Light background color */
+}
+
+.box-contentvote {
+  text-align: center;
+  padding: 20px;
+  background-color: #ffffff; /* White background for content */
+  border: 1px solid #ddd; /* Light border */
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 10px; /* Rounded corners */
+}
+
+.box-msg h2 {
+  color: #333; /* Dark color for the heading */
+  margin-bottom: 20px;
+}
+
+.box-msg button {
+  background-color: #007bff; /* Blue background */
+  color: #fff; /* White text */
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  border-radius: 5px; /* Rounded corners */
+  transition: background-color 0.3s; /* Smooth transition for hover */
+}
+
+.box-msg button a {
+  color: #fff; /* Ensure the link text is white */
+  text-decoration: none;
+}
+
+.box-msg button:hover {
+  background-color: #0056b3; /* Darker blue on hover */
+}
+
+.box-msg button a:hover {
+  color: #fff; /* Ensure the link text remains white on hover */
+}
+
+
+/* About tab */
+.about {
+  max-width: 957px; /* Set a maximum width for the about section */
+  margin: 50px auto; /* Center the section horizontally and add vertical spacing */
+  padding: 20px; /* Add padding inside the section */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 10px; /* Rounded corners */
+  font-family: Arial, sans-serif; /* Font family */
+}
+
+.about-title {
+  font-size: 32px; /* Larger font size for the title */
+  font-weight: bold; /* Bold text */
+  color: #333; /* Dark color */
+  text-align: center; /* Center the title */
+  margin-bottom: 20px; /* Space below the title */
+  text-transform: uppercase; /* Uppercase text */
+}
+
+.about-msg {
+  font-size: 18px; /* Slightly larger font size for readability */
+  line-height: 1.6; /* Line height for better readability */
+  color: #555; /* Medium dark color for the text */
+  text-align: justify; /* Justify the text */
+  margin-bottom: 20px; /* Space below the message */
+}
+
+.about-img {
+  text-align: center; /* Center the image */
+}
+
+.about-img img {
+  max-width: 100%; /* Make sure the image is responsive */
+  height: auto; /* Maintain aspect ratio */
+  border-radius: 10px; /* Rounded corners for the image */
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+}
+
+/* contact map css */
+.contacts-map {
+  max-width: 800px; /* Set a maximum width for the about section */
+  margin: 50px auto; /* Center the section horizontally and add vertical spacing */
+  padding: 20px; /* Add padding inside the section */
+  background-color: #ffffff; /* White background */
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.1); /* Subtle shadow for depth */
+  border-radius: 10px; /* Rounded corners */
+  text-align: center;
+}

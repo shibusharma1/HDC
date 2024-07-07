@@ -12,10 +12,17 @@
                 <a href="#"> Main Road,Biratnagar-09</a>
 
             </ul>
-            <ul>
+            <ul >
                 <p>Follow us</p>
-                <a href="https://www.facebook.com/215660679312132?ref=embed_page" target="_blank"><img
-                        src="assets/facebook.png" height="50" width="50" alt=""></a>
+                <div class="social">
+               <li> <a href="https://www.facebook.com/215660679312132?ref=embed_page" target="_blank"><img
+                        src="assets/facebook.png" height="50" width="50" alt=""></a></li>
+              <li><a href="https://www.instagram.com/hdc.college?igsh=ampuaThqa2plYmk2" target="_blank"><img
+                        src="assets/instagram.png" height="50" width="50" alt=""></a></li>
+               <li> <a href="#" target="_blank"><img
+                        src="assets/linkedin.png" height="50" width="50" alt=""></a></li>
+            </div>
+    
 
             </ul>
         </div>
