@@ -10,7 +10,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
+  padding: 10px;
   background-color: #f7f7f7;
 }
 
@@ -242,6 +242,8 @@ ul a {
   /* color:white; */
   align-items: center;
   justify-content: space-evenly;
+  list-style-type: none;
+
 }
 .social li{
   display: inline;
@@ -254,11 +256,13 @@ ul a {
   display: flex;
   justify-content: center;
   align-items: center;
-  height: max-content; /* Ensure the box takes up full viewport height */
-  background-color: #f0f0f0; /* Light background color */
+  height: 335px; /* Ensure the box takes up full viewport height */
+  width: 300px;
+  /* background-color: #f0f0f0; Light background color */
 }
 
 .box-contentvote {
+ 
   text-align: center;
   padding: 20px;
   background-color: #ffffff; /* White background for content */
@@ -351,6 +355,7 @@ ul a {
 
 /* Css for register.php */
 .register-body {
+  margin-top: 20px;
   display: flex;
   justify-content: center;
   align-items: center;

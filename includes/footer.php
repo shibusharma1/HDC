@@ -12,7 +12,7 @@
                 <a href="#"> Main Road,Biratnagar-09</a>
 
             </ul>
-            <ul >
+            <ul style="text-align: center;" >
                 <p>Follow us</p>
                 <div class="social">
                <li> <a href="https://www.facebook.com/215660679312132?ref=embed_page" target="_blank"><img

@@ -84,11 +84,9 @@ include_once 'includes/header.php';
       </div>
 
     </form>
-    <div class="back-button">
-      <a href="index.php">Back</a>
-    </div>
+
   </div>
 </div>
-</body>
-
-</html>
+<?php
+include_once 'includes/footer.php';
+?>
