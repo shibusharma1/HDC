@@ -19,7 +19,7 @@
                         src="assets/facebook.png" height="50" width="50" alt=""></a></li>
               <li><a href="https://www.instagram.com/hdc.college?igsh=ampuaThqa2plYmk2" target="_blank"><img
                         src="assets/instagram.png" height="50" width="50" alt=""></a></li>
-               <li> <a href="#" target="_blank"><img
+               <li> <a href="https://www.linkedin.com/company/himalayacollege/" target="_blank"><img
                         src="assets/linkedin.png" height="50" width="50" alt=""></a></li>
             </div>
     
