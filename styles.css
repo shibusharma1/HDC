@@ -365,7 +365,7 @@ ul a {
   color: black;
 }
 
-.wrapper{
+.register-body .wrapper{
   width: 660px;
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -478,8 +478,8 @@ form {
   color: black;
 }
 
-.wrapper {
-  width: 800px;
+.body-login .wrapper {
+  width: 420px;
   /* background-color: transparent; */
   background-color: whitesmoke;
   /* border: 2px solid rgba(255,255,255, .2); */
@@ -518,7 +518,7 @@ form {
 }
 
 .input-box input {
-  width: 100%px;
+  width: 100%;
   height: 100%;
   background: transparent;
   outline: none;

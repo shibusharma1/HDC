@@ -56,7 +56,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <?php
 include_once 'includes/header.php';
 ?>
-hello
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
