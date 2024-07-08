@@ -40,7 +40,7 @@
       $row = mysqli_fetch_assoc($result);
       if($row['username'] == $username && $row['password'] == $password){
           $_SESSION['uid'] = $row['id'];
-          header("Location: index.php");
+          header("Location: admin/dashboard.php");
       }else{
           echo "<h1>Login failed due to invalid username or password</h1>";
       }

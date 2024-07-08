@@ -19,17 +19,17 @@ include_once 'includes/header.php';
             </p>
         </div>
     </div>
-    <table class="tale-content">
-        <tr class="table-row">
-            <td colspan="2" class="table-title">STUDENT TESTIMONIAL</td>
-        </tr>
-        <tr>
-            <td class="std-img">
+    <div class="program-title">
+        <p> STUDENT TESTIMONIAL</p>
+    </div>
+    <div class="program-section"> 
+        <div style="display:flex;padding:0 10rem;">
+            <div class="std-img">
                 <img src="assets/limadidi.png" alt="limadidi" width="350px">
-            </td>
-            <td class=std-description>
-                <p class="std-name"> Lima Sapkota</p>
-                <br>
+            </div>
+            <div class="std-description" style="display:flex; flex-direction:column;justify-content:center;">
+                <p class="std-name" style="font-size:2.5rem;"> Lima Sapkota</p>
+                
                 <br>
                 Himalaya Darshan College is the place where student voices are heard and counted. It is difficult to sum
                 up the memories and experience of four years in a few lines. HDC has helped me to develop a positive
@@ -37,9 +37,9 @@ include_once 'includes/header.php';
                 with various community groups where I used my academic and professional skills to yield good outcomes. I
                 have grown both personally and professionally.
 
-            </td>
-        </tr>
-    </table>
+            </div>
+        </div>
+    </div>
     <div class="program-title">
         <p> Programs We Offer
     </div> 
