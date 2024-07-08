@@ -80,9 +80,9 @@ include_once 'includes/header.php';
 
       <button type="submit" class="btn">Apply</button>
 
-      <div class="register-link">
+      <!-- <div class="register-link">
         <p>Already have an account? <a href="login.php">Login Here</a></p>
-      </div>
+      </div> -->
 
     </form>
 
