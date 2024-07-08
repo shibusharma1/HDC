@@ -304,7 +304,7 @@ ul a {
 
 /* About tab */
 .about {
-  max-width: 957px; /* Set a maximum width for the about section */
+  max-width: 62.5rem; /* Set a maximum width for the about section */
   margin: 50px auto; /* Center the section horizontally and add vertical spacing */
   padding: 20px; /* Add padding inside the section */
   background-color: #ffffff; /* White background */
