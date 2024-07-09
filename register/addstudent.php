@@ -19,6 +19,10 @@
             <input type="program" placeholder="program" name="program" required>
       </div></br>
       <div class="input-box">
+        <label for="crn">CRN</label><br></br>
+          <input type="crn" placeholder="crn" name="crn" required>
+      </div></br>
+      <div class="input-box">
         <label for="semester">semester</label><br></br>
           <input type="semester" placeholder="semester" name="semester" required>
       </div></br>
