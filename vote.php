@@ -9,7 +9,7 @@ include_once 'includes/header.php';
                     <h2>To Vote for Candidate</h2>
                     <img src="assets/vote.png" alt="" width="200px" height="200px">
                     <br>
-                    <button><a href="">Click Here</a></button>
+                    <button><a href="loginforvote.php">Click Here</a></button>
                 </div>
             </div>
         </div>
