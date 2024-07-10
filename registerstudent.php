@@ -39,11 +39,11 @@ include_once 'includes/header.php';
         <label for="programs">Program</label>
         <select id="programs" name="programs" required>
           <option value="" disabled selected>Select a Program</option>
-          <option value="1">BIM</option>
-          <option value="2">BCA</option>
-          <option value="3">BSc. CSIT</option>
-          <option value="4">BHM</option>
-          <option value="5">BBS</option>
+          <option value="BIM">BIM</option>
+          <option value="BCA">BCA</option>
+          <option value="BSc.CSIT">BSc.CSIT</option>
+          <option value="BHM">BHM</option>
+          <option value="BBS">BBS</option>
         </select>
       </div>
 
@@ -59,7 +59,7 @@ include_once 'includes/header.php';
 
       <div class="input-box">
         <label for="passed_out_year">Passed Out Year</label>
-        <input type="number" id="passed_out_year" name="passed_out_year" placeholder="Passed Out Year" required>
+        <input type="date" id="passed_out_year" name="passed_out_year" placeholder="Passed Out Year" required>
       </div>
 
       <div class="input-box">
