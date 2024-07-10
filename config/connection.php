@@ -78,26 +78,26 @@ if (!$conn) {
 
 
 //creating table for cregister
-$sql="CREATE TABLE IF NOT EXISTS students(
-    id UNSIGNEDBIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-    firstname VARCHAR(30) NOT NULL,
-    middlename VARCHAR(30),
-    lastname VARCHAR(30) NOT NULL,
-    username VARCHAR(30) NOT NULL,
-    phone VARCHAR(10) NOT NULL,
-    admitted_year DATE NOT NULL,
-    dob DATE NOT NULL,
-    passed_out_year DATE NOT NULL,
-    referred_by VARCHAR(40)
-    )";
+// $sql="CREATE TABLE IF NOT EXISTS students(
+//     id UNSIGNEDBIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
+//     firstname VARCHAR(30) NOT NULL,
+//     middlename VARCHAR(30),
+//     lastname VARCHAR(30) NOT NULL,
+//     username VARCHAR(30) NOT NULL,
+//     phone VARCHAR(10) NOT NULL,
+//     admitted_year DATE NOT NULL,
+//     dob DATE NOT NULL,
+//     passed_out_year DATE NOT NULL,
+//     referred_by VARCHAR(40)
+//     )";
 
-    if(mysqli_query($conn,$sql)){
-       // echo "<br>";
-        //echo "Table Created Successfully.";
-    }else{
-        echo "<br>";
-        echo "Error Creating table".mysqli_error($conn);
-    }
+//     if(mysqli_query($conn,$sql)){
+//        // echo "<br>";
+//         //echo "Table Created Successfully.";
+//     }else{
+//         echo "<br>";
+//         echo "Error Creating table".mysqli_error($conn);
+//     }
  
     //creating table for Admin
     $sql="CREATE TABLE IF NOT EXISTS sadmin(
@@ -124,18 +124,18 @@ $sql="CREATE TABLE IF NOT EXISTS students(
     }
     
         //creating table for vote
-        $sql="CREATE TABLE IF NOT EXISTS vote(
-            vote_id unsignedbigint PRIMARY KEY NOT NULL,
-            no_of_vote unsignedbigint,
-            voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
-            candidate_id unsignedbigint,
-            )";
+        // $sql="CREATE TABLE IF NOT EXISTS vote(
+        //     vote_id unsignedbigint PRIMARY KEY NOT NULL,
+        //     no_of_vote unsignedbigint,
+        //     voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        //     candidate_id unsignedbigint,
+        //     )";
         
-            if(mysqli_query($conn,$sql)){
-               // echo "<br>";
-                //echo "Table Created Successfully.";
-            }else{
-                echo "<br>";
-                echo "Error Creating table".mysqli_error($conn);
-            }
+        //     if(mysqli_query($conn,$sql)){
+        //        // echo "<br>";
+        //         //echo "Table Created Successfully.";
+        //     }else{
+        //         echo "<br>";
+        //         echo "Error Creating table".mysqli_error($conn);
+        //     }
         

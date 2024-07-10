@@ -24,7 +24,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $row = mysqli_fetch_assoc($sresult);
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
       $_SESSION['uid'] = $row['sid'];
-      header("Location: dashboard.php");
+      header("Location: admin/index.php");
       echo "hello";
     }
   }
@@ -53,6 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 // include_once 'includes/header.php';
 ?>
+
 <?php
 include_once 'includes/header.php';
 ?>
@@ -77,7 +78,7 @@ include_once 'includes/header.php';
         <label><input type="checkbox"> Remember me</label>
         <a href="forgetpassword.php">Forget password?</a>
       </div>
-
+      <!-- Changes for testing -->
       <button type="submit" class="btn">Login</button>
 
       <div class="register-link">
