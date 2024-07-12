@@ -1,5 +1,5 @@
 <?php
-include_once 'candidateheader.php';
+include_once 'candidateforvote.php';
 ?>
 
 <div class="table-container">
@@ -10,10 +10,8 @@ include_once 'candidateheader.php';
         <table>
             <thead>
                 <tr>
-                    <th>Name</th>
-                    <th>Program</th>
-                    <th>Semester</th>
-                    <th>View</th>
+                    <th>Candidate</th>
+                    <th>Slogan</th>
                     <th>Action</th>
                 </tr>
             </thead>
