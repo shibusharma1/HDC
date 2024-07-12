@@ -1,10 +1,10 @@
 <?php
-include_once 'includes/header.php';
+include_once '../includes/adminheader.php';
 ?>
 <div class="register-body">
   <div class="wrapper">
     <form action="" method="POST">
-      <img src="assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College"
+      <img src="../assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College"
         style="display:block;margin:auto;">
       <!-- <h1>Himalaya Darshan College</h1> -->
        <h2 style="color:black;">Register Student in HDC</h2>
@@ -89,5 +89,5 @@ include_once 'includes/header.php';
   </div>
 </div>
 <?php
-include_once 'includes/footer.php';
+ include_once 'footer.php';
 ?>
