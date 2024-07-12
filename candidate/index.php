@@ -1,5 +1,5 @@
 <?php
-include_once '../includes/candidateheader.php';
+include_once 'candidateheader.php';
 ?>
 
 <div class="table-container">
