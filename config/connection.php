@@ -101,9 +101,9 @@ if (!$conn) {
  
     //creating table for Admin
     $sql="CREATE TABLE IF NOT EXISTS sadmin(
-    sid INT PRIMARY KEY default 101,
-    adminusername VARCHAR(30) default 'admin1@gmail.com',
-    adminpassword varchar(10) default 'admin123'
+    sid INT PRIMARY KEY,
+    adminusername VARCHAR(30),
+    adminpassword varchar(10)
     )";
 
     if(mysqli_query($conn,$sql)){
@@ -115,27 +115,33 @@ if (!$conn) {
     }
 
     $sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin1@gmail.com','admin123')";
-    if (mysqli_query($conn, $sql)) {
-        // echo "<br>";
-        //echo "Data inserted Successfully.";
-    } else {
-        echo "<br>";
-        echo "Error Inserting data" . mysqli_error($conn);
-    }
+    // if (mysqli_query($conn, $sql)) {
+    //     // echo "<br>";
+    //     //echo "Data inserted Successfully.";
+    // } else {
+    //     echo "<br>";
+    //     echo "Error Inserting data" . mysqli_error($conn);
+    // }
     
-        //creating table for vote
-        // $sql="CREATE TABLE IF NOT EXISTS vote(
-        //     vote_id unsignedbigint PRIMARY KEY NOT NULL,
-        //     no_of_vote unsignedbigint,
-        //     voted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+        // creating table for vote
+        // $sql1="CREATE TABLE IF NOT EXISTS vote(
+        //     vote_id INT PRIMARY KEY AUTO_INCREMENT,
+        //     no_of_vote INT,
+        //     voted_at date,
         //     candidate_id unsignedbigint,
         //     )";
-        
-        //     if(mysqli_query($conn,$sql)){
-        //        // echo "<br>";
-        //         //echo "Table Created Successfully.";
-        //     }else{
-        //         echo "<br>";
-        //         echo "Error Creating table".mysqli_error($conn);
-        //     }
+
+        $sql="CREATE TABLE IF NOT EXISTS smin(
+            sid INT PRIMARY KEY,
+            adminusername VARCHAR(30),
+            adminpassword varchar(10)
+            )";
+        //    print_r("mysqli_query($conn,$sql1)");
+            if(mysqli_query($conn,$sql)){
+               // echo "<br>";
+                //echo "Table Created Successfully.";
+            }else{
+                echo "<br>";
+                echo "Error Creating table".mysqli_error($conn);
+            }
         
