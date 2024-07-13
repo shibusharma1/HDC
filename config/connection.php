@@ -75,29 +75,6 @@ $conn = mysqli_connect($servername,$username,$password,$dbname);
 if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
-
-
-//creating table for cregister
-// $sql="CREATE TABLE IF NOT EXISTS students(
-//     id UNSIGNEDBIGINT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-//     firstname VARCHAR(30) NOT NULL,
-//     middlename VARCHAR(30),
-//     lastname VARCHAR(30) NOT NULL,
-//     username VARCHAR(30) NOT NULL,
-//     phone VARCHAR(10) NOT NULL,
-//     admitted_year DATE NOT NULL,
-//     dob DATE NOT NULL,
-//     passed_out_year DATE NOT NULL,
-//     referred_by VARCHAR(40)
-//     )";
-
-//     if(mysqli_query($conn,$sql)){
-//        // echo "<br>";
-//         //echo "Table Created Successfully.";
-//     }else{
-//         echo "<br>";
-//         echo "Error Creating table".mysqli_error($conn);
-//     }
  
     //creating table for Admin
     $sql="CREATE TABLE IF NOT EXISTS sadmin(
@@ -115,26 +92,28 @@ if (!$conn) {
     }
 
     $sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin1@gmail.com','admin123')";
-    // if (mysqli_query($conn, $sql)) {
-    //     // echo "<br>";
-    //     //echo "Data inserted Successfully.";
-    // } else {
-    //     echo "<br>";
-    //     echo "Error Inserting data" . mysqli_error($conn);
-    // }
+    if (mysqli_query($conn, $sql)) {
+        // echo "<br>";
+        //echo "Data inserted Successfully.";
+    } else {
+        echo "<br>";
+        echo "Error Inserting data" . mysqli_error($conn);
+    }
     
-        // creating table for vote
-        // $sql1="CREATE TABLE IF NOT EXISTS vote(
-        //     vote_id INT PRIMARY KEY AUTO_INCREMENT,
-        //     no_of_vote INT,
-        //     voted_at date,
-        //     candidate_id unsignedbigint,
-        //     )";
-
-        $sql="CREATE TABLE IF NOT EXISTS smin(
-            sid INT PRIMARY KEY,
-            adminusername VARCHAR(30),
-            adminpassword varchar(10)
+        //creating table for registering CMAT
+        $sql="CREATE TABLE IF NOT EXISTS registercmat(
+            id INT PRIMARY KEY,
+            firstname VARCHAR(30),   
+            middlename VARCHAR(30),   
+            lastname VARCHAR(30),   
+            username VARCHAR(30), 
+            phone BIGINT(10),
+            program varchar(10),
+            admitted_year Date,
+            dob DATE,
+            passed_out_year DATE,
+            referred_by VARCHAR(30),
+            gpa INT
             )";
         //    print_r("mysqli_query($conn,$sql1)");
             if(mysqli_query($conn,$sql)){
@@ -145,3 +124,41 @@ if (!$conn) {
                 echo "Error Creating table".mysqli_error($conn);
             }
         
+        //creating table for registering student
+        $sql="CREATE TABLE IF NOT EXISTS registerstudents(
+            id INT PRIMARY KEY,
+            firstname VARCHAR(30),   
+            middlename VARCHAR(30),   
+            lastname VARCHAR(30),   
+            username VARCHAR(30), 
+            phone BIGINT(10),
+            program varchar(10),
+            admitted_year Date,
+            dob DATE,
+            passed_out_year DATE,
+            referred_by VARCHAR(30),
+            gpa INT
+            )";
+        //    print_r("mysqli_query($conn,$sql1)");
+            if(mysqli_query($conn,$sql)){
+               // echo "<br>";
+                //echo "Table Created Successfully.";
+            }else{
+                echo "<br>";
+                echo "Error Creating table".mysqli_error($conn);
+            }
+        
+            //creating table for candidates
+    $sql="CREATE TABLE IF NOT EXISTS candidates(
+        sid INT PRIMARY KEY,
+        adminusername VARCHAR(30),
+        adminpassword varchar(10)
+        )";
+    
+        if(mysqli_query($conn,$sql)){
+           // echo "<br>";
+            //echo "Table Created Successfully.";
+        }else{
+            echo "<br>";
+            echo "Error Creating table".mysqli_error($conn);
+        }

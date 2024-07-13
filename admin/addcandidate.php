@@ -35,7 +35,7 @@ include_once '../includes/adminheader.php';
       <div class="input-box">
         <label for="semester">Semester</label>
         <select id="semester" name="semester" required>
-          <option value="" disabled selected>Select a Semester</option>
+          <option value="" disabled selected>Select a Semester/Year</option>
           <option value="1" class="bbs">First</option>
           <option value="2" class="bbs">Second</option>
           <option value="3" class="bbs">Third</option>

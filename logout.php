@@ -14,11 +14,11 @@ header("Location:login.php");
 color:black;
 background-color:blue;
 ">
-<h1>
-<a href="login.php" style="
+    <h1>
+        <a href="login.php" style="
 text-decoration:none;
 color:black;
 background-color:light-blue;
 ">Go to Login Page</a>
-</h1>
+    </h1>
 </button>
