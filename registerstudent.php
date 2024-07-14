@@ -3,8 +3,9 @@ include_once 'includes/header.php';
 require_once 'config/connection.php';
 ?>
 <?php
-print_r($_POST);
-exit;
+// print_r($_POST);
+// exit;
+
 
 $errors = array();
 
