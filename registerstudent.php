@@ -1,5 +1,85 @@
 <?php
 include_once 'includes/header.php';
+include_once 'config/connection.php';
+?>
+<?php
+require_once('config/connection.php');
+
+$errors = array();
+
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $fname = trim($_POST['fname']);
+    $lname = trim($_POST['lname']);
+    $email = trim($_POST['email']);
+    $country = $_POST['country'];
+    $phone = trim($_POST['phone_number']);
+    $password = trim($_POST['password']);
+    $confirm_password = trim($_POST['confirmpassword']);
+
+
+
+    // First Name Validation
+    if (empty($fname)) {
+        $errors['fname_error'] = "First name is required.";
+    } elseif (!preg_match("/^[a-zA-Z ]+$/", $fname)) {
+        $errors['fname_error'] = "First name can't contain digits and special characters.";
+    }
+
+    // Last Name Validation
+    if (empty($lname)) {
+        $errors['lname_error'] = "Last name is required.";
+    } elseif (!preg_match("/^[a-zA-Z ]+$/", $lname)) {
+        $errors['lname_error'] = "Last name can't contain digits and special characters.";
+    }
+
+    // Email Validation
+    if (empty($email)) {
+        $errors['email_error'] = "Email can't be blank.";
+    } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        $errors['email_error'] = "Email address is not valid.";
+    }
+
+    // Phone Validation
+    if (empty($phone)) {
+        $errors['phone_error'] = "Phone number is required.";
+    } elseif (!preg_match("/^9[87][0-9]{8}$/", $phone)) {
+        $errors['phone_error'] = "Phone number is not valid.";
+    }
+
+    // Country Validation
+    if (empty($country)) {
+        $errors['country_error'] = "Please select your country.";
+    }
+
+    // Password Validation
+    if (empty($password)) {
+        $errors['password_error'] = "Password is required.";
+    } elseif (strlen($password) < 8) {
+        $errors['password_error'] = "Password should be at least 8 characters.";
+    } elseif (!preg_match("/^[a-zA-Z0-9@.#]+$/", $password)) {
+        $errors['password_error'] = "Password is not valid.";
+    }
+
+    // Confirm Password Validation
+    if (empty($confirm_password)) {
+        $errors['confirm_password_error'] = "Confirm password is required.";
+    } elseif ($confirm_password !== $password) {
+        $errors['confirm_password_error'] = "Passwords do not match.";
+    }
+
+    // If no errors, insert into database
+    if (empty($errors)) {
+        $password = md5($password);
+        $sql = "INSERT INTO cregister (fname, lname, email, password, country, phone) VALUES ('$fname', '$lname', '$email', '$password', '$country', '$phone')";
+
+        if (mysqli_query($conn, $sql)) {
+            header("Location: login.php");
+            exit;
+        } else {
+            echo "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);
+        }
+    }
+}
 ?>
 <div class="register-body">
   <div class="wrapper">
@@ -11,9 +91,14 @@ include_once 'includes/header.php';
       <p>Please enter your details into the fields below.</p>
 
       <div class="input-box">
-        <label for="firstname">First Name</label>
+        <label for="firstname">First Name<span style="color:red;">*</span></label>
+        
         <input type="text" id="firstname" name="firstname" placeholder="First Name" required>
       </div>
+      <?php if (isset($errors['fname_error'])): ?>
+            <label style="color:red">** <?php echo $errors['fname_error']; ?></label>
+        <?php endif; ?>
+
 
       <div class="input-box">
         <label for="middlename">Middle Name</label>
