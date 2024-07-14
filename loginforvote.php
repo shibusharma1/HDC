@@ -1,36 +1,34 @@
 <?php
 //starting the session
-// session_start();
+session_start();
 
-// $title = "Log in";
-// $active = "login";
-// require_once ('config/connection.php');
+require_once ('config/connection.php');
 
-// if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-//   #Prevent from mysqli injection
-//   $username = stripcslashes($_POST['username']);
-//   $password = $_POST['password'];
-//   $username = mysqli_real_escape_string($conn, $username);
+if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+  #Prevent from mysqli injection
+  $CRN = stripcslashes($_POST['CRN']);
+  $random_code = $_POST['random_code'];
+  $CRN = mysqli_real_escape_string($conn, $CRN);
 
-//   $sql = "select * from sadmin where adminusername = '$username' and adminpassword = '$password'";
+  $sql = "select * from registerstudents where CRN = '$CRN' and random_code = '$random_code'";
 
-//   $sresult = mysqli_query($conn, $sql);
+  $result = mysqli_query($conn, $sql);
 
-//   $scount = mysqli_num_rows($sresult);
-//   // echo $password;
-//   // echo $username;
+  $scount = mysqli_num_rows($result);
+  // echo $random_code;
+  // echo $CRN;
 
-//   if ($scount == 1) {
-//     $row = mysqli_fetch_assoc($sresult);
-//     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
-//       $_SESSION['uid'] = $row['sid'];
-//       header("Location: dashboard.php");
-//       echo "hello";
-//     }
-//   }
-
-//   $password = md5($password);
-//   $sql = "select * from students where username = '$username' and password = '$password'";
+  if ($scount == 1) {
+    $row = mysqli_fetch_assoc($result);
+    if ($row['CRN'] == $CRN && $row['random_code'] == $random_code) {
+      $_SESSION['crn'] = $row['CRN'];
+      header("Location: candidate/index.php");
+      
+    }
+  }
+}
+//   $random_code = md5($random_code);
+//   $sql = "select * from students where CRN = '$CRN' and random_code = '$random_code'";
 
 //   $result = mysqli_query($conn, $sql);
 
@@ -38,11 +36,11 @@
 
 //   if ($count == 1) {
 //     $row = mysqli_fetch_assoc($result);
-//     if ($row['username'] == $username && $row['password'] == $password) {
+//     if ($row['CRN'] == $CRN && $row['random_code'] == $random_code) {
 //       $_SESSION['uid'] = $row['id'];
 //       header("Location: admin/dashboard.php");
 //     } else {
-//       echo "<h1>Login failed due to invalid username or password</h1>";
+//       echo "<h1>Login failed due to invalid CRN or random_code</h1>";
 //     }
 
 //   } else {
@@ -51,7 +49,7 @@
 
 // }
 
-// include_once 'includes/header.php';
+
 ?>
 <?php
 include_once 'includes/header.php';
@@ -61,22 +59,22 @@ include_once 'includes/header.php';
     <form action="" method="POST">
       <h1>LOGIN for Vote</h1>
       <div class="input-box">
-        <label for="username">Enter your CRN</label>
-        <input type="username" placeholder="Please enter your Random Code" name="username" required>
-        
+        <label for="CRN">Enter your CRN</label>
+        <input type="CRN" placeholder="Please enter your CRN" name="CRN" required>
+
 
       </div>
 
       <div class="input-box">
-        <label for="password">Enter your Random Code</label>
-        <input type="password" placeholder="Please enter your CRN" name="password" required>
-        
+        <label for="random_code">Enter your Random Code</label>
+        <input type="random_code" placeholder="Please enter your Random Code" name="random_code" required>
+
       </div>
       <div class="remember-forget">
         <label><input type="checkbox"> Remember me</label>
-        <a href="forgetpassword.php">Forget random code?</a>
+        <a href="forgetrandom_code.php">Forgot random code?</a>
       </div>
-      
+
       <button type="submit" class="btn">Login</button>
 
     </form>

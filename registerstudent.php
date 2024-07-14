@@ -69,7 +69,7 @@ include_once 'includes/header.php';
 
       <div class="input-box">
         <label for="gpa">GPA</label>
-        <input type="number" step="0.01" id="gpa" name="gpa" placeholder="GPA" min=0 max=4required>
+        <input type="number" step="0.01" id="gpa" name="gpa" placeholder="GPA" min=0 max=4 required>
       </div>
 
       <div class="input-box1" style="display:flex;color:black;">
