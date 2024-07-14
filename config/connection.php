@@ -18,9 +18,9 @@ if (!$conn) {
 
 //creating table for Admin
 $sql = "CREATE TABLE IF NOT EXISTS sadmin(
-    sid INT PRIMARY KEY,
-    adminusername VARCHAR(30),
-    adminpassword varchar(10)
+    sid INT PRIMARY KEY AUTO_INCREMENT,
+    adminusername VARCHAR(30) NOT NULL,
+    adminpassword varchar(10) NOT NULL
     )";
 
 if (mysqli_query($conn, $sql)) {
@@ -42,18 +42,17 @@ if (mysqli_query($conn, $sql)) {
 
 //creating table for registering CMAT
 $sql = "CREATE TABLE IF NOT EXISTS registercmat(
-            id INT PRIMARY KEY,
-            firstname VARCHAR(30),   
+            id INT PRIMARY KEY AUTO_INCREMENT,
+            firstname VARCHAR(30) NOT NULL,   
             middlename VARCHAR(30),   
-            lastname VARCHAR(30),   
-            username VARCHAR(30), 
-            phone BIGINT(10),
-            program varchar(10),
-            admitted_year Date,
-            dob DATE,
-            passed_out_year DATE,
-            referred_by VARCHAR(30),
-            gpa INT
+            lastname VARCHAR(30) NOT NULL,   
+            phone BIGINT(10) NOT NULL,
+            program varchar(10) NOT NULL,
+            admitted_year Date NOT NULL,
+            dob DATE NOT NULL,
+            -- passed_out_year DATE,
+            referred_by VARCHAR(30) NOT NULL,
+            gpa INT NOT NULL
             )";
 //    print_r("mysqli_query($conn,$sql1)");
 if (mysqli_query($conn, $sql)) {
@@ -65,21 +64,21 @@ if (mysqli_query($conn, $sql)) {
 }
 
 //creating table for registering student
-$sql = "CREATE TABLE IF NOT EXISTS registerstudents(
+$sql = "CREATE TABLE IF NOT EXISTS registerstudent(
             student_id INT PRIMARY KEY AUTO_INCREMENT,
-            firstname VARCHAR(30),   
+            firstname VARCHAR(30) NOT NULL,   
             middlename VARCHAR(30),   
-            lastname VARCHAR(30),   
-            username VARCHAR(30), 
-            phone BIGINT(10),
-            program varchar(10),
-            admitted_year Date,
-            dob DATE,
-            passed_out_year DATE,
+            lastname VARCHAR(30) NOT NULL,   
+            dob DATE NOT NULL,
+            phone BIGINT(10) NOT NULL,
+            email VARCHAR(50) NOT NULL,
+            programs varchar(30) NOT NULL,
+            semester varchar(30) NOT NULL,
+            admitted_year Date NOT NULL,
+            gpa INT NOT NULL,
             referred_by VARCHAR(30),
-            gpa INT,
-            CRN BIGINT NOT NULL, 
-            random_code VARCHAR(30)
+            CRN BIGINT, 
+            random_code VARCHAR(30) NOT NULL
             )";
 
 if (mysqli_query($conn, $sql)) {

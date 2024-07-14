@@ -25,10 +25,10 @@ include_once 'includes/header.php';
         <input type="text" id="lastname" name="lastname" placeholder="Last Name" required>
       </div>
 
-      <div class="input-box">
+      <!-- <div class="input-box">
         <label for="username">Username</label>
         <input type="text" id="username" name="username" placeholder="Username" required>
-      </div>
+      </div> -->
 
       <div class="input-box">
         <label for="phone">Contact Number</label>
@@ -71,10 +71,10 @@ include_once 'includes/header.php';
         <input type="date" id="dob" name="dob" placeholder="Date of Birth" required>
       </div>
 
-      <div class="input-box">
+      <!-- <div class="input-box">
         <label for="passed_out_year">Passed Out Year</label>
         <input type="number" id="passed_out_year" name="passed_out_year" placeholder="Passed Out Year" required>
-      </div>
+      </div> -->
 
       <div class="input-box">
         <label for="referred_by">Referred By</label>
