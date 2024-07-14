@@ -1,5 +1,5 @@
 <?php
-include_once 'candidateforvote.php';
+include_once 'candidateheader.php';
 ?>
 
 <div class="table-container">
