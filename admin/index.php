@@ -1,5 +1,5 @@
 <?php
-include_once '../includes/adminheader.php';
+include_once 'adminheader.php';
 ?>
 
 <div class="table-container">

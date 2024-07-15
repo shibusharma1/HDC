@@ -1,6 +1,6 @@
 <?php
-include_once 'includes/header.php';
-require_once 'config/connection.php';
+include_once 'adminheader.php';
+require_once '../config/connection.php';
 ?>
 <?php
 // print_r($_POST);
@@ -141,7 +141,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="register-body">
   <div class="wrapper">
     <form action="" method="POST">
-      <img src="assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College"
+      <img src="../assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College"
         style="display:block;margin:auto;">
       <!-- <h1>Himalaya Darshan College</h1> -->
       <h2 style="color:black;">Register Student in HDC</h2>
@@ -355,9 +355,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <button type="submit" class="btn">Apply</button>
 
-      <div class="register-link">
-        <p>Already have an account? <a href="login.php">Login Here</a></p>
-      </div>
+     
 
     </form>
 
@@ -393,5 +391,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </script>
 
 <?php
-include_once 'includes/footer.php';
+include_once 'footer.php';
 ?>
