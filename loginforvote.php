@@ -6,11 +6,11 @@ require_once ('config/connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   #Prevent from mysqli injection
-  $CRN = stripcslashes($_POST['CRN']);
+  $CRN = $_POST['CRN'];
   $random_code = $_POST['random_code'];
-  $CRN = mysqli_real_escape_string($conn, $CRN);
+  // $CRN = mysqli_real_escape_string($conn, $CRN);
 
-  $sql = "select * from registerstudents where CRN = '$CRN' and random_code = '$random_code'";
+  $sql = "select * from registerstudent where CRN = '$CRN' and random_code = '$random_code'";
 
   $result = mysqli_query($conn, $sql);
 

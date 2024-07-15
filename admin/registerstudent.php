@@ -3,7 +3,6 @@ include_once 'adminheader.php';
 require_once '../config/connection.php';
 require 'crn_generator.php';
 
-
 ?>
 <?php
 
