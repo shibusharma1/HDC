@@ -19,10 +19,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $programs = $_POST['programs'];
   $semester = $_POST['semester'];
   $admitted_year = $_POST['admitted_year'];
-  $gpa = $_POST['gpa'];
+  // $gpa = $_POST['gpa'];
   $referred_by = trim($_POST['referred_by']);
 
-  
+
 
   // First Name Validation
   if (empty($firstname)) {
@@ -112,11 +112,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   // gpa Validation
-  if (empty($gpa)) {
-    $errors['gpa_error'] = "GPA is required.";
-  } elseif (!preg_match("/^([0-3](\.\d{1,2})?|4(\.0{1,2})?)$/", $gpa)) {
-    $errors['gpa_error'] = "GPA is not valid.";
-  }
+  // if (empty($gpa)) {
+  //   $errors['gpa_error'] = "GPA is required.";
+  // } elseif (!preg_match("/^([0-3](\.\d{1,2})?|4(\.0{1,2})?)$/", $gpa)) {
+  //   $errors['gpa_error'] = "GPA is not valid.";
+  // }
   //referred_by Validation
   if (empty($referred_by)) {
     // $errors['referred_by_error'] = "Referred by is required.";
@@ -126,11 +126,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   $random_code = random_int(10000, 99999);
   // Generate a new CRN
-  $CRN = generateCRN();;;
+  $CRN = generateCRN();
+  ;
+  ;
 
   // If no errors, insert into database
   if (empty($errors)) {
-    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programs,semester,admitted_year,gpa,referred_by,CRN,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$gpa','$referred_by','$CRN','$random_code')";
+    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programs,semester,admitted_year,referred_by,CRN,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$referred_by','$CRN','$random_code')";
 
     if (mysqli_query($conn, $sql)) {
       header("Location: index.php");
@@ -247,6 +249,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       endif;
       ?>
 
+      <div class="input-box">
+        <label for="admitted_year">Admitted Year<span style="color:red;">*</span></label>
+        <input type="date" id="admitted_year" name="admitted_year" placeholder="Admitted Year" required>
+      </div>
+      <?php
+      if (isset($errors['admitted_year_error'])):
+        ?>
+        <label style="color:red;float:left;">
+          <?php
+          echo $errors['admitted_year_error'];
+          ?></label>
+        <?php
+      endif;
+      ?>
 
       <div class="input-box">
         <label for="programs">Program<span style="color:red;">*</span></label>
@@ -298,37 +314,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ?>
 
 
-      <div class="input-box">
-        <label for="admitted_year">Admitted Year<span style="color:red;">*</span></label>
-        <input type="date" id="admitted_year" name="admitted_year" placeholder="Admitted Year" required>
-      </div>
-      <?php
-      if (isset($errors['admitted_year_error'])):
-        ?>
-        <label style="color:red;float:left;">
-          <?php
-          echo $errors['admitted_year_error'];
-          ?></label>
-        <?php
-      endif;
-      ?>
 
 
 
-      <div class="input-box">
+
+      <!-- <div class="input-box">
         <label for="gpa">GPA<span style="color:red;">*</span></label>
         <input type="number" step="0.01" id="gpa" name="gpa" placeholder="GPA" min=0 max=4 required>
       </div>
       <?php
-      if (isset($errors['gpa_error'])):
-        ?>
+      // if (isset($errors['gpa_error'])):
+      ?>
         <label style="color:red;float:left;">
           <?php
-          echo $errors['gpa_error'];
+          // echo $errors['gpa_error'];
           ?></label>
         <?php
-      endif;
-      ?>
+        // endif;
+        ?> -->
 
 
 
@@ -358,7 +361,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <button type="submit" class="btn">Apply</button>
 
-     
+
 
     </form>
 

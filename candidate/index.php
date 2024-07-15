@@ -1,5 +1,6 @@
 <?php
 include_once 'candidateheader.php';
+
 ?>
 
 <div class="table-container">

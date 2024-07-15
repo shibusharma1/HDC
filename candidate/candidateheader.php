@@ -1,3 +1,13 @@
+<?php
+require_once '../config/connection.php';
+session_start();
+//$_SESSION['uid'] = 1;
+
+if (!isset($_SESSION['crn'])) {
+   header("Location: ../logout.php");
+  // echo "Admin login";
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,7 +21,7 @@
     <nav class="navbar" style="background-color:#aaaca8">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
-            <li><a href="addcandidate.php">Profile</a></li>
+            <li><a href="profile.php">Profile</a></li>
             <li><a href="results.php">Results</a></li>
             <li><a href="./logout.php">Logout</a></li>
         </ul>
