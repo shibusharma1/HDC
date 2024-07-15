@@ -127,7 +127,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $random_code = random_int(10000, 99999);
   // If no errors, insert into database
   if (empty($errors)) {
-    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programs,semester,admitted_by,gpa,referred_by,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$gpa','$referred_by','$random_code')";
+    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programs,semester,admitted_year,gpa,referred_by,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$gpa','$referred_by','$random_code')";
 
     if (mysqli_query($conn, $sql)) {
       header("Location: admin/index.php");
