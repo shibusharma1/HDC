@@ -1,21 +1,24 @@
-*{
+* {
   /* font-family: Arial, sans-serif; */
-  font-family: "Poppins", Arial, Helvetica, sans-serif;
+  font-family: Montserrat;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+}
+a:hover {
+  text-decoration: none !important;
 }
 
 .logo-contact {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 1rem 2rem;
   background-color: #f7f7f7;
 }
 
 .logo a img {
-  width: 150px;
+  width: 200px;
   height: auto;
 }
 
@@ -72,7 +75,7 @@
   font-weight: 300;
   font-size: large;
 }
-.navbar-links a:hover {
+/* .navbar-links a:hover {
   padding: 10px 40px;
   font-weight: 350;
   font-size: larger;
@@ -80,7 +83,7 @@
   color: black;
   background-color: rgb(169, 184, 202);
   text-decoration: none;
-}
+} */
 
 /**Hero section**/
 .hero-section {
@@ -190,7 +193,6 @@ table {
 /**footer**/
 footer {
   margin-top: 15px;
-
 }
 
 .foot-panel1 {
@@ -228,18 +230,17 @@ ul a {
 }
 .copyright {
   padding-top: 5px;
-  padding-bottom: 5px; 
+  padding-bottom: 5px;
 }
 
-.social{
+.social {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
   list-style-type: none;
-
 }
 
-.social li{
+.social li {
   display: inline;
   margin-left: 15px;
 }
@@ -293,7 +294,6 @@ ul a {
   color: #fff; /* Ensure the link text remains white on hover */
 }
 
-
 /* About tab */
 .about {
   max-width: 62.5rem; /* Set a maximum width for the about section */
@@ -344,7 +344,6 @@ ul a {
   text-align: center;
 }
 
-
 /* Css for register.php */
 .register-body {
   margin-top: 20px;
@@ -356,7 +355,7 @@ ul a {
   color: black;
 }
 
-.register-body .wrapper{
+.register-body .wrapper {
   width: 660px;
   background-color: whitesmoke;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
@@ -528,7 +527,7 @@ form {
 }
 
 .wrapper .remember-forget {
-    width: 90%;
+  width: 90%;
   display: flex;
   gap: 10px;
   font-size: 14.5px;
@@ -581,10 +580,9 @@ form {
   text-decoration: underline;
 }
 
-
 /* Css for contact.php */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: "Arial", sans-serif;
   margin: 0;
   padding: 0;
   background-color: #f4f4f9;
@@ -619,7 +617,8 @@ table {
   border-collapse: collapse;
 }
 
-th, td {
+th,
+td {
   padding: 12px;
   text-align: left;
   border-bottom: 1px solid #e2e2e2;
@@ -641,4 +640,54 @@ a {
 
 a:hover {
   text-decoration: underline;
+}
+
+.header-navbar {
+  background-color: #eeeeee;
+  padding: 0;
+}
+
+.navbar-links li:hover {
+  background-color: #128db8;
+}
+
+.navbar-links li a {
+  margin: 0.6rem;
+}
+.navbar-links li a:hover {
+  color: white;
+}
+.header-navbar ul li a {
+  color: black;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+/* 
+.header-navbar ul li a:hover {
+  color: #128db8;
+} */
+
+.header-top {
+  display: flex;
+}
+
+.header-top li {
+  margin: 0rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.text-color {
+  color: #128db8;
+  margin-right: 5px;
+  border: 1px solid #128db8;
+  padding: 6px;
+  border-radius: 50%;
+}
+.header-top-text {
+  line-height: 0.7rem;
+}
+
+.icon-margin {
+  margin-right: 5px;
 }
