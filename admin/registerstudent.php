@@ -1,10 +1,11 @@
 <?php
 include_once 'adminheader.php';
 require_once '../config/connection.php';
+require 'crn_generator.php';
+
+
 ?>
 <?php
-// print_r($_POST);
-// exit;
 
 
 $errors = array();
@@ -114,7 +115,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // gpa Validation
   if (empty($gpa)) {
     $errors['gpa_error'] = "GPA is required.";
-  } elseif (!preg_match("/^[0-4]$/", $gpa)) {
+  } elseif (!preg_match("/^([0-3](\.\d{1,2})?|4(\.0{1,2})?)$/", $gpa)) {
     $errors['gpa_error'] = "GPA is not valid.";
   }
   //referred_by Validation
@@ -125,12 +126,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
   $random_code = random_int(10000, 99999);
+  // Generate a new CRN
+  $CRN = generateCRN();;;
+
   // If no errors, insert into database
   if (empty($errors)) {
-    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programs,semester,admitted_year,gpa,referred_by,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$gpa','$referred_by','$random_code')";
+    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programs,semester,admitted_year,gpa,referred_by,CRN,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$gpa','$referred_by','$CRN','$random_code')";
 
     if (mysqli_query($conn, $sql)) {
-      header("Location: admin/index.php");
+      header("Location: index.php");
       exit;
     } else {
       echo "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);

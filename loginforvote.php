@@ -15,8 +15,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $result = mysqli_query($conn, $sql);
 
   $scount = mysqli_num_rows($result);
-  // echo $random_code;
-  // echo $CRN;
 
   if ($scount == 1) {
     $row = mysqli_fetch_assoc($result);
@@ -27,27 +25,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 }
-//   $random_code = md5($random_code);
-//   $sql = "select * from students where CRN = '$CRN' and random_code = '$random_code'";
-
-//   $result = mysqli_query($conn, $sql);
-
-//   $count = mysqli_num_rows($result);
-
-//   if ($count == 1) {
-//     $row = mysqli_fetch_assoc($result);
-//     if ($row['CRN'] == $CRN && $row['random_code'] == $random_code) {
-//       $_SESSION['uid'] = $row['id'];
-//       header("Location: admin/dashboard.php");
-//     } else {
-//       echo "<h1>Login failed due to invalid CRN or random_code</h1>";
-//     }
-
-//   } else {
-//     echo "<h1>User Doesnot Exist </h1>";
-//   }
-
-// }
 
 
 ?>

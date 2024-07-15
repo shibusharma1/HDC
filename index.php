@@ -1,12 +1,3 @@
-<?php
-session_start();
-//$_SESSION['uid'] = 1;
-
-if (isset($_SESSION['uid'])) {
-    // header("Location:login.php");
-    echo "Student login";
-    echo "<a href='logout.php'>Logout</a>";
-}
 ?>
 <?php
 include_once 'includes/header.php';

@@ -75,7 +75,7 @@ $sql = "CREATE TABLE IF NOT EXISTS registerstudent(
             programs varchar(30) NOT NULL,
             semester varchar(30) NOT NULL,
             admitted_year Date NOT NULL,
-            gpa INT NOT NULL,
+            gpa DECIMAL(10, 2) NOT NULL,
             referred_by VARCHAR(30),
             CRN BIGINT, 
             random_code VARCHAR(30) NOT NULL
