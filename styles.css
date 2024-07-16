@@ -68,8 +68,9 @@ a:hover {
 }
 
 .navbar-links a {
+  /* margin: 0px; */
   color: black;
-  text-decoration: none;
+  /* text-decoration: none; */
   padding: 10px 40px;
   display: block;
   font-weight: 300;
@@ -84,6 +85,52 @@ a:hover {
   background-color: rgb(169, 184, 202);
   text-decoration: none;
 } */
+ 
+.navbar-links li:hover {
+  background-color: #128db8;
+}
+
+.navbar-links li a {
+  margin: 0.6rem;
+}
+.navbar-links li a:hover {
+  color: white;
+}
+.header-navbar ul li a {
+  color: black;
+  font-weight: 600;
+  font-size: 1.2rem;
+}
+/* 
+.header-navbar ul li a:hover {
+  color: #128db8;
+} */
+
+.header-top {
+  display: flex;
+}
+
+.header-top li {
+  margin: 0rem 1rem;
+  display: flex;
+  align-items: center;
+}
+
+.text-color {
+  color: #128db8;
+  margin-right: 5px;
+  border: 1px solid #128db8;
+  padding: 6px;
+  border-radius: 50%;
+}
+.header-top-text {
+  line-height: 0.7rem;
+}
+
+.icon-margin {
+  margin-right: 5px;
+}
+
 
 /**Hero section**/
 .hero-section {
@@ -645,49 +692,4 @@ a:hover {
 .header-navbar {
   background-color: #eeeeee;
   padding: 0;
-}
-
-.navbar-links li:hover {
-  background-color: #128db8;
-}
-
-.navbar-links li a {
-  margin: 0.6rem;
-}
-.navbar-links li a:hover {
-  color: white;
-}
-.header-navbar ul li a {
-  color: black;
-  font-weight: 600;
-  font-size: 1.2rem;
-}
-/* 
-.header-navbar ul li a:hover {
-  color: #128db8;
-} */
-
-.header-top {
-  display: flex;
-}
-
-.header-top li {
-  margin: 0rem 1rem;
-  display: flex;
-  align-items: center;
-}
-
-.text-color {
-  color: #128db8;
-  margin-right: 5px;
-  border: 1px solid #128db8;
-  padding: 6px;
-  border-radius: 50%;
-}
-.header-top-text {
-  line-height: 0.7rem;
-}
-
-.icon-margin {
-  margin-right: 5px;
 }

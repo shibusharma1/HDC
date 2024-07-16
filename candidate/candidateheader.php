@@ -18,7 +18,7 @@ if (!isset($_SESSION['crn'])) {
     <link rel="stylesheet" href="../styles.css">
     </head>
 <body>
-    <nav class="navbar" style="background-color:#aaaca8">
+    <nav class="navbar">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
