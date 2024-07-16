@@ -7,10 +7,11 @@ $errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $name = trim($_POST['name']);
-  $CRN = trim($_POST['crn']);
+  $CRN = $_POST['crn'];
   $programs = $_POST['programs'];
   $semester = $_POST['semester'];
 
+ 
 
 
   //  Name Validation
@@ -39,41 +40,91 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $errors['semester_error'] = "Please select your semester.";
   }
 
+
   $sql = "SELECT * FROM registerstudent";
   $result = mysqli_query($conn, $sql);
 
   if (mysqli_num_rows($result) > 0) {
-    
     while ($row = mysqli_fetch_assoc($result)) {
-      // $fullname = $row['firstname']." ".$row['middlename']." ".$row['lastname'];
-      // echo $fullname;
-      if( $row['CRN'] == $CRN && $row['programs'] == $programs && $row['semester'] == $semester) {
-        // If no errors, insert into database
-        if (empty($errors)) {
-          $sql = "INSERT INTO candidates (name,CRN, programs,semester) VALUES ('$name','$CRN','$programs','$semester')";
-          if (mysqli_query($conn, $sql)) {
-            header("Location: admin/index.php");
-            exit;
-          } else {
-             "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);
-          }
-        }
-      }
-      else{
-        $errors['msg_error']="Details of Students didnot matched!!!";
+      if ($row['CRN'] == $CRN) {
+        $searchCRN = $CRN;
+        $fullname = $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'];
+        break;
+      } else {
+        $errors['msg_error'] = "CRN doesnot exists:";
+        // header("Location: addcandidate.php");
 
       }
+    }
+  }
+  if(isset($searchCRN)){
+  $sql = "SELECT * FROM registerstudent WHERE CRN = $searchCRN;";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $searchprogram = $row['programs'];
+      $searchsemester = $row['semester'];
+    }}
 
+
+
+    $bol = $searchCRN == $CRN &&  $searchprogram == $programs &&   $searchsemester == $semester && empty($errors); 
+  //If no errors, insert into database
+  if($bol) {
+      $sql = "INSERT INTO candidates(Name,CRN,Program,semester) VALUES ('$name','$CRN','$programs','$semester')";
+      $result = mysqli_query($conn,$sql);
+      // echo $programs;
+      if($result){
+          // echo "hello";exit;
+        header("Location: index.php");
+        exit;
+      }
     }
   } else {
-  
-    $errors['msg_error']="Details of  not found!!!";
+    // $errors['msg_error'] = "Invalid Credential:";
   }
-
-
-
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//         // If no errors, insert into database
+//         if (empty($errors)) {
+//           $sql = "INSERT INTO candidates (name,CRN, programs,semester) VALUES ('$name','$CRN','$programs','$semester')";
+//           if (mysqli_query($conn, $sql)) {
+//             header("Location: admin/index.php");
+//             exit;
+//           } else {
+//              "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);
+//           }
+//         }
+//       }
+//       else{
+//         $errors['msg_error']="Details of Students didnot matched!!!";
+
+//       }
+
+//     }
+//   } else {
+
+//     $errors['msg_error']="Details of  not found!!!";
+//   }
+
+
+
+
+// }
 ?>
 
 <div class="body-login">
@@ -206,6 +257,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
 </script>
+
 <?php
 include_once 'footer.php';
 ?>
