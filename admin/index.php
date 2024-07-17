@@ -45,7 +45,7 @@ $result = mysqli_query($conn, $sql);
 
                             <form method="POST" action="delete.php">
                                 <input type="hidden" name="crn" value="<?php echo $row['CRN'] ?>">
-                                <button type="submit" class="delete-button">Delete</button>
+                                <button type="submit" class="delete-button" style="background-color: red;">Delete</button>
                             </form>
 
                         </td>
