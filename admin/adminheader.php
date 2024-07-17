@@ -22,7 +22,7 @@ if (!isset($_SESSION['uid'])) {
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     </head>
 <body>
-    <nav class="navbar" style="background-color:#aaaca8">
+    <nav class="navbar">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
             <li><a href="addcandidate.php">Candidates</a></li>

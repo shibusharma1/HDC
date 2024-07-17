@@ -2,8 +2,6 @@
 //starting the session
 session_start();
 
-// $title = "Log in";
-// $active = "login";
 require_once ('config/connection.php');
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -17,41 +15,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $sresult = mysqli_query($conn, $sql);
 
   $scount = mysqli_num_rows($sresult);
-  // echo $password;
-  // echo $username;
 
   if ($scount == 1) {
     $row = mysqli_fetch_assoc($sresult);
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
       $_SESSION['uid'] = $row['sid'];
       header("Location: admin/index.php");
-      echo "hello";
+     
     }
   }
-
-  $password = md5($password);
-  $sql = "select * from students where username = '$username' and password = '$password'";
-
-  $result = mysqli_query($conn, $sql);
-
-  $count = mysqli_num_rows($result);
-
-  if ($count == 1) {
-    $row = mysqli_fetch_assoc($result);
-    if ($row['username'] == $username && $row['password'] == $password) {
-      $_SESSION['uid'] = $row['id'];
-      header("Location: admin/dashboard.php");
-    } else {
-      echo "<h1>Login failed due to invalid username or password</h1>";
-    }
-
   } else {
     echo "<h1>User Doesnot Exist </h1>";
   }
 
-}
-
-// include_once 'includes/header.php';
 ?>
 
 <?php
