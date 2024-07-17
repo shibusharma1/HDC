@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $programs = $_POST['programs'];
   $semester = $_POST['semester'];
 
- 
+
 
 
   //  Name Validation
@@ -41,41 +41,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
 
 
-  $sql = "SELECT * FROM registerstudent";
-  $result = mysqli_query($conn, $sql);
-
-  if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-      if ($row['CRN'] == $CRN) {
-        $searchCRN = $CRN;
-        $fullname = $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname'];
-        break;
-      } else {
-        $errors['msg_error'] = "CRN doesnot exists:";
-        // header("Location: addcandidate.php");
-
+  // if (isset($searchCRN)) {
+    $sql = "SELECT * FROM registerstudent WHERE CRN = $CRN;";
+    $result = mysqli_query($conn, $sql);
+    if (mysqli_num_rows($result) > 0) {
+      while ($row = mysqli_fetch_assoc($result)) {
+        $searchprogram = $row['programs'];
+        $searchsemester = $row['semester'];
       }
     }
-  }
-  if(isset($searchCRN)){
-  $sql = "SELECT * FROM registerstudent WHERE CRN = $searchCRN;";
-  $result = mysqli_query($conn, $sql);
-  if (mysqli_num_rows($result) > 0) {
-    while ($row = mysqli_fetch_assoc($result)) {
-      $searchprogram = $row['programs'];
-      $searchsemester = $row['semester'];
-    }}
 
 
 
-    $bol = $searchCRN == $CRN &&  $searchprogram == $programs &&   $searchsemester == $semester && empty($errors); 
-  //If no errors, insert into database
-  if($bol) {
+    $bol =$searchprogram == $programs && $searchsemester == $semester && empty($errors);
+    //If no errors, insert into database
+    if ($bol) {
       $sql = "INSERT INTO candidates(Name,CRN,Program,semester) VALUES ('$name','$CRN','$programs','$semester')";
-      $result = mysqli_query($conn,$sql);
+      $result = mysqli_query($conn, $sql);
       // echo $programs;
-      if($result){
-          // echo "hello";exit;
+      if ($result) {
+        // echo "hello";exit;
         header("Location: index.php");
         exit;
       }
@@ -83,7 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } else {
     // $errors['msg_error'] = "Invalid Credential:";
   }
-}
+// }
 
 
 
@@ -159,8 +144,40 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       <div class="input-box">
-        <label for="crn">CRN<span style="color:red;">*</span></label>
-        <input type="crn" placeholder="CRN" name="crn" required>
+        <?php
+        $sql = "SELECT * FROM registerstudent";
+        $result = mysqli_query($conn, $sql);
+
+        if (mysqli_num_rows($result) > 0) {
+          $students = [];  // Array to hold all student data
+        
+          // Fetch all rows into an array
+          while ($row = mysqli_fetch_assoc($result)) {
+            $students[] = $row;
+          }
+
+          // Iterate over the array using foreach
+        
+
+
+          ?>
+          <label for="crn">CRN<span style="color:red;">*</span></label>
+          <select type="crn" placeholder="CRN" name="crn" required>
+            <?php
+            foreach ($students as $student) {
+              // Now you can access each student's data
+              ?>
+              <option>
+                <?php
+                echo $student['CRN'];
+                ?>
+              </option>
+              <?php
+            }
+        }
+        ?>
+        </select>
+
       </div>
       <?php
       if (isset($errors['CRN_error'])):
