@@ -20,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $row = mysqli_fetch_assoc($result);
     if ($row['CRN'] == $CRN && $row['random_code'] == $random_code) {
       $_SESSION['crn'] = $row['CRN'];
-      header("Location: candidate/index.php");
+      header("Location: voter/index.php");
       
     }
   }

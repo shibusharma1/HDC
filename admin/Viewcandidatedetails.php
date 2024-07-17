@@ -12,7 +12,7 @@ $row = mysqli_fetch_assoc($result)
 
 <div class="table-container">
     <div class="table-title">
-        <h2>Personal Details</h2>
+        <h2>Candidates Details</h2>
     </div>
     <div class="table-content">
         <table>
