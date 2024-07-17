@@ -3,10 +3,6 @@ include_once 'adminheader.php';
 require_once '../config/connection.php';
 require 'crn_generator.php';
 
-?>
-<?php
-
-
 $errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -85,7 +85,7 @@ a:hover {
   background-color: rgb(169, 184, 202);
   text-decoration: none;
 } */
- 
+
 .navbar-links li:hover {
   background-color: #128db8;
 }
@@ -130,7 +130,6 @@ a:hover {
 .icon-margin {
   margin-right: 5px;
 }
-
 
 /**Hero section**/
 .hero-section {
@@ -692,4 +691,14 @@ a:hover {
 .header-navbar {
   background-color: #eeeeee;
   padding: 0;
+}
+
+/* Delete button */
+.delete-button {
+  background-color: red;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+  border-radius: 5px;
 }

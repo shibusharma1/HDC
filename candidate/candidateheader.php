@@ -4,7 +4,7 @@ session_start();
 //$_SESSION['uid'] = 1;
 
 if (!isset($_SESSION['crn'])) {
-   header("Location: ../logout.php");
+   header("Location: logout.php");
   // echo "Admin login";
 }
 ?>

@@ -31,7 +31,7 @@ if (mysqli_query($conn, $sql)) {
     echo "Error Creating table" . mysqli_error($conn);
 }
 
-$sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin1@gmail.com','admin123')";
+$sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin@gmail.com','admin123')";
 if (mysqli_query($conn, $sql)) {
     // echo "<br>";
     //echo "Data inserted Successfully.";
