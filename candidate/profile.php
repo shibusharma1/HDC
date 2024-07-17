@@ -54,7 +54,7 @@ $row = mysqli_fetch_assoc($result)
                     ?></td>
                 </tr>
                 <tr>
-                    <td>SEMESTER/Year:</td>
+                    <td>SEMESTER/YEAR:</td>
                     <td> <?php
                     echo $row['semester'];
                     ?></td>
