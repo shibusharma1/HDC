@@ -116,27 +116,45 @@ a:hover {
   margin-right: 5px;
 }
 
+/* Implementing crousal */
 /**Hero section**/
 .hero-section {
-  background-image: url(assets/hero-img.jpg);
-  background-size: cover;
+  position: relative;
   height: 600px;
   display: flex;
   justify-content: center;
   align-items: flex-end;
+  overflow: hidden;
 }
 
-.hero-msg {
-  background-color: transparent;
-  color: #ffffff;
-  height: 40px;
-  display: flex;
-  align-items: center;
-  justify-content: left;
-  font-size: 3rem;
-  width: 80%;
-  margin-bottom: 100px;
+.carousel {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
 }
+
+.carousel-images {
+  display: flex;
+  transition: transform 0.5s ease-in-out;
+  width: 300%;
+}
+
+.carousel-item {
+  flex: 1 0 100%;
+}
+
+.carousel-item img {
+  /* width: 100%; */
+  /* height: 600px; */
+  padding-left: 135px;
+  padding-top: 5px;
+  padding-bottom:0 ;
+  object-fit: cover;
+}
+
 
 table {
   background-color: #e2e7e6;
@@ -165,6 +183,7 @@ table {
   padding: 20px;
   width: 100%;
 }
+/* CSS for testimonial */
 
 .std-img img {
   border-radius: 10px;
@@ -219,6 +238,52 @@ table {
   padding: 20px;
   background-color: #f4f4f4;
 }
+
+/* css for TIE-UPS & MOUS */
+.tie-up-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: white;
+}
+
+.tie-up {
+  height: 80px;
+  width: 15%;
+  /* padding: 10px 0px 8px; */
+  margin-top: 15px;
+  margin-left: 0px;
+  background-color: white;
+}
+
+.tie-up-img {
+  height: 70px;
+  background-size: cover;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+.tie-up-img:hover{
+  /* transition: zoom-out; */
+  /* height: 90px; */
+  transform: scale(1.07);
+  /* -webkit-transform: scale(1.07); */
+}
+
+.box-content {
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+
+.tie-up-title p {
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-align: center;
+  padding: 10px;
+  background-color: #f4f4f4;
+  border-bottom:5px solid blue;
+  /* border-width: 10px; */
+}
+
 
 /**footer**/
 footer {
