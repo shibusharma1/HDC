@@ -20,12 +20,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $row = mysqli_fetch_assoc($sresult);
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
       $_SESSION['uid'] = $row['sid'];
-      header("Location: admin/index.php");
-     
+      header("Location: admin/index.php"); 
     }
   }
-  } else {
-    echo "<h1>User Doesnot Exist </h1>";
   }
 
 ?>

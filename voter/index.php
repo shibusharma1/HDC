@@ -42,7 +42,7 @@ $result = mysqli_query($conn, $sql);
                             </form>
 
                         </td>
-                        </tr>;
+                        </tr>
                         <?php
                     }
                 }
