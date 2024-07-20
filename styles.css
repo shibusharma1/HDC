@@ -1,10 +1,10 @@
 * {
-  /* font-family: Arial, sans-serif; */
-  font-family: Montserrat;
+  font-family: Montserrat,Arial, sans-serif;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 a:hover {
   text-decoration: none !important;
 }
@@ -68,23 +68,12 @@ a:hover {
 }
 
 .navbar-links a {
-  /* margin: 0px; */
   color: black;
-  /* text-decoration: none; */
   padding: 10px 40px;
   display: block;
   font-weight: 300;
   font-size: large;
 }
-/* .navbar-links a:hover {
-  padding: 10px 40px;
-  font-weight: 350;
-  font-size: larger;
-  display: block;
-  color: black;
-  background-color: rgb(169, 184, 202);
-  text-decoration: none;
-} */
 
 .navbar-links li:hover {
   background-color: #128db8;
@@ -101,10 +90,6 @@ a:hover {
   font-weight: 600;
   font-size: 1.2rem;
 }
-/* 
-.header-navbar ul li a:hover {
-  color: #128db8;
-} */
 
 .header-top {
   display: flex;
@@ -136,7 +121,6 @@ a:hover {
   background-image: url(assets/hero-img.jpg);
   background-size: cover;
   height: 600px;
-
   display: flex;
   justify-content: center;
   align-items: flex-end;
