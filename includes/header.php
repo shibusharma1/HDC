@@ -50,7 +50,7 @@
     <nav class="navbar header-navbar">
         <ul class="navbar-links">
             <li><a href="./index.php">Home</a></li>
-            <li><a href="./registercmat.php">Register</a></li>
+            <li><a href="./registercmat.php">Register<sup style="color:white;background-color:red; padding:4px;font-size:0.5rem;">Apply Now</sup></a></li>
             <li><a href="./contact.php">Contact</a></li>
             <li><a href="./vote.php">Vote</a></li>
             <li><a href="./about.php">About us</a></li>
