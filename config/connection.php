@@ -40,21 +40,23 @@ if (mysqli_query($conn, $sql)) {
     echo "Error Inserting data" . mysqli_error($conn);
 }
 
+
 //creating table for registering CMAT
 $sql = "CREATE TABLE IF NOT EXISTS registercmat(
             id INT PRIMARY KEY AUTO_INCREMENT,
             firstname VARCHAR(30) NOT NULL,   
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
-            phone BIGINT(10) NOT NULL,
-            program varchar(10) NOT NULL,
-            admitted_year Date NOT NULL,
             dob DATE NOT NULL,
-            -- passed_out_year DATE,
-            referred_by VARCHAR(30) NOT NULL,
-            gpa INT NOT NULL
+            phone BIGINT(10) NOT NULL,
+            email VARCHAR(50) NOT NULL,   
+            programs varchar(10) NOT NULL,
+            collegename varchar(100) NOT NULL,
+            passed_out_year Date NOT NULL,
+            gpa INT NOT NULL,
+            referred_by VARCHAR(30) NOT NULL
             )";
-//    print_r("mysqli_query($conn,$sql1)");
+
 if (mysqli_query($conn, $sql)) {
     // echo "<br>";
     //echo "Table Created Successfully.";

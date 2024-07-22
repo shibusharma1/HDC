@@ -147,19 +147,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php
         $sql = "SELECT * FROM registerstudent";
         $result = mysqli_query($conn, $sql);
-
         if (mysqli_num_rows($result) > 0) {
           $students = [];  // Array to hold all student data
-        
           // Fetch all rows into an array
           while ($row = mysqli_fetch_assoc($result)) {
             $students[] = $row;
           }
-
           // Iterate over the array using foreach
-        
-
-
           ?>
           <label for="crn">CRN<span style="color:red;">*</span></label>
           <select type="crn" placeholder="CRN" name="crn" required>

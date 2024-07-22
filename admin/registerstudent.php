@@ -107,12 +107,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
   }
 
-  // gpa Validation
-  // if (empty($gpa)) {
-  //   $errors['gpa_error'] = "GPA is required.";
-  // } elseif (!preg_match("/^([0-3](\.\d{1,2})?|4(\.0{1,2})?)$/", $gpa)) {
-  //   $errors['gpa_error'] = "GPA is not valid.";
-  // }
+
   //referred_by Validation
   if (empty($referred_by)) {
     // $errors['referred_by_error'] = "Referred by is required.";
@@ -123,8 +118,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $random_code = random_int(10000, 99999);
   // Generate a new CRN
   $CRN = generateCRN();
-  ;
-  ;
 
   // If no errors, insert into database
   if (empty($errors)) {
@@ -308,27 +301,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php
       endif;
       ?>
-
-
-
-
-
-
-      <!-- <div class="input-box">
-        <label for="gpa">GPA<span style="color:red;">*</span></label>
-        <input type="number" step="0.01" id="gpa" name="gpa" placeholder="GPA" min=0 max=4 required>
-      </div>
-      <?php
-      // if (isset($errors['gpa_error'])):
-      ?>
-        <label style="color:red;float:left;">
-          <?php
-          // echo $errors['gpa_error'];
-          ?></label>
-        <?php
-        // endif;
-        ?> -->
-
 
 
       <div class="input-box">

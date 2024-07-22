@@ -5,6 +5,20 @@
   box-sizing: border-box;
 }
 
+.apply{
+  color:white;
+  background-color:red; 
+  padding:4px;
+  font-size:0.5rem;
+  border-radius:0.3rem;
+}
+
+.apply:hover{
+  padding:4px;
+  font-size:0.6rem;
+  border-radius:0.4rem;
+
+}
 a:hover {
   text-decoration: none !important;
 }
