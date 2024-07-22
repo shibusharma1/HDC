@@ -1,11 +1,11 @@
 <?php
-session_start();
-//$_SESSION['uid'] = 1;
+// session_start();
+// //$_SESSION['uid'] = 1;
 
-if (!isset($_SESSION['uid'])) {
-   header("Location: ../logout.php");
+// if (!isset($_SESSION['uid'])) {
+//    header("Location: ../logout.php");
   // echo "Admin login";
-}
+// }
 ?>
 
 <!doctype html>
