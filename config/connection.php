@@ -115,7 +115,6 @@ $sql = "CREATE TABLE IF NOT EXISTS programs(
     )";
 
 if (mysqli_query($conn, $sql)) {
-    // echo "<br>";
     //echo "Table Created Successfully.";
 } else {
     echo "<br>";

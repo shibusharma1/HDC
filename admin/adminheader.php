@@ -24,7 +24,6 @@ if (!isset($_SESSION['uid'])) {
     <nav class="navbar">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
-            <!-- <li><a href="notice.php">Notice</a></li> -->
             <li><a href="addprogram.php">Program</a></li>
             <li><a href="addcandidate.php">Candidates</a></li>
             <li><a href="registerstudent.php">Register</a></li>

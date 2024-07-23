@@ -20,10 +20,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $row = mysqli_fetch_assoc($sresult);
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
       $_SESSION['uid'] = $row['sid'];
-      header("Location: admin/index.php"); 
+      header("Location: admin/index.php");
     }
   }
-  }
+}
 
 ?>
 
@@ -33,7 +33,6 @@ include_once 'includes/header.php';
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
-      <!-- <img src="assets/logo.png" alt=""> -->
       <h1>LOGIN</h1>
       <div class="input-box">
         <label for="username">Username</label>
@@ -51,7 +50,6 @@ include_once 'includes/header.php';
         <label><input type="checkbox"> Remember me</label>
         <a href="forgetpassword.php">Forget password?</a>
       </div>
-      <!-- Changes for testing -->
       <button type="submit" class="btn">Login</button>
 
       <div class="register-link">

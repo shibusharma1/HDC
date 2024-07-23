@@ -8,9 +8,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 $sql = "INSERT INTO programs(programname) VALUES ('$programname')";
       $result = mysqli_query($conn, $sql);
-      // echo $programs;
       if ($result) {
-        // echo "hello";exit;
         header("Location: program.php");
         exit;
       }
@@ -19,7 +17,7 @@ $sql = "INSERT INTO programs(programname) VALUES ('$programname')";
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
-      <!-- <img src="assets/logo.png" alt=""> -->
+    
       <h1 style="color:black;">Add Program</h1>
       <div class="input-box">
         <label for="programname">Program Name<span style="color:red;">*</span></label>

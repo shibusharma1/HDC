@@ -60,21 +60,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $result = mysqli_query($conn, $sql);
       // echo $programs;
       if ($result) {
-        // echo "hello";exit;
+        
         header("Location: index.php");
         exit;
       }
     }
-  } else {
-    // $errors['msg_error'] = "Invalid Credential:";
-  }
+  } 
 
 ?>
 
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
-      <!-- <img src="assets/logo.png" alt=""> -->
+      
       <h1 style="color:black;">Add Candidate</h1>
       <?php
       if (isset($errors['msg_error'])):

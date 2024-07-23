@@ -16,7 +16,6 @@ function generateCRN() {
 
     // Save the new CRN back to the file
     file_put_contents($file, $newCRN);
-
     return $newCRN;
 }
 

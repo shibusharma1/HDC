@@ -137,7 +137,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <form action="" method="POST">
       <img src="../assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College"
         style="display:block;margin:auto;">
-      <!-- <h1>Himalaya Darshan College</h1> -->
       <h2 style="color:black;">Register Student in HDC</h2>
       <p>Please enter your details into the fields below.</p>
 

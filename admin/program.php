@@ -16,7 +16,6 @@ $result = mysqli_query($conn, $sql);
             <thead>
                 <tr>
                     <th>Program Name</th>
-                    <!-- <th>View</th> -->
                     <th>Action</th>
                 </tr>
             </thead>
@@ -28,10 +27,10 @@ $result = mysqli_query($conn, $sql);
             <td>" . $row['programname'] . "</td>
             <td>"
                             ?>
-                            <form method="POST" action="deleteprogram.php">
-                                <input type="hidden" name="programid" value="<?php echo $row['programid'] ?>">
-                                <button type="submit" class="delete-button" style="background-color: red;">Delete</button>
-                            </form>
+                        <form method="POST" action="deleteprogram.php">
+                            <input type="hidden" name="programid" value="<?php echo $row['programid'] ?>">
+                            <button type="submit" class="delete-button" style="background-color: red;">Delete</button>
+                        </form>
 
                         </td>
                         </tr>
@@ -45,5 +44,5 @@ $result = mysqli_query($conn, $sql);
 </div>
 
 <?php
- include_once 'footer.php';
+include_once 'footer.php';
 ?>

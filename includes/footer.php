@@ -9,7 +9,7 @@
                 <a href="tel:021-590471">021-590471</a>
 
                 <a href="#">Address</a>
-                <a href="#"> Main Road,Biratnagar-09</a>
+                <a href="https://maps.app.goo.gl/1n8EmcytJQgj1LVH8"> Main Road,Biratnagar-09</a>
 
             </ul>
             <ul style="text-align: center;" >
