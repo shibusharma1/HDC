@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   //  Name Validation
   if (empty($name)) {
     $errors['name_error'] = "First name is required.";
-  } elseif (!preg_match("/^[a-zA-Z ]+$/", $name)) {
+  } elseif (!preg_match("/^[a-zA-Z]+$/", $name)) {
     $errors['name_error'] = "First name can't contain digits and special characters.";
   }
 
@@ -53,7 +53,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
 
-    $bol =$searchprogram == $programs && $searchsemester == $semester && empty($errors);
+    $bol = $searchprogram == $programs && $searchsemester == $semester && empty($errors);
     //If no errors, insert into database
     if ($bol) {
       $sql = "INSERT INTO candidates(Name,CRN,Program,semester) VALUES ('$name','$CRN','$programs','$semester')";
@@ -68,48 +68,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   } else {
     // $errors['msg_error'] = "Invalid Credential:";
   }
-// }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//         // If no errors, insert into database
-//         if (empty($errors)) {
-//           $sql = "INSERT INTO candidates (name,CRN, programs,semester) VALUES ('$name','$CRN','$programs','$semester')";
-//           if (mysqli_query($conn, $sql)) {
-//             header("Location: admin/index.php");
-//             exit;
-//           } else {
-//              "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);
-//           }
-//         }
-//       }
-//       else{
-//         $errors['msg_error']="Details of Students didnot matched!!!";
-
-//       }
-
-//     }
-//   } else {
-
-//     $errors['msg_error']="Details of  not found!!!";
-//   }
-
-
-
-
-// }
 ?>
 
 <div class="body-login">

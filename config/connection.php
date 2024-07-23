@@ -107,3 +107,17 @@ if (mysqli_query($conn, $sql)) {
     echo "<br>";
     echo "Error Creating table" . mysqli_error($conn);
 }
+
+//programs table
+$sql = "CREATE TABLE IF NOT EXISTS programs(
+    programid INT PRIMARY KEY AUTO_INCREMENT,
+    programname VARCHAR(30) NOT NULL
+    )";
+
+if (mysqli_query($conn, $sql)) {
+    // echo "<br>";
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
