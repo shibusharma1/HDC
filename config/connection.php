@@ -120,3 +120,34 @@ if (mysqli_query($conn, $sql)) {
     echo "<br>";
     echo "Error Creating table" . mysqli_error($conn);
 }
+
+//voters table
+$sql = "CREATE TABLE IF NOT EXISTS voters (
+    voter_id INT AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(100),
+    email VARCHAR(100)
+)";
+
+if (mysqli_query($conn, $sql)) {
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
+
+
+// votes table
+$sql = "CREATE TABLE votes (
+    vote_id INT AUTO_INCREMENT PRIMARY KEY,
+    voter_id INT,
+    crn INT,
+    FOREIGN KEY (voter_id) REFERENCES voters(voter_id),
+    FOREIGN KEY (crn) REFERENCES candidates(CRN)
+)";
+
+if (mysqli_query($conn, $sql)) {
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
