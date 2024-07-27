@@ -1,4 +1,5 @@
 <?php
+$title = "CMAT Register";
 include_once 'includes/header.php';
 require_once 'config/connection.php';
 

@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dashboard | HDC</title>
+    <title><?php  echo $title; ?> | HDC</title>
     <link rel="stylesheet" href="./styles.css">
     <link rel="stylesheet" href="./styles.css">
     <!-- Font Awesome CDN -->
@@ -50,7 +50,7 @@
     <nav class="navbar header-navbar">
         <ul class="navbar-links">
             <li><a href="./index.php">Home</a></li>
-            <li><a href="./registercmat.php">Register<sup class="apply">Apply Now</sup></a></li>
+            <li><a href="./registercmat.php">Admission<sup class="apply">Apply Now</sup></a></li>
             <li><a href="./contact.php">Contact</a></li>
             <li><a href="./vote.php">Vote</a></li>
             <li><a href="./about.php">About us</a></li>

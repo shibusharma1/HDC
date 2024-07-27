@@ -1,4 +1,5 @@
 <?php
+$title = "Student Profile";
 include_once 'candidateheader.php';
 $crn = $_SESSION['crn'];
 $sql = "SELECT * FROM registerstudent where CRN=$crn";

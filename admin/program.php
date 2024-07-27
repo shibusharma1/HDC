@@ -1,4 +1,5 @@
 <?php
+$title = "Program";
 require_once '../config/connection.php';
 include_once 'adminheader.php';
 
@@ -28,7 +29,7 @@ $result = mysqli_query($conn, $sql);
             <td>"
                             ?>
                         <form method="POST" action="deleteprogram.php">
-                            <input type="hidden" name="programid" value="<?php echo $row['programid'] ?>">
+                            <input type="hidden" name="programid" value="<?php echo $row['programid']; ?>">
                             <button type="submit" class="delete-button" style="background-color: red;">Delete</button>
                         </form>
 

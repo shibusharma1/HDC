@@ -1,4 +1,5 @@
 <?php
+$title = "View Candidate";
 include_once 'adminheader.php';
 require_once '../config/connection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

@@ -1,4 +1,5 @@
 <?php
+$title = "Contact Us";
 include_once 'includes/header.php';
 ?>
 

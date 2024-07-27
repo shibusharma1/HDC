@@ -1,4 +1,5 @@
 <?php
+$title = "Add Candidate";
 include_once 'adminheader.php';
 require_once '../config/connection.php';
 
@@ -15,11 +16,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   //  Name Validation
-  if (empty($name)) {
-    $errors['name_error'] = "First name is required.";
-  } elseif (!preg_match("/^[a-zA-Z]+$/", $name)) {
-    $errors['name_error'] = "First name can't contain digits and special characters.";
-  }
+  // if (empty($name)) {
+  //   $errors['name_error'] = "Full name is required.";
+  // } elseif (!preg_match("/^[a-zA-Z]+$/", $name)) {
+  //   $errors['name_error'] = "Full name can't contain digits and special characters.";
+  // }
 
 
   // CRN Validation

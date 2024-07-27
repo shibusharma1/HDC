@@ -1,4 +1,5 @@
 <?php
+$title = "Add Program";
 include_once 'adminheader.php';
 require_once '../config/connection.php';
 

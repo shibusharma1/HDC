@@ -94,10 +94,13 @@ if (mysqli_query($conn, $sql)) {
 //creating table for candidates
 $sql = "CREATE TABLE IF NOT EXISTS candidates(
         candidate_id INT PRIMARY KEY AUTO_INCREMENT,
+        -- student_id INT,
         Name VARCHAR(30) NOT NULL,
         CRN BIGINT NOT NULL,
         Program VARCHAR(30) NOT NULL,
         semester VARCHAR(30) NOT NULL
+        -- FOREIGN KEY (student_id) REFERENCES registerstudent(student_id)
+
         )";
 
 if (mysqli_query($conn, $sql)) {
@@ -140,7 +143,7 @@ if (mysqli_query($conn, $sql)) {
 $sql = "CREATE TABLE votes (
     vote_id INT AUTO_INCREMENT PRIMARY KEY,
     voter_id INT,
-    crn INT,
+    crn BIGINT,
     FOREIGN KEY (voter_id) REFERENCES voters(voter_id),
     FOREIGN KEY (crn) REFERENCES candidates(CRN)
 )";

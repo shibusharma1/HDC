@@ -1,4 +1,5 @@
 <?php
+$title = "Candidate Login";
 //starting the session
 session_start();
 

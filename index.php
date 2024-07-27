@@ -1,4 +1,5 @@
 <?php
+$title = "Dashboard";
 include_once 'includes/header.php';
 ?>
 <!-- Implementing Crousal -->

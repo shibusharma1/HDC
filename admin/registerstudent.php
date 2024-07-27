@@ -1,4 +1,5 @@
 <?php
+$title = "Register Student";
 include_once 'adminheader.php';
 require_once '../config/connection.php';
 require 'crn_generator.php';

@@ -1,4 +1,5 @@
 <?php
+$title = "Admin Dashboard";
 require_once '../config/connection.php';
 include_once 'adminheader.php';
 

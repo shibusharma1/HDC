@@ -1,4 +1,5 @@
 <?php
+$title = "About us";
 include_once 'includes/header.php';
 ?>
 <div class="about">

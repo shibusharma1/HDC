@@ -1,4 +1,5 @@
 <?php
+$title = "candidate Details";
 include_once 'candidateheader.php';
 
 require_once '../config/connection.php';

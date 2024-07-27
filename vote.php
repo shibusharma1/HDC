@@ -1,4 +1,5 @@
 <?php
+$title = "Vote";
 include_once 'includes/header.php';
 ?>
 

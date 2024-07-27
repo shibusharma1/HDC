@@ -1,4 +1,5 @@
 <?php
+$title = "Admin Login";
 //starting the session
 session_start();
 

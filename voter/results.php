@@ -1,4 +1,5 @@
 <?php
+$title = "Results";
 require_once '../config/connection.php';
 
 $sql = "
