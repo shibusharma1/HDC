@@ -48,8 +48,8 @@ $sql = "CREATE TABLE IF NOT EXISTS registercmat(
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
             dob DATE NOT NULL,
-            phone BIGINT(10) NOT NULL,
-            email VARCHAR(50) NOT NULL,   
+            phone BIGINT(10) NOT NULL UNIQUE,
+            email VARCHAR(50) NOT NULL UNIQUE,   
             programs varchar(10) NOT NULL,
             collegename varchar(100) NOT NULL,
             passed_out_year Date NOT NULL,
@@ -72,15 +72,15 @@ $sql = "CREATE TABLE IF NOT EXISTS registerstudent(
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
             dob DATE NOT NULL,
-            phone BIGINT(10) NOT NULL,
-            email VARCHAR(50) NOT NULL,
+            phone BIGINT(10) NOT NULL UNIQUE,
+            email VARCHAR(50) NOT NULL UNIQUE,
             programs varchar(30) NOT NULL,
             semester varchar(30) NOT NULL,
             admitted_year Date NOT NULL,
             -- gpa DECIMAL(10, 2) NOT NULL,
             referred_by VARCHAR(30),
-            CRN BIGINT, 
-            random_code VARCHAR(30) NOT NULL
+            CRN BIGINT UNIQUE, 
+            random_code VARCHAR(30) NOT NULL UNIQUE
             )";
 
 if (mysqli_query($conn, $sql)) {
@@ -96,7 +96,7 @@ $sql = "CREATE TABLE IF NOT EXISTS candidates(
         candidate_id INT PRIMARY KEY AUTO_INCREMENT,
         -- student_id INT,
         Name VARCHAR(30) NOT NULL,
-        CRN BIGINT NOT NULL,
+        CRN BIGINT NOT NULL UNIQUE,
         Program VARCHAR(30) NOT NULL,
         semester VARCHAR(30) NOT NULL
         -- FOREIGN KEY (student_id) REFERENCES registerstudent(student_id)
@@ -114,7 +114,7 @@ if (mysqli_query($conn, $sql)) {
 //programs table
 $sql = "CREATE TABLE IF NOT EXISTS programs(
     programid INT PRIMARY KEY AUTO_INCREMENT,
-    programname VARCHAR(30) NOT NULL
+    programname VARCHAR(30) NOT NULL UNIQUE
     )";
 
 if (mysqli_query($conn, $sql)) {
@@ -140,13 +140,13 @@ if (mysqli_query($conn, $sql)) {
 
 
 // votes table
-$sql = "CREATE TABLE votes (
-    vote_id INT AUTO_INCREMENT PRIMARY KEY,
-    voter_id INT,
-    crn BIGINT,
-    FOREIGN KEY (voter_id) REFERENCES voters(voter_id),
-    FOREIGN KEY (crn) REFERENCES candidates(CRN)
-)";
+// $sql = "CREATE TABLE votes (
+//     vote_id INT AUTO_INCREMENT PRIMARY KEY,
+//     voter_id INT,
+//     crn BIGINT,
+//     FOREIGN KEY (voter_id) REFERENCES voters(voter_id),
+//     FOREIGN KEY (crn) REFERENCES candidates(CRN)
+// )";
 
 if (mysqli_query($conn, $sql)) {
     //echo "Table Created Successfully.";

@@ -102,6 +102,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       <div class="input-box">
+      <label for="crn">CRN<span style="color:red;">*</span></label>
+          <select type="crn" placeholder="CRN" name="crn" required>
+          <option value="" disabled selected>Select a Program</option>
         <?php
         $sql = "SELECT * FROM registerstudent";
         $result = mysqli_query($conn, $sql);
@@ -112,10 +115,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             $students[] = $row;
           }
           // Iterate over the array using foreach
-          ?>
-          <label for="crn">CRN<span style="color:red;">*</span></label>
-          <select type="crn" placeholder="CRN" name="crn" required>
-            <?php
             foreach ($students as $student) {
               // Now you can access each student's data
               ?>

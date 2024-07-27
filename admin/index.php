@@ -20,8 +20,8 @@ $result = mysqli_query($conn, $sql);
                     <th>CRN</th>
                     <th>Program</th>
                     <th>Semester</th>
-                    <th>View</th>
-                    <th>Action</th>
+                    <th style="text-align:center;">View</th>
+                    <th style="text-align:center;">Action</th>
                 </tr>
             </thead>
             <tbody>

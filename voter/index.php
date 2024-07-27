@@ -21,8 +21,8 @@ if (!$result) {
                 <tr>
                     <th>Candidate Name</th>
                     <th>Program</th>
-                    <th>View</th>
-                    <th>Action</th>
+                    <th style="text-align:center;">View</th>
+                    <th style="text-align:center;">Action</th>
                 </tr>
             </thead>
             <tbody>

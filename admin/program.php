@@ -8,16 +8,22 @@ $result = mysqli_query($conn, $sql);
 ?>
 
 <div class="table-container">
+
     <div class="table-title">
+        <a href="addprogram.php">
+            <button type="submit" name="addprogram" class="delete-button"
+                style="background-color: blue;float:right;">Add Program</button>
+        </a>
         <h2>Programs Lists</h2>
     </div>
+
 
     <div class="table-content">
         <table>
             <thead>
                 <tr>
-                    <th>Program Name</th>
-                    <th>Action</th>
+                    <th >Program Name</th>
+                    <th style="text-align:center;">Action</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,7 +38,6 @@ $result = mysqli_query($conn, $sql);
                             <input type="hidden" name="programid" value="<?php echo $row['programid']; ?>">
                             <button type="submit" class="delete-button" style="background-color: red;">Delete</button>
                         </form>
-
                         </td>
                         </tr>
                         <?php
