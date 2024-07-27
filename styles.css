@@ -134,11 +134,12 @@ a:hover {
 /**Hero section**/
 .hero-section {
   position: relative;
-  height: 600px;
+  height: 35rem;
   display: flex;
   justify-content: center;
   align-items: flex-end;
   overflow: hidden;
+  background-color:#E2E7E6;
 }
 
 .carousel {
