@@ -121,7 +121,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   }
   // If no errors, insert into database
   if (empty($errors)) {
-    $sql = "INSERT INTO registercmat (firstname,middlename, lastname,dob,phone,email,programs,collegename,passed_out_year,gpa,referred_by) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$collegename','$passed_out_year','$gpa','$referred_by')";
+    $sql = "INSERT INTO registercmat (firstname,middlename, lastname,dob,phone,email,programid,collegename,passed_out_year,gpa,referred_by) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$collegename','$passed_out_year','$gpa','$referred_by')";
 
     if (mysqli_query($conn, $sql)) {
       header("Location: index.php");

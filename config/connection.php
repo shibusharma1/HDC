@@ -20,7 +20,9 @@ if (!$conn) {
 $sql = "CREATE TABLE IF NOT EXISTS sadmin(
     sid INT PRIMARY KEY AUTO_INCREMENT,
     adminusername VARCHAR(30) NOT NULL,
-    adminpassword varchar(10) NOT NULL
+    adminpassword varchar(10) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
     )";
 
 if (mysqli_query($conn, $sql)) {
@@ -40,6 +42,21 @@ if (mysqli_query($conn, $sql)) {
     echo "Error Inserting data" . mysqli_error($conn);
 }
 
+//programs table
+$sql = "CREATE TABLE IF NOT EXISTS programs(
+    programid INT PRIMARY KEY AUTO_INCREMENT,
+    programname VARCHAR(30) NOT NULL UNIQUE,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+    )";
+
+if (mysqli_query($conn, $sql)) {
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
+
 
 //creating table for registering CMAT
 $sql = "CREATE TABLE IF NOT EXISTS registercmat(
@@ -48,13 +65,15 @@ $sql = "CREATE TABLE IF NOT EXISTS registercmat(
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
             dob DATE NOT NULL,
-            phone BIGINT(10) NOT NULL UNIQUE,
-            email VARCHAR(50) NOT NULL UNIQUE,   
-            programs varchar(10) NOT NULL,
+            phone BIGINT(10) NOT NULL,
+            email VARCHAR(50) NOT NULL,   
+            programid INT NOT NULL,
             collegename varchar(100) NOT NULL,
             passed_out_year Date NOT NULL,
             gpa INT NOT NULL,
-            referred_by VARCHAR(30) NOT NULL
+            referred_by VARCHAR(30) NOT NULL,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (programid) REFERENCES programs(programid)
             )";
 
 if (mysqli_query($conn, $sql)) {
@@ -72,15 +91,16 @@ $sql = "CREATE TABLE IF NOT EXISTS registerstudent(
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
             dob DATE NOT NULL,
-            phone BIGINT(10) NOT NULL UNIQUE,
-            email VARCHAR(50) NOT NULL UNIQUE,
-            programs varchar(30) NOT NULL,
+            phone BIGINT(10) NOT NULL,
+            email VARCHAR(50) NOT NULL,
+            programid INT NOT NULL,
             semester varchar(30) NOT NULL,
             admitted_year Date NOT NULL,
-            -- gpa DECIMAL(10, 2) NOT NULL,
             referred_by VARCHAR(30),
             CRN BIGINT UNIQUE, 
-            random_code VARCHAR(30) NOT NULL UNIQUE
+            random_code VARCHAR(30) NOT NULL UNIQUE,
+            created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+            FOREIGN KEY (programid) REFERENCES programs(programid)
             )";
 
 if (mysqli_query($conn, $sql)) {
@@ -98,7 +118,9 @@ $sql = "CREATE TABLE IF NOT EXISTS candidates(
         Name VARCHAR(30) NOT NULL,
         CRN BIGINT NOT NULL UNIQUE,
         Program VARCHAR(30) NOT NULL,
-        semester VARCHAR(30) NOT NULL
+        semester VARCHAR(30) NOT NULL,
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
         -- FOREIGN KEY (student_id) REFERENCES registerstudent(student_id)
 
         )";
@@ -111,24 +133,14 @@ if (mysqli_query($conn, $sql)) {
     echo "Error Creating table" . mysqli_error($conn);
 }
 
-//programs table
-$sql = "CREATE TABLE IF NOT EXISTS programs(
-    programid INT PRIMARY KEY AUTO_INCREMENT,
-    programname VARCHAR(30) NOT NULL UNIQUE
-    )";
-
-if (mysqli_query($conn, $sql)) {
-    //echo "Table Created Successfully.";
-} else {
-    echo "<br>";
-    echo "Error Creating table" . mysqli_error($conn);
-}
 
 //voters table
 $sql = "CREATE TABLE IF NOT EXISTS voters (
     voter_id INT AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(100),
-    email VARCHAR(100)
+    email VARCHAR(100),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
 )";
 
 if (mysqli_query($conn, $sql)) {
