@@ -3,9 +3,19 @@ $title = "Candidates";
 require_once '../config/connection.php';
 include_once 'candidateheader.php';
 
+// Fetching the $student_id from registerstudent
+$crn = $_SESSION['crn'];
+$sql = "SELECT * FROM registerstudent where CRN=$crn";
+$result = mysqli_query($conn, $sql);
+$row = mysqli_fetch_assoc($result);
+$student_id = $row['student_id'];
+// mysqli_close();
+
+
+
+//fetching the data of candidates
 $sql = "SELECT * FROM candidates";
 $result = mysqli_query($conn, $sql);
-
 if (!$result) {
     die("Error retrieving candidates: " . mysqli_error($conn));
 }
@@ -40,7 +50,9 @@ if (!$result) {
                             </td>
                             <td>
                                 <form method='POST' action='vote.php'>
-                                    <input type='hidden' name='crn' value='" . htmlspecialchars($row['CRN']) . "'>
+                                    <input type='hidden' name='candidate_id' value='" . $row['candidate_id'] . "'>
+                                    <input type='hidden' name='student_id' value='" . $student_id . "'>
+                                    
                                     <button type='submit' class='delete-button' style='background-color: #3B43D6;'>Vote</button>
                                 </form>
                             </td>

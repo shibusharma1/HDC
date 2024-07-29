@@ -271,7 +271,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
             // Now you can access each student's data
             if($program['programname'] == "BBS"){
               ?>
-                <option value="BBS" class="bbs"><?php echo $program['programname'];?></option>
+                <option value="<?php echo $program['programid']; ?>" class="bbs"><?php echo $program['programname'];?></option>
                 <?php
 
             }else{

@@ -4,7 +4,7 @@ include_once 'candidateheader.php';
 $crn = $_SESSION['crn'];
 $sql = "SELECT * FROM registerstudent where CRN=$crn";
 $result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result)
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <div class="table-container">
@@ -64,6 +64,7 @@ $row = mysqli_fetch_assoc($result)
                 <tr>
                     <td>CRN:</td>
                     <td> <?php
+                    
                     echo $row['CRN'];
                     ?></td>
                 </tr>
