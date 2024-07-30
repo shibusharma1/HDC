@@ -1,26 +1,27 @@
 <?php
+// Set the page title
 $title = "Candidates";
+// Include the database connection configuration
 require_once '../config/connection.php';
+// Include the header file for the candidates page
 include_once 'candidateheader.php';
 
-// Fetching the $student_id from registerstudent
+// Fetch the $student_id from the registerstudent table using the CRN from the session
 $crn = $_SESSION['crn'];
-$sql = "SELECT * FROM registerstudent where CRN=$crn";
+$sql = "SELECT * FROM registerstudent WHERE CRN = $crn";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
-$student_id = $row['student_id'];
-// mysqli_close();
+$student_id = $row['student_id']; // Store the fetched student_id
 
-
-
-//fetching the data of candidates
+// Fetch all candidates from the candidates table
 $sql = "SELECT * FROM candidates";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
-    die("Error retrieving candidates: " . mysqli_error($conn));
+    die("Error retrieving candidates: " . mysqli_error($conn)); // Display error message if the query fails
 }
 ?>
 
+<!-- HTML for displaying the candidate list in a table -->
 <div class="table-container">
     <div class="table-title">
         <h2>Candidate Lists</h2>
@@ -37,8 +38,16 @@ if (!$result) {
             </thead>
             <tbody>
                 <?php
+                // Check if there are any candidates fetched
                 if (mysqli_num_rows($result) > 0) {
+                    // Loop through each candidate
                     while ($row = mysqli_fetch_assoc($result)) {
+                        // Check if the student has already voted
+                        $vote_check_sql = "SELECT * FROM votes WHERE student_id = '$student_id'";
+                        $vote_check_result = mysqli_query($conn, $vote_check_sql);
+                        $has_voted = mysqli_num_rows($vote_check_result) > 0;
+                        
+                        // Display the candidate details in a table row
                         echo "<tr>
                             <td>" . htmlspecialchars($row['Name']) . "</td>
                             <td>" . htmlspecialchars($row['Program']) . "</td>
@@ -49,16 +58,24 @@ if (!$result) {
                                 </form>
                             </td>
                             <td>
-                                <form method='POST' action='vote.php'>
-                                    <input type='hidden' name='candidate_id' value='" . $row['candidate_id'] . "'>
-                                    <input type='hidden' name='student_id' value='" . $student_id . "'>
-                                    
-                                    <button type='submit' class='delete-button' style='background-color: #3B43D6;'>Vote</button>
-                                </form>
+                                <form method='POST' action='vote.php'>";
+                                
+                        // Display the vote button if the student has not voted yet
+                        if (!$has_voted) {
+                            echo "<input type='hidden' name='candidate_id' value='" . htmlspecialchars($row['candidate_id']) . "'>
+                                  <input type='hidden' name='student_id' value='" . htmlspecialchars($student_id) . "'>
+                                  <button type='submit' class='delete-button' style='background-color: #3B43D6;'>Vote</button>";
+                        } else {
+                            // Display a disabled button if the student has already voted
+                            echo "<button type='button' class='delete-button' style='background-color: #D3D3D3;' disabled>Voted</button>";
+                        }
+
+                        echo "    </form>
                             </td>
                         </tr>";
                     }
                 } else {
+                    // Display a message if no candidates are found
                     echo "<tr><td colspan='4'>No candidates found.</td></tr>";
                 }
                 ?>
@@ -68,5 +85,6 @@ if (!$result) {
 </div>
 
 <?php
+// Include the footer file
 include_once 'footer.php';
 ?>

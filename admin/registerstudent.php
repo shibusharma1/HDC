@@ -122,7 +122,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
   // If no errors, insert into database
   if (empty($errors)) {
-    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programid,semester,admitted_year,referred_by,CRN,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$semester','$admitted_year','$referred_by','$CRN','$random_code')";
+    $sql = "INSERT INTO registerstudent (firstname,middlename, lastname,dob,phone,email, programid,semester,admitted_year,referred_by,CRN,random_code) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programid','$semester','$admitted_year','$referred_by','$CRN','$random_code')";
 
     if (mysqli_query($conn, $sql)) {
       header("Location: index.php");
