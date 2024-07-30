@@ -13,7 +13,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $dob = trim($_POST['dob']);
   $email = trim($_POST['email']);
   $phone = trim($_POST['phone']);
-  $programs = $_POST['programs'];
+  $programid = $_POST['programs'];
   $semester = $_POST['semester'];
   $admitted_year = $_POST['admitted_year'];
   // $gpa = $_POST['gpa'];
