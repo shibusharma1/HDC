@@ -211,16 +211,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="phone">Contact Number<span style="color:red;">*</span></label>
         <input type="tel" id="phone" name="phone" placeholder="Contact Number" required>
       </div>
+      <div style="margin-top:10px;width:100%;">
       <?php
       if (isset($errors['phone_error'])):
         ?>
-        <label style="color:red;float:left;">
+        <p style="color:red;margin-left:2.2rem;">
           <?php
           echo $errors['phone_error'];
-          ?></label>
+          ?></p>
         <?php
       endif;
       ?>
+      </div>
 
 
       <div class="input-box">
@@ -258,47 +260,51 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <select id="programs" name="programs" onchange="filterSemesters()">
           <option value="" disabled selected>Select a Program</option>
           <?php
-        $sql = "SELECT * FROM programs";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          $programs = [];  // Array to hold all student data
-          // Fetch all rows into an array
-          while ($row = mysqli_fetch_assoc($result)) {
-            $programs[] = $row;
-          }
-          // Iterate over the array using foreach
-          foreach ($programs as $program) {
-            // Now you can access each student's data
-            if($program['programname'] == "BBS"){
-              ?>
-                <option value="<?php echo $program['programid']; ?>" class="bbs"><?php echo $program['programname'];?></option>
+          $sql = "SELECT * FROM programs";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            $programs = [];  // Array to hold all student data
+            // Fetch all rows into an array
+            while ($row = mysqli_fetch_assoc($result)) {
+              $programs[] = $row;
+            }
+            // Iterate over the array using foreach
+            foreach ($programs as $program) {
+              // Now you can access each student's data
+              if ($program['programname'] == "BBS") {
+                ?>
+                <option value="<?php echo $program['programid']; ?>" class="bbs"><?php echo $program['programname']; ?>
+                </option>
                 <?php
 
-            }else{
-            ?>
-            
-            
-            <option value="<?php echo $program['programid']; ?>">
-              <?php
-              echo $program['programname'];
-              ?>
-            </option>
-            <?php
-          }}
-      }
-      ?>
-      </select>
+              } else {
+                ?>
+
+
+                <option value="<?php echo $program['programid']; ?>">
+                  <?php
+                  echo $program['programname'];
+                  ?>
+                </option>
+                <?php
+              }
+            }
+          }
+          ?>
+        </select>
       </div>
-      <?php
-      if (isset($errors['programs_error'])):
-        ?>
-        <label style="color:red;float:left;">
-          <?php
-          echo $errors['programs_error'];
-          ?></label>
+      <div>
         <?php
-      endif;
-      ?>
+        if (isset($errors['programs_error'])):
+          ?>
+          <label style="color:red;float:left;">
+            <?php
+            echo $errors['programs_error'];
+            ?></label>
+          <?php
+        endif;
+        ?>
+      </div>
 
 
 
@@ -316,16 +322,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           <option value="8">Eighth</option>
         </select>
       </div>
-      <?php
-      if (isset($errors['semester_error'])):
-        ?>
-        <label style="color:red;float:left;">
-          <?php
-          echo $errors['semester_error'];
-          ?></label>
+      <div style="margin-top:3px;">
         <?php
-      endif;
-      ?>
+        if (isset($errors['semester_error'])):
+          ?>
+          <label style="color:red;float:left;">
+            <?php
+            echo $errors['semester_error'];
+            ?></label>
+          <?php
+        endif;
+        ?>
+      </div>
 
 
       <div class="input-box">
