@@ -238,41 +238,42 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ?>
 
       <div class="input-box">
-      
+
         <label for="programs">Interested Program<span style="color:red;">*</span></label>
         <select id="programs" name="programs" onchange="filterSemesters()">
           <option value="" disabled selected>Select a Program</option>
           <?php
-        $sql = "SELECT * FROM programs";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          $programs = [];  // Array to hold all student data
-          // Fetch all rows into an array
-          while ($row = mysqli_fetch_assoc($result)) {
-            $programs[] = $row;
-          }
-          // Iterate over the array using foreach
-          foreach ($programs as $program) {
-            // Now you can access each student's data
-            if($program['programname'] == "BBS"){
-              ?>
-                <option value="BBS" class="bbs"><?php echo $program['programname'];?></option>
+          $sql = "SELECT * FROM programs";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            $programs = [];  // Array to hold all student data
+            // Fetch all rows into an array
+            while ($row = mysqli_fetch_assoc($result)) {
+              $programs[] = $row;
+            }
+            // Iterate over the array using foreach
+            foreach ($programs as $program) {
+              // Now you can access each student's data
+              if ($program['programname'] == "BBS") {
+                ?>
+                <option value="BBS" class="bbs"><?php echo $program['programname']; ?></option>
                 <?php
 
-            }else{
-            ?>
-            
-            
-            <option value="<?php echo $program['programid']; ?>">
-              <?php
-              echo $program['programname'];
-              ?>
-            </option>
-            <?php
-          }}
-      }
-      ?>
-      </select>
+              } else {
+                ?>
+
+
+                <option value="<?php echo $program['programid']; ?>">
+                  <?php
+                  echo $program['programname'];
+                  ?>
+                </option>
+                <?php
+              }
+            }
+          }
+          ?>
+        </select>
 
 
       </div>
@@ -292,40 +293,35 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <label for="college_name">+2 College Name<span style="color:red;">*</span></label>
         <input type="text" id="college_name" name="collegename" placeholder="+2 College Name">
       </div>
+      <div class="contact_div">
+        <div class="contacts">
 
-      <div class="contacts">
-        <ul class="header-top">
-          <li>
-            <div class="input-box">
-              <label for="passed_out_year">+2 Passed Out Year<span style="color:red;">*</span></label>
-              <input type="date" id="passed_out_year" name="passed_out_year" placeholder="Passed Out Year" required>
-              <?php
-              if (isset($errors['passed_out_year_error'])):
-                ?>
-                <label style="color:red;float:left;">
-                  <?php
-                  echo $errors['passed_out_year_error'];
-                  ?></label>
-                <?php
-              endif;
-              ?>
+          <div class="input-box">
+            <label for="passed_out_year">+2 Passed Out Year<span style="color:red;">*</span></label>
+            <input type="date" id="passed_out_year" name="passed_out_year" placeholder="Passed Out Year" required>
+          </div>
 
-            </div>
-          </li>
+          <div class="input-box">
+            <label for="gpa">+2 GPA<span style="color:red;">*</span></label>
+            <input type="number" step="0.01" id="gpa" name="gpa" placeholder="GPA" min=0 max=4required>
+          </div>
 
-          <li>
-            <div class="input-box">
-              <label for="gpa">+2 GPA<span style="color:red;">*</span></label>
-              <input type="number" step="0.01" id="gpa" name="gpa" placeholder="GPA" min=0 max=4required>
-            </div>
 
-          </li>
-        </ul>
-        </ul>
+        </div>
+        <?php
+        if (isset($errors['passed_out_year_error'])):
+          ?>
+          <label style="color:red;float:left;">
+            <?php
+            echo $errors['passed_out_year_error'];
+            ?></label>
+          <?php
+        endif;
+        ?>
       </div>
 
 
-      <div class="input-box">
+      <div class="input-box" style="margin-top:10px;">
         <label for="referred_by">Referred By</label>
         <input type="text" id="referred_by" name="referred_by" placeholder="Referred By">
       </div>
@@ -340,9 +336,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       endif;
       ?>
 
-      <div class="input-box1" style="display:flex;color:black;">
+      <div class="input-box1 all_the_info">
         <input type="checkbox" id="checkbox" name="checkbox" required>
-        <label for="checkbox" style="display:inline;padding-left:2rem;padding-top:.5rem;"> All the information above
+        <label for="checkbox"> All the information above
           are correct as per
           my knowledge.</label>
       </div>
