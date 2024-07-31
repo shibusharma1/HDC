@@ -12,9 +12,11 @@ $sql = "SELECT * FROM registerstudent WHERE CRN = $crn";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 $student_id = $row['student_id']; // Store the fetched student_id
+$programid = $row['programid'];
+$semester = $row['semester'];
 
 // Fetch all candidates from the candidates table
-$sql = "SELECT * FROM candidates";
+$sql = "SELECT * FROM candidates WHERE program = $programid AND semester = $semester";
 $result = mysqli_query($conn, $sql);
 if (!$result) {
     die("Error retrieving candidates: " . mysqli_error($conn)); // Display error message if the query fails
@@ -67,7 +69,7 @@ if (!$result) {
                                   <button type='submit' class='delete-button' style='background-color: #3B43D6;'>Vote</button>";
                         } else {
                             // Display a disabled button if the student has already voted
-                            echo "<button type='button' class='delete-button' style='background-color: #D3D3D3;' disabled>Voted</button>";
+                            echo "<button type='button' class='delete-button' style='background-color: 	#32CD32;' disabled>Voted</button>";
                         }
 
                         echo "    </form>

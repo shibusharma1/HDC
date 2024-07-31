@@ -1,8 +1,16 @@
 <?php
 $title = "Student Profile";
 include_once 'candidateheader.php';
+
+// Fetch the $crn from the session
 $crn = $_SESSION['crn'];
-$sql = "SELECT * FROM registerstudent where CRN=$crn";
+
+// Update the SQL query to join with the programs table
+$sql = "SELECT registerstudent.*, programs.programname 
+        FROM registerstudent 
+        JOIN programs ON registerstudent.programid = programs.programid 
+        WHERE registerstudent.CRN = $crn";
+
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
 ?>
@@ -18,7 +26,7 @@ $row = mysqli_fetch_assoc($result);
                     <td>NAME:</td>
                     <td>
                         <?php
-                        echo $row['firstname'] ." ". $row['middlename'] ." ". $row['lastname'];
+                        echo htmlspecialchars($row['firstname']) . " " . htmlspecialchars($row['middlename']) . " " . htmlspecialchars($row['lastname']);
                         ?>
                     </td>
                 </tr>
@@ -26,52 +34,50 @@ $row = mysqli_fetch_assoc($result);
                     <td>DOB:</td>
                     <td>
                         <?php
-                        echo $row['dob'];
+                        echo htmlspecialchars($row['dob']);
                         ?>
                     </td>
                 </tr>
                 <tr>
                     <td>PHONE NUMBER:</td>
                     <td> <?php
-                    echo $row['phone'];
+                    echo htmlspecialchars($row['phone']);
                     ?></td>
                 </tr>
                 <tr>
                     <td>EMAIL:</td>
                     <td> <?php
-                    echo $row['email'];
+                    echo htmlspecialchars($row['email']);
                     ?></td>
                 </tr>
                 <tr>
                     <td>ADMITTED YEAR:</td>
                     <td> <?php
-                    echo $row['admitted_year'];
+                    echo htmlspecialchars($row['admitted_year']);
                     ?></td>
                 </tr>
                 <tr>
                     <td>PROGRAM:</td>
                     <td> <?php
-                    echo $row['programs'];
+                    echo htmlspecialchars($row['programname']);
                     ?></td>
                 </tr>
                 <tr>
                     <td>SEMESTER/YEAR:</td>
                     <td> <?php
-                    echo $row['semester'];
+                    echo htmlspecialchars($row['semester']);
                     ?></td>
                 </tr>
-
                 <tr>
                     <td>CRN:</td>
                     <td> <?php
-                    
-                    echo $row['CRN'];
+                    echo htmlspecialchars($row['CRN']);
                     ?></td>
                 </tr>
                 <tr>
                     <td>RANDOM CODE:</td>
                     <td> <?php
-                    echo $row['random_code'];
+                    echo htmlspecialchars($row['random_code']);
                     ?></td>
                 </tr>
             </tbody>

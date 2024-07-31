@@ -2,27 +2,41 @@
 $title = "Results";
 require_once '../config/connection.php';
 
-$sql = "
-SELECT c.Name, COUNT(v.vote_id) as vote_count
-FROM votes v
-JOIN candidates c ON v.crn = c.CRN
-GROUP BY v.crn
-ORDER BY vote_count DESC
-LIMIT 1
-";
-
+// Fetch the results from the 'results' table and join with the 'candidates' table to get candidate details
+$sql = "SELECT candidates.name, results.vote_count 
+        FROM results 
+        JOIN candidates ON results.candidate_id = candidates.id 
+        ORDER BY results.vote_count DESC";
 $result = mysqli_query($conn, $sql);
 
-if ($result) {
-    $winner = mysqli_fetch_assoc($result);
-    echo "The winner is " . htmlspecialchars($winner['Name']) . " with " . $winner['vote_count'] . " votes.";
-} else {
-    echo "Error retrieving result: " . mysqli_error($conn);
+if (!$result) {
+    die("Error fetching results: " . mysqli_error($conn));
 }
-
-mysqli_close($conn);
 ?>
 
-<?php
-include_once 'footer.php';
-?>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title><?php echo $title; ?></title>
+    <link rel="stylesheet" href="style.css"> <!-- Include your CSS file here -->
+</head>
+<body>
+    <h1>Election Results</h1>
+    <table border="1">
+        <tr>
+            <th>Candidate Name</th>
+            <th>Votes</th>
+        </tr>
+        <?php
+        while ($row = mysqli_fetch_assoc($result)) {
+            echo "<tr>";
+            echo "<td>" . htmlspecialchars($row['name']) . "</td>";
+            echo "<td>" . htmlspecialchars($row['vote_count']) . "</td>";
+            echo "</tr>";
+        }
+        mysqli_close($conn);
+        ?>
+    </table>
+</body>
+</html>
