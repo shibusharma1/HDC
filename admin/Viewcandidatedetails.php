@@ -5,10 +5,14 @@ require_once '../config/connection.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $crn = trim($_POST['crn']);
 }
-$sql = "SELECT * FROM registerstudent where CRN=$crn";
+// Update the SQL query to join with the programs table
+$sql = "SELECT registerstudent.*, programs.programname 
+        FROM registerstudent 
+        JOIN programs ON registerstudent.programid = programs.programid 
+        WHERE registerstudent.CRN = $crn";
+
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result)
-
 ?>
 
 <div class="table-container">
@@ -55,7 +59,7 @@ $row = mysqli_fetch_assoc($result)
                 <tr>
                     <td>PROGRAM:</td>
                     <td> <?php
-                    echo $row['programs'];
+                    echo $row['programname'];
                     ?></td>
                 </tr>
                 <tr>

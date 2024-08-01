@@ -3,7 +3,11 @@ $title = "Admin Dashboard";
 require_once '../config/connection.php';
 include_once 'adminheader.php';
 
-$sql = "SELECT * FROM candidates";
+// $sql = "SELECT * FROM candidates";
+$sql = "SELECT candidates.*, programs.programname 
+        FROM candidates 
+        JOIN programs ON candidates.programid = programs.programid 
+        ";
 $result = mysqli_query($conn, $sql);
 ?>
 
@@ -31,7 +35,7 @@ $result = mysqli_query($conn, $sql);
                         echo "<tr> 
             <td>" . $row['Name'] . "</td>
             <td>" . $row['CRN'] . "</td>
-            <td>" . $row['Program'] . "</td>
+            <td>" . $row['programname'] . "</td>
             <td>" . $row['semester'] . "</td>
             <td>"
                             ?>

@@ -57,7 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $bol = $searchprogram == $programs && $searchsemester == $semester && empty($errors);
     //If no errors, insert into database
     if ($bol) {
-      $sql = "INSERT INTO candidates(Name,CRN,Program,semester) VALUES ('$name','$CRN','$programs','$semester')";
+      $sql = "INSERT INTO candidates(Name,CRN,programid,semester) VALUES ('$name','$CRN','$programs','$semester')";
       $result = mysqli_query($conn, $sql);
       // echo $programs;
       if ($result) {

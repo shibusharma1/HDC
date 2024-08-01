@@ -115,11 +115,12 @@ if (mysqli_query($conn, $sql)) {
 $sql = "CREATE TABLE IF NOT EXISTS candidates(
         candidate_id INT PRIMARY KEY AUTO_INCREMENT,
         -- student_id INT,
-        Name VARCHAR(30) NOT NULL,
+        Name VARCHAR(255) NOT NULL,
         CRN BIGINT NOT NULL UNIQUE,
-        Program VARCHAR(30) NOT NULL,
+        programid INT NOT NULL,
         semester VARCHAR(30) NOT NULL,
-        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        FOREIGN KEY (Program) REFERENCES programs(programid),
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
 
 if (mysqli_query($conn, $sql)) {
