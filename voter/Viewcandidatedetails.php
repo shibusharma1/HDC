@@ -11,7 +11,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 // Modified SQL query to join candidates and programs tables
 $sql = "SELECT candidates.*, programs.programname 
         FROM candidates 
-        JOIN programs ON candidates.Program = programs.programid 
+        JOIN programs ON candidates.programid = programs.programid 
         WHERE candidates.CRN = $crn";
 $result = mysqli_query($conn, $sql);
 $row = mysqli_fetch_assoc($result);
