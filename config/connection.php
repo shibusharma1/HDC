@@ -119,8 +119,8 @@ $sql = "CREATE TABLE IF NOT EXISTS candidates(
         CRN BIGINT NOT NULL UNIQUE,
         programid INT NOT NULL,
         semester VARCHAR(30) NOT NULL,
-        FOREIGN KEY (Program) REFERENCES programs(programid),
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        FOREIGN KEY (programid) REFERENCES programs(programid),
+        created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
 
 if (mysqli_query($conn, $sql)) {
@@ -147,3 +147,18 @@ if (mysqli_query($conn, $sql)) {
     echo "<br>";
     echo "Error Creating table" . mysqli_error($conn);
 }
+
+//Vote_status table
+$sql = "CREATE TABLE IF NOT EXISTS vote_status(
+    vote_status_id INT PRIMARY KEY AUTO_INCREMENT,
+    status VARCHAR(1) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+
+if (mysqli_query($conn, $sql)) {
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
+
