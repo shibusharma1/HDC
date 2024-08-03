@@ -76,8 +76,7 @@ if (!$result) {
                         // Display the vote button if the student has not voted yet
                         if (!$has_voted) {
                             echo "<input type='hidden' name='candidate_id' value='" . htmlspecialchars($row['candidate_id']) . "'>
-                                  <input type='hidden' name='candidate_id' value='" . htmlspecialchars($row['programid']) . "'>
-                                  <input type='hidden' name='candidate_id' value='" . htmlspecialchars($row['semester']) . "'>
+                                  
                                   <input type='hidden' name='student_id' value='" . htmlspecialchars($student_id) . "'>
                                   <button type='submit' class='delete-button' style='background-color: #3B43D6;'>Vote</button>";
                         } else {
