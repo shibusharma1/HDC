@@ -99,7 +99,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 VALUES ('$firstname', '$middlename', '$lastname', '$dob', '$phone', '$email', '$programid', '$semester', '$admitted_year', '$referred_by', '$CRN', '$random_code')";
 
         if (mysqli_query($conn, $sql)) {
-            header("Location: index.php");
+            header("Location: students.php");
             exit;
         } else {
             echo "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);

@@ -28,7 +28,12 @@ if (!$result) {
 }
 
 ?>
-
+<?php 
+    $sql = "SELECT * FROM vote_status WHERE status = 'T'";
+    $sresults = mysqli_query($conn, $sql); 
+    $scount = mysqli_num_rows($sresults);
+    if ($scount > 0) {
+?>
 <!-- HTML for displaying the candidate list in a table -->
 <div class="table-container">
     <div class="table-title">
@@ -98,7 +103,13 @@ if (!$result) {
         </table>
     </div>
 </div>
+<?php 
+    }else{
+?>
+<h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">VOTING NOT STARTED</h1>
+
 <?php
+    }
 // Include the footer file
 include_once 'footer.php';
 ?>
