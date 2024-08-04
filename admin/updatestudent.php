@@ -50,7 +50,7 @@ $row = mysqli_fetch_assoc($result)
             </div>
 
             <div class="input-box">
-                <label for="dob">DOB<span style="color:red;">*</span></label>
+                <label for="dob">DOB(AD)<span style="color:red;">*</span></label>
                 <input type="date" id="dob" name="dob" value="<?php echo $row['dob']; ?>" required>
                 <?php if (isset($errors['dob_error'])): ?>
                     <label style="color:red;float:left;"><?= $errors['dob_error'] ?></label>
