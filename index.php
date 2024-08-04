@@ -8,8 +8,8 @@ include_once 'includes/header.php';
         <div class="modal-content">
             <button class="close-button">CLOSE</button>
             <h2>Registration Form</h2>
-            <p><a href="https://www.tudoms.org/bachelor/cmat/form" class="registration-link">CMAT/BCA Entrance Preparation Registration Form</a></p>
-            <p><a href="registercmat.php" class="register">Click Link For Registration</a></p>
+            <p><a href="https://www.tudoms.org/bachelor/cmat/form" class="registration-link" target="_blank">CMAT/BCA Entrance Preparation Registration Form</a></p>
+            <p><a href="registercmat.php" class="register" target="_blank">Click Link For Registration</a></p>
         </div>
     </div>
 
