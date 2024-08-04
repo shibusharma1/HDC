@@ -128,7 +128,7 @@ $row = mysqli_fetch_assoc($result)
             <input type="hidden" id="random_code" name="random_code" placeholder="random_code" value="<?php echo $row['random_code']; ?>">
 
             <div class="input-box1" style="display:flex;color:black;">
-                <input type="checkbox" id="checkbox" name="checkbox" required>
+                <input type="checkbox" id="checkbox" name="checkbox" checked required>
                 <label for="checkbox" style="display:inline;padding-left:2rem;padding-top:.5rem;"> All the information above are correct as per my knowledge.</label>
             </div>
 

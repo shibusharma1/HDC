@@ -6,6 +6,7 @@ require 'crn_generator.php';
 $errors = array();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+    $student_id = trim($_POST['student_id']);
     $firstname = trim($_POST['firstname']);
     $middlename = trim($_POST['middlename']);
     $lastname = trim($_POST['lastname']);
@@ -16,6 +17,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $semester = $_POST['semester'];
     $admitted_year = trim($_POST['admitted_year']);
     $referred_by = trim($_POST['referred_by']);
+    $random_code = trim($_POST['random_code']);
+    $CRN = trim($_POST['CRN']);
 
     // First Name Validation
     if (empty($firstname)) {
@@ -87,17 +90,30 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if (!empty($referred_by) && !preg_match("/^[a-zA-Z ]+$/", $referred_by)) {
         $errors['referred_by_error'] = "Referred by can't contain digits and special characters.";
     }
-// If no errors, insert into database
-if (empty($errors)) {
-    $sql = "UPDATE INTO registerstudent (firstname, middlename, lastname, dob, phone, email, programid, semester, admitted_year, referred_by, CRN, random_code) 
-            VALUES ('$firstname', '$middlename', '$lastname', '$dob', '$phone', '$email', '$programid', '$semester', '$admitted_year', '$referred_by', '$CRN', '$random_code')";
 
-    if (mysqli_query($conn, $sql)) {
-        header("Location: students.php");
-        exit;
-    } else {
-        echo "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);
+    // If no errors, update the database
+    if (empty($errors)) {
+        $sql = "UPDATE registerstudent SET 
+                    firstname = '$firstname', 
+                    middlename = '$middlename', 
+                    lastname = '$lastname', 
+                    dob = '$dob', 
+                    phone = '$phone', 
+                    email = '$email', 
+                    programid = '$programid', 
+                    semester = '$semester', 
+                    admitted_year = '$admitted_year', 
+                    referred_by = '$referred_by', 
+                    CRN = '$CRN', 
+                    random_code = '$random_code' 
+                WHERE student_id = '$student_id'";
+
+        if (mysqli_query($conn, $sql)) {
+            header("Location: students.php");
+            exit;
+        } else {
+            echo "Error updating the details: " . $sql . "<br>" . mysqli_error($conn);
+        }
     }
-}
 }
 ?>

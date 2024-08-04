@@ -6,7 +6,27 @@ include_once 'adminheader.php';
 $sql = "SELECT * FROM registerstudent JOIN programs ON registerstudent.programid = programs.programid";
 $result = mysqli_query($conn, $sql);
 ?>
+<script>
+            // Search candidates in the table
+            function searchCandidates() {
+            const filter = document.getElementById('searchBar').value.toUpperCase();
+            const table = document.getElementById('studentsTable');
+            const tr = table.getElementsByTagName('tr');
+            for (let i = 1; i < tr.length; i++) {
+                tr[i].style.display = 'none';
+                const td = tr[i].getElementsByTagName('td');
+                for (let j = 0; j < td.length; j++) {
+                    if (td[j]) {
+                        if (td[j].innerText.toUpperCase().indexOf(filter) > -1) {
+                            tr[i].style.display = '';
+                            break;
+                        }
+                    }
+                }
+            }
+        }
 
+</script>
 <div class="table-container">
 
     <div class="table-title">
@@ -14,10 +34,12 @@ $result = mysqli_query($conn, $sql);
             <button type="submit" name="addStudent" class="delete-button" style="background-color: blue;float:right;">Add Student</button>
         </a>
         <h2>Students Lists</h2>
+        <input type="text" id="searchBar" onkeyup="searchCandidates()" placeholder="Search for Student">
     </div>
 
     <div class="table-content">
-        <table>
+        <table id="studentsTable">
+
             <thead>
                 <tr>
                     <th>Student Name</th>
@@ -41,15 +63,11 @@ $result = mysqli_query($conn, $sql);
                             <td style="text-align:center;"><?php echo $row['CRN']; ?></td>
                             <td style="text-align:center;"><?php echo $row['random_code']; ?></td>
                             <td>
-                                <!-- <form method="POST" action="deleteStudent.php">
-                                    <input type="hidden" name="Studentid" value="<?php echo $row['Student_id']; ?>">
-                                    <button type="submit" class="delete-button" style="background-color: red;">Delete</button>
-                                </form> -->
-
+                        
                             <div class="form-actions" style="display:flex;padding-left:0.2rem;">
                             <form method="POST" action="updatestudent.php">
                             <input type="hidden" name="CRN" value="<?php echo $row['CRN']; ?>">
-                            <button type="submit" class="delete-button" style="background-color: #5CB85C;">update</button>
+                            <button type="submit" class="delete-button" style="background-color: #5CB85C;">Update</button>
                             
                             </form>
                             <form method="POST" action="deletestudent.php">

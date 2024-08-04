@@ -5,6 +5,11 @@ require_once '../config/connection.php';
 
 $crn = $_SESSION['crn'];
 
+    $sql = "SELECT * FROM result_update WHERE status = 'T'";
+    $sresults = mysqli_query($conn, $sql); 
+    $scount = mysqli_num_rows($sresults);
+    if ($scount > 0) {
+
 // Fetch the student details from the registerstudent table using the CRN from the session
 $sql = "SELECT rs.*, p.programname 
         FROM registerstudent rs
@@ -74,4 +79,11 @@ if ($top_candidate !== null) {
     echo "<p>No data found</p>";
 }
 
-include_once('footer.php');
+}else{
+?>
+<h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">No Results to Show</h1>
+
+<?php
+}
+// Include the footer file
+include_once 'footer.php';

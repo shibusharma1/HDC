@@ -43,37 +43,37 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
   // if (isset($searchCRN)) {
-    $sql = "SELECT * FROM registerstudent WHERE CRN = $CRN;";
+  $sql = "SELECT * FROM registerstudent WHERE CRN = $CRN;";
+  $result = mysqli_query($conn, $sql);
+  if (mysqli_num_rows($result) > 0) {
+    while ($row = mysqli_fetch_assoc($result)) {
+      $searchprogram = $row['programid'];
+      $searchsemester = $row['semester'];
+    }
+  }
+
+
+
+  $bol = $searchprogram == $programs && $searchsemester == $semester && empty($errors);
+  //If no errors, insert into database
+  if ($bol) {
+    $sql = "INSERT INTO candidates(Name,CRN,programid,semester) VALUES ('$name','$CRN','$programs','$semester')";
     $result = mysqli_query($conn, $sql);
-    if (mysqli_num_rows($result) > 0) {
-      while ($row = mysqli_fetch_assoc($result)) {
-        $searchprogram = $row['programid'];
-        $searchsemester = $row['semester'];
-      }
+    // echo $programs;
+    if ($result) {
+
+      header("Location: index.php");
+      exit;
     }
-
-
-
-    $bol = $searchprogram == $programs && $searchsemester == $semester && empty($errors);
-    //If no errors, insert into database
-    if ($bol) {
-      $sql = "INSERT INTO candidates(Name,CRN,programid,semester) VALUES ('$name','$CRN','$programs','$semester')";
-      $result = mysqli_query($conn, $sql);
-      // echo $programs;
-      if ($result) {
-        
-        header("Location: index.php");
-        exit;
-      }
-    }
-  } 
+  }
+}
 
 ?>
 
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
-      
+
       <h1 style="color:black;">Add Candidate</h1>
       <?php
       if (isset($errors['msg_error'])):
@@ -85,6 +85,41 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <?php
       endif;
       ?>
+
+
+
+      <div class="input-box">
+        <label for="crn">CRN<span style="color:red;">*</span></label>
+        <select type="crn" placeholder="CRN" name="crn" required>
+          <option value="" disabled selected>Select a CRN</option>
+          <?php
+          $sql = "SELECT * FROM registerstudent";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            $students = [];  // Array to hold all student data
+            // Fetch all rows into an array
+            while ($row = mysqli_fetch_assoc($result)) {
+              $students[] = $row;
+            }
+            // Iterate over the array using foreach
+            foreach ($students as $student) {
+              // Now you can access each student's data
+              ?>
+              <option>
+                <?php
+                echo $student['CRN'];
+                ?>
+              </option>
+              <?php
+            }
+          }
+          ?>
+        </select>
+
+      </div>
+
+
+
       <div class="input-box">
         <label for="name">Name<span style="color:red;">*</span></label>
         <input type="name" placeholder="Name" name="name" required>
@@ -101,35 +136,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ?>
 
 
-      <div class="input-box">
-      <label for="crn">CRN<span style="color:red;">*</span></label>
-          <select type="crn" placeholder="CRN" name="crn" required>
-          <option value="" disabled selected>Select a CRN</option>
-        <?php
-        $sql = "SELECT * FROM registerstudent";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          $students = [];  // Array to hold all student data
-          // Fetch all rows into an array
-          while ($row = mysqli_fetch_assoc($result)) {
-            $students[] = $row;
-          }
-          // Iterate over the array using foreach
-            foreach ($students as $student) {
-              // Now you can access each student's data
-              ?>
-              <option>
-                <?php
-                echo $student['CRN'];
-                ?>
-              </option>
-              <?php
-            }
-        }
-        ?>
-        </select>
 
-      </div>
       <?php
       if (isset($errors['CRN_error'])):
         ?>
@@ -142,41 +149,43 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       ?>
 
 
-<div class="input-box">
+      <div class="input-box">
         <label for="programs">Program<span style="color:red;">*</span></label>
         <select id="programs" name="programs" onchange="filterSemesters()">
           <option value="" disabled selected>Select a Program</option>
           <?php
-        $sql = "SELECT * FROM programs";
-        $result = mysqli_query($conn, $sql);
-        if (mysqli_num_rows($result) > 0) {
-          $programs = [];  // Array to hold all student data
-          // Fetch all rows into an array
-          while ($row = mysqli_fetch_assoc($result)) {
-            $programs[] = $row;
-          }
-          // Iterate over the array using foreach
-          foreach ($programs as $program) {
-            // Now you can access each student's data
-            if($program['programname'] == "BBS"){
-              ?>
-                <option value="<?php echo $program['programid']; ?>" class="bbs"><?php echo $program['programname'];?></option>
+          $sql = "SELECT * FROM programs";
+          $result = mysqli_query($conn, $sql);
+          if (mysqli_num_rows($result) > 0) {
+            $programs = [];  // Array to hold all student data
+            // Fetch all rows into an array
+            while ($row = mysqli_fetch_assoc($result)) {
+              $programs[] = $row;
+            }
+            // Iterate over the array using foreach
+            foreach ($programs as $program) {
+              // Now you can access each student's data
+              if ($program['programname'] == "BBS") {
+                ?>
+                <option value="<?php echo $program['programid']; ?>" class="bbs"><?php echo $program['programname']; ?>
+                </option>
                 <?php
 
-            }else{
-            ?>
-            
-            
-            <option value="<?php echo $program['programid']; ?>">
-              <?php
-              echo $program['programname'];
-              ?>
-            </option>
-            <?php
-          }}
-      }
-      ?>
-      </select>
+              } else {
+                ?>
+
+
+                <option value="<?php echo $program['programid']; ?>">
+                  <?php
+                  echo $program['programname'];
+                  ?>
+                </option>
+                <?php
+              }
+            }
+          }
+          ?>
+        </select>
       </div>
       <?php
       if (isset($errors['programs_error'])):

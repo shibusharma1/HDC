@@ -161,4 +161,17 @@ if (mysqli_query($conn, $sql)) {
     echo "<br>";
     echo "Error Creating table" . mysqli_error($conn);
 }
+//result_update table
+$sql = "CREATE TABLE IF NOT EXISTS result_update(
+    result_update_id INT PRIMARY KEY AUTO_INCREMENT,
+    status VARCHAR(1) NOT NULL,
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+
+if (mysqli_query($conn, $sql)) {
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
 
