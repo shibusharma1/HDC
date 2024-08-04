@@ -279,7 +279,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <div class="contacts">
 
           <div class="input-box">
-            <label for="passed_out_year">+2 Passed Out Year<span style="color:red;">*</span></label>
+            <label for="passed_out_year">+2 Passed Out Year(AD)<span style="color:red;">*</span></label>
             <input type="date" id="passed_out_year" name="passed_out_year" placeholder="Passed Out Year" required>
           </div>
 

@@ -74,7 +74,7 @@ $row = mysqli_fetch_assoc($result)
             </div>
 
             <div class="input-box">
-                <label for="admitted_year">Admitted Year<span style="color:red;">*</span></label>
+                <label for="admitted_year">Admitted Year(AD)<span style="color:red;">*</span></label>
                 <input type="date" id="admitted_year" name="admitted_year" value="<?php echo $row['admitted_year']; ?>" required>
                 <?php if (isset($errors['admitted_year_error'])): ?>
                     <label style="color:red;float:left;"><?= $errors['admitted_year_error'] ?></label>
