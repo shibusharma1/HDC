@@ -194,7 +194,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
       <div class="input-box">
-        <label for="dob">DOB<span style="color:red;">*</span></label>
+        <label for="dob">DOB(AD)<span style="color:red;">*</span></label>
         <input type="date" id="dob" name="dob" placeholder="Date of Birth" required>
       </div>
       <?php
