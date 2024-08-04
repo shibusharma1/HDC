@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($scount == 1) {
     $row = mysqli_fetch_assoc($result);
     if ($row['CRN'] == $CRN && $row['random_code'] == $random_code) {
+      $_SESSION['login_success'] = true;
       $_SESSION['crn'] = $row['CRN'];
       header("Location: voter/index.php");
       

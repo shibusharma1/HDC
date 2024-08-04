@@ -34,6 +34,27 @@ if (!$result) {
     $scount = mysqli_num_rows($sresults);
     if ($scount > 0) {
 ?>
+<?php if (isset($_SESSION['login_success'])): ?>
+
+    <script>
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Signed in successfully"
+});
+</script>
+<?php unset($_SESSION['login_success']); // Unset the session variable ?>
+<?php endif; ?>
 <!-- HTML for displaying the candidate list in a table -->
 <div class="table-container">
     <div class="table-title">
@@ -86,6 +107,7 @@ if (!$result) {
                                   <button type='submit' class='delete-button' style='background-color: #3B43D6;'>Vote</button>";
                         } else {
                             // Display a disabled button if the student has already voted
+                            
                             echo "<button type='button' class='delete-button' style='background-color: #32CD32;' disabled>Voted</button>";
                         }
 

@@ -1,8 +1,8 @@
 <?php
 $title = "Dashboard";
 include_once 'includes/header.php';
-// include_once 'model/hdcmodel.php';
 ?>
+
 <!-- model for website -->
 <div id="registrationModal" class="modal">
         <div class="modal-content">
@@ -12,8 +12,6 @@ include_once 'includes/header.php';
             <p><a href="registercmat.php" class="register" target="_blank">Click Link For Registration</a></p>
         </div>
     </div>
-
-
 
 <!-- Implementing Crousal -->
 <div class="hero-section">

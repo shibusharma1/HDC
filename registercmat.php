@@ -4,6 +4,7 @@ include_once 'includes/header.php';
 require_once 'config/connection.php';
 
 $errors = array();
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $firstname = trim($_POST['firstname']);
@@ -122,9 +123,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   // If no errors, insert into database
   if (empty($errors)) {
     $sql = "INSERT INTO registercmat (firstname,middlename, lastname,dob,phone,email,programid,collegename,passed_out_year,gpa,referred_by) VALUES ('$firstname','$middlename', '$lastname','$dob', '$phone','$email','$programs','$collegename','$passed_out_year','$gpa','$referred_by')";
+        if (mysqli_query($conn, $sql)) {
+          $_SESSION['form_success'] = true;
 
-    if (mysqli_query($conn, $sql)) {
-      header("Location: index.php");
+      header("Location: registercmat.php");
       exit;
     } else {
       echo "Error adding the details: " . $sql . "<br>" . mysqli_error($conn);
@@ -239,42 +241,22 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
       <div class="input-box">
 
-        <label for="programs">Interested Program<span style="color:red;">*</span></label>
-        <select id="programs" name="programs" onchange="filterSemesters()">
-          <option value="" disabled selected>Select a Program</option>
-          <?php
-          $sql = "SELECT * FROM programs";
-          $result = mysqli_query($conn, $sql);
-          if (mysqli_num_rows($result) > 0) {
-            $programs = [];  // Array to hold all student data
-            // Fetch all rows into an array
-            while ($row = mysqli_fetch_assoc($result)) {
-              $programs[] = $row;
-            }
-            // Iterate over the array using foreach
-            foreach ($programs as $program) {
-              // Now you can access each student's data
-              if ($program['programname'] == "BBS") {
-                ?>
-                <option value="BBS" class="bbs"><?php echo $program['programname']; ?></option>
-                <?php
-
-              } else {
-                ?>
-
-
-                <option value="<?php echo $program['programid']; ?>">
-                  <?php
-                  echo $program['programname'];
-                  ?>
-                </option>
-                <?php
-              }
-            }
-          }
-          ?>
-        </select>
-
+      <label for="programs">Interested Program<span style="color:red;">*</span></label>
+                <select id="programs" name="programs">
+                    <option value="" disabled selected>Select a Program</option>
+                    <?php
+                    $sql = "SELECT * FROM programs";
+                    $result = mysqli_query($conn, $sql);
+                    if (mysqli_num_rows($result) > 0) {
+                        while ($row = mysqli_fetch_assoc($result)) {
+                            echo '<option value="' . $row['programid'] . '">' . $row['programname'] . '</option>';
+                        }
+                    }
+                    ?>
+                </select>
+                <?php if (isset($errors['programs_error'])): ?>
+                    <label style="color:red;float:left;"><?php echo $errors['programs_error']; ?></label>
+                <?php endif; ?>
 
       </div>
       <?php
@@ -352,3 +334,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <?php
 include_once 'includes/footer.php';
+?>
+<?php if (isset($_SESSION['form_success'])): ?>
+  <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
+   <script>
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 3000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Form Submitted successfully"
+}).then(function() {
+      window.location.href = 'registercmat.php'; // Redirect after user closes the alert
+    });
+  </script>
+  <?php unset($_SESSION['form_success']); // Unset the session variable ?>
+<?php endif; ?>

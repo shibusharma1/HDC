@@ -20,6 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if ($scount == 1) {
     $row = mysqli_fetch_assoc($sresult);
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
+      $_SESSION['login_success'] = true;
       $_SESSION['uid'] = $row['sid'];
       header("Location: admin/index.php");
     }

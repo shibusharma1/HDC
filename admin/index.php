@@ -11,6 +11,53 @@ $sql = "SELECT candidates.*, programs.programname
 $result = mysqli_query($conn, $sql);
 ?>
 
+<!-- Login success alert -->
+<?php if (isset($_SESSION['login_success'])): ?>
+
+    <script>
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Signed in successfully"
+});
+</script>
+<?php unset($_SESSION['login_success']); // Unset the session variable ?>
+<?php endif; ?>
+
+
+<!-- Delete success alert -->
+<?php if (isset($_SESSION['delete_success'])): ?>
+
+    <script>
+const Toast1 = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast1.fire({
+  icon: "success",
+  title: "Candidate deleted successfully"
+});
+</script>
+<?php unset($_SESSION['delete_success']); // Unset the session variable ?>
+<?php endif; ?>
+
 <div class="table-container">
     <div class="table-title" style="display: flex; align-items: center; justify-content: space-between;">
         <h2 style="flex: 1; text-align: center; margin: 0;">Candidate Lists</h2>

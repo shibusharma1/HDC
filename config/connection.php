@@ -137,7 +137,7 @@ $sql = "CREATE TABLE IF NOT EXISTS votes(
     student_id INT,
     candidate_id INT,
     FOREIGN KEY (student_id) REFERENCES registerstudent(student_id),
-    FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id),
+    FOREIGN KEY (candidate_id) REFERENCES candidates(candidate_id) ON DELETE CASCADE,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
  )";
 
