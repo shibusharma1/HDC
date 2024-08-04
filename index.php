@@ -1,7 +1,20 @@
 <?php
 $title = "Dashboard";
 include_once 'includes/header.php';
+// include_once 'model/hdcmodel.php';
 ?>
+<!-- model for website -->
+<div id="registrationModal" class="modal">
+        <div class="modal-content">
+            <button class="close-button">CLOSE</button>
+            <h2>Registration Form</h2>
+            <p><a href="https://www.tudoms.org/bachelor/cmat/form" class="registration-link">CMAT/BCA Entrance Preparation Registration Form</a></p>
+            <p><a href="registercmat.php" class="register">Click Link For Registration</a></p>
+        </div>
+    </div>
+
+
+
 <!-- Implementing Crousal -->
 <div class="hero-section">
     <div class="carousel">
@@ -127,8 +140,10 @@ include_once 'includes/header.php';
 
 
 <?php
+// include_once 'model/hdcmodel.php';
 include_once 'includes/footer.php';
 ?>
 
 <!-- Link to the external JavaScript file -->
+<script src="modelscript.js"></script>
 <script src="carousel.js"></script>
