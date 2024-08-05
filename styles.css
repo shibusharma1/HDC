@@ -349,14 +349,13 @@ ul a {
 
 .social {
   display: flex;
-  align-items: center;
-  justify-content: space-evenly;
+  gap: 1rem;
   list-style-type: none;
 }
 
 .social li {
   display: inline;
-  margin-left: 15px;
+  /* margin-left: 15px; */
 }
 
 /* vote box css */
@@ -916,5 +915,14 @@ a:hover {
 #studentsModalContent span {
   font-size: 1.5rem;
   color: #000;
+}
+
+.feedback-form{
+  margin-top: 1rem;
+}
+
+.feedback-form input{
+  width: 100%;
+  padding: 3rem;
 }
 
