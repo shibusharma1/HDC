@@ -71,7 +71,17 @@ if (!$result) {
                 echo '<td style="text-align:center;">' . htmlspecialchars($row['programid']) . '</td>';
                 echo '<td style="text-align:center;">' . htmlspecialchars($row['semester']) . '</td>';
                 echo '<td style="text-align:center;">' . htmlspecialchars($row['vote_count']) . '</td>';
-                echo '<td><button class="delete-button"  onclick="viewStudents(' . htmlspecialchars($row['candidate_id']) . ')" style="background-color:#4CAF50;text-align:center;">View Students</button></td>';
+                echo '<td>
+                <form action="fetch_students.php" method="POST">
+                <input type="hidden" name="candidate_id" value = ' . htmlspecialchars($row['candidate_id']) . '>
+                <input type="hidden" name="hello" value = ' . htmlspecialchars($row['Name']) . '>
+                <button type="submit" class="delete-button" style="background-color:#4CAF50;text-align:center;">
+                View Students
+                </button>
+                
+                </form>
+                </td>';
+                
                 echo '</tr>';
             }
             ?>
@@ -111,23 +121,7 @@ if (!$result) {
             }
         }
 
-        // View students who voted for a candidate
-        function viewStudents(candidateId) {
-            fetch(`fetch_students.php?candidate_id=${candidateId}`)
-                .then(response => response.text())
-                .then(data => {
-                    const modal = document.getElementById('studentsModal');
-                    const modalContent = document.getElementById('studentsModalContent');
-                    modalContent.innerHTML = data;
-                    modal.style.display = "block";
-                });
-        }
-
-        // Close the modal
-        function closeModal() {
-            const modal = document.getElementById('studentsModal');
-            modal.style.display = "none";
-        }
+      
     </script>
 
 <?php
