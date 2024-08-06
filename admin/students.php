@@ -67,7 +67,7 @@ $result = mysqli_query($conn, $sql);
                             <div class="form-actions" style="display:flex;padding-left:0.2rem;">
                             <form method="POST" action="updatestudent.php">
                             <input type="hidden" name="CRN" value="<?php echo $row['CRN']; ?>">
-                            <button type="submit" class="delete-button" style="background-color: #5CB85C;">Update</button>
+                            <button type="submit" class="delete-button" style="background-color: #5CB85C;">Edit</button>
                             
                             </form>
                             <form method="POST" action="deletestudent.php">
