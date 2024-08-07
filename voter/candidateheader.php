@@ -16,6 +16,7 @@ if (!isset($_SESSION['crn'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?php echo $title; ?> | HDC</title>
     <link rel="stylesheet" href="../styles.css">
+    <!-- <link rel="stylesheet" href="feedback.css"> -->
     <!-- sweetalert cdn -->
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
@@ -25,6 +26,7 @@ if (!isset($_SESSION['crn'])) {
             <li><a href="index.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
             <li><a href="results.php">Results</a></li>
+            <li><a href="feedbacks.php">Feedback</a></li>
             <li><a href="./logout.php">Logout</a></li>
         </ul>
     </nav>

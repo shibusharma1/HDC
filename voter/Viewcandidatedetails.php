@@ -40,6 +40,18 @@ $row = mysqli_fetch_assoc($result);
                     <td>CRN:</td>
                     <td><?php echo htmlspecialchars($row['CRN']); ?></td>
                 </tr>
+                <tr>
+                    <td>Suppoter 1:</td>
+                    <td> <?php
+                    echo $row['suppoter1'];
+                    ?></td>
+                </tr>
+                <tr>
+                    <td>Suppoter 2:</td>
+                    <td> <?php
+                    echo $row['suppoter2'];
+                    ?></td>
+                </tr>
             </tbody>
         </table>
     </div>

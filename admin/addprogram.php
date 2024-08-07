@@ -15,6 +15,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       // Insert new program into the database
       $insert_sql = "INSERT INTO programs (programname) VALUES ('$programname')";
       if (mysqli_query($conn, $insert_sql)) {
+        $_SESSION['add_program']=1;
           header("Location: program.php");
           // $success_message = "Program added successfully.";
       } else {

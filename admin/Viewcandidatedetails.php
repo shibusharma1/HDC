@@ -2,9 +2,11 @@
 $title = "View Candidate";
 include_once 'adminheader.php';
 require_once '../config/connection.php';
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $crn = trim($_POST['crn']);
 }
+
 // Update the SQL query to join with the programs table
 $sql = "SELECT registerstudent.*, programs.programname 
         FROM registerstudent 
@@ -12,7 +14,7 @@ $sql = "SELECT registerstudent.*, programs.programname
         WHERE registerstudent.CRN = $crn";
 
 $result = mysqli_query($conn, $sql);
-$row = mysqli_fetch_assoc($result)
+$row = mysqli_fetch_assoc($result);
 ?>
 
 <div class="table-container">
@@ -25,61 +27,75 @@ $row = mysqli_fetch_assoc($result)
                 <tr>
                     <td>NAME:</td>
                     <td>
-                        <?php
-                        echo $row['firstname'] ." ". $row['middlename'] ." ". $row['lastname'];
-                        ?>
+                        <?php echo $row['firstname'] . " " . $row['middlename'] . " " . $row['lastname']; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>DOB:</td>
                     <td>
-                        <?php
-                        echo $row['dob'];
-                        ?>
+                        <?php echo $row['dob']; ?>
                     </td>
                 </tr>
                 <tr>
                     <td>PHONE NUMBER:</td>
-                    <td> <?php
-                    echo $row['phone'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['phone']; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>EMAIL:</td>
-                    <td> <?php
-                    echo $row['email'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['email']; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>ADMITTED YEAR:</td>
-                    <td> <?php
-                    echo $row['admitted_year'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['admitted_year']; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>PROGRAM:</td>
-                    <td> <?php
-                    echo $row['programname'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['programname']; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>SEMESTER/YEAR:</td>
-                    <td> <?php
-                    echo $row['semester'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['semester']; ?>
+                    </td>
                 </tr>
-
                 <tr>
                     <td>CRN:</td>
-                    <td> <?php
-                    echo $row['CRN'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['CRN']; ?>
+                    </td>
+                </tr>
+                
+                <?php
+                // Second query to fetch supporter details
+                $sql2 = "SELECT * FROM candidates WHERE CRN = " . $row['CRN'];
+                $result2 = mysqli_query($conn, $sql2);
+                $row2 = mysqli_fetch_assoc($result2);
+                ?>
+                <tr>
+                    <td>Suppoter 1:</td>
+                    <td> 
+                        <?php echo $row2['suppoter1']; ?>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Suppoter 2:</td>
+                    <td> 
+                        <?php echo $row2['suppoter2']; ?>
+                    </td>
                 </tr>
                 <tr>
                     <td>RANDOM CODE:</td>
-                    <td> <?php
-                    echo $row['random_code'];
-                    ?></td>
+                    <td> 
+                        <?php echo $row['random_code']; ?>
+                    </td>
                 </tr>
             </tbody>
         </table>
@@ -87,5 +103,5 @@ $row = mysqli_fetch_assoc($result)
 </div>
 
 <?php
- include_once 'footer.php';
+include_once 'footer.php';
 ?>

@@ -5,8 +5,28 @@ include_once 'adminheader.php';
 
 $sql = "SELECT * FROM programs";
 $result = mysqli_query($conn, $sql);
-?>
 
+ if (isset($_SESSION['add_program'])): ?>
+    <script>
+    const Toast = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 4000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast.fire({
+      icon: "success",
+      title: "Program added successfully"
+    });
+    </script>
+    <?php unset($_SESSION['add_program']); ?>
+    <?php endif; ?>
+    
 <div class="table-container">
 
     <div class="table-title">

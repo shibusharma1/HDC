@@ -32,10 +32,11 @@ Toast.fire({
 <?php unset($_SESSION['login_success']); ?>
 <?php endif; ?>
 
-<!-- Delete success alert -->
-<?php if (isset($_SESSION['delete_success'])): ?>
+
+<!-- Candidate added successfully -->
+<?php if (isset($_SESSION['add_candidate'])): ?>
 <script>
-const Toast1 = Swal.mixin({
+const Toast2 = Swal.mixin({
   toast: true,
   position: "top-end",
   showConfirmButton: false,
@@ -46,12 +47,12 @@ const Toast1 = Swal.mixin({
     toast.onmouseleave = Swal.resumeTimer;
   }
 });
-Toast1.fire({
+Toast2.fire({
   icon: "success",
-  title: "Candidate deleted successfully"
+  title: "Candidate Added successfully"
 });
 </script>
-<?php unset($_SESSION['delete_success']); ?>
+<?php unset($_SESSION['add_candidate']); ?>
 <?php endif; ?>
 
 <script>

@@ -8,4 +8,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: students.php");
         exit;
       }
+      else{
+        $_SESSION['delete_error']=1;
+        header("Location: students.php");
+      }
 }

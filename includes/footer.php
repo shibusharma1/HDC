@@ -26,9 +26,7 @@
 
 
             </ul>
-            <div class="feedback-form">
-                <input type="text" placeholder="dskjafndskj" rows="5">
-            </div>
+            
         </div>
     </div>
 

@@ -17,6 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $semester = $_POST['semester'];
     $admitted_year = trim($_POST['admitted_year']);
     $referred_by = trim($_POST['referred_by']);
+    $gender = isset($_POST['gender']) ? $_POST['gender'] : '';
 
     // First Name Validation
     if (empty($firstname)) {
@@ -47,6 +48,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         if (!$inputDate || $inputDate > $today) {
             $errors['dob_error'] = "Invalid or future date.";
         }
+    }
+
+    // Gender Validation
+    if (empty($gender)) {
+        $errors['gender_error'] = "Gender is required.";
     }
 
     // Phone Validation
@@ -95,8 +101,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     // If no errors, insert into database
     if (empty($errors)) {
-        $sql = "INSERT INTO registerstudent (firstname, middlename, lastname, dob, phone, email, programid, semester, admitted_year, referred_by, CRN, random_code) 
-                VALUES ('$firstname', '$middlename', '$lastname', '$dob', '$phone', '$email', '$programid', '$semester', '$admitted_year', '$referred_by', '$CRN', '$random_code')";
+        $sql = "INSERT INTO registerstudent (firstname, middlename, lastname, dob, phone, email, programid, semester, admitted_year, referred_by, gender, CRN, random_code) 
+                VALUES ('$firstname', '$middlename', '$lastname', '$dob', '$phone', '$email', '$programid', '$semester', '$admitted_year', '$referred_by', '$gender', '$CRN', '$random_code')";
 
         if (mysqli_query($conn, $sql)) {
             header("Location: students.php");
@@ -144,6 +150,19 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 <input type="date" id="dob" name="dob" value="<?= htmlspecialchars($dob ?? '') ?>" required>
                 <?php if (isset($errors['dob_error'])): ?>
                     <label style="color:red;float:left;"><?= $errors['dob_error'] ?></label>
+                <?php endif; ?>
+            </div>
+
+            <div class="input-box">
+                <label for="gender">Gender<span style="color:red;">*</span></label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <?php if (isset($errors['gender_error'])): ?>
+                    <label style="color:red;float:left;"><?= $errors['gender_error'] ?></label>
                 <?php endif; ?>
             </div>
 

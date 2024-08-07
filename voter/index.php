@@ -36,7 +36,8 @@ if (!$result) {
 ?>
 <?php if (isset($_SESSION['login_success'])): ?>
 
-    <script>
+   
+   <script>
 const Toast = Swal.mixin({
   toast: true,
   position: "top-end",
@@ -128,7 +129,7 @@ Toast.fire({
 <?php 
     }else{
 ?>
-<h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">VOTING NOT STARTED</h1>
+<h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">VOTING NOT OPEN</h1>
 
 <?php
     }

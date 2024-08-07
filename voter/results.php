@@ -81,7 +81,7 @@ if ($top_candidate !== null) {
 
 }else{
 ?>
-<h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">No Results to Show</h1>
+<h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">No Results Found</h1>
 
 <?php
 }

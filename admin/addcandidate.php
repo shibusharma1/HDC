@@ -10,6 +10,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   $CRN = $_POST['crn'];
   $programs = $_POST['programs'];
   $semester = $_POST['semester'];
+  $suppoter1 = $_POST['suppoter1'];
+  $suppoter2 = $_POST['suppoter2'];
 
   // CRN Validation
   if (empty($CRN)) {
@@ -27,6 +29,20 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   if (empty($semester)) {
     $errors['semester_error'] = "Please select your semester.";
   }
+      // Suppoter 1 Name Validation
+      if (empty($suppoter1)) {
+        $errors['suppoter1_error'] = "Suppoter 1 name is required.";
+    } elseif (!preg_match("/^[a-zA-Z ]+$/", $suppoter1)) {
+        $errors['suppoter1_error'] = "suppoter 1 name can't contain digits and special characters.";
+    }   
+   
+      // Suppoter 2 Name Validation
+      if (empty($suppoter2)) {
+        $errors['suppoter1_error'] = "Suppoter 2 name is required.";
+    } elseif (!preg_match("/^[a-zA-Z ]+$/", $suppoter2)) {
+        $errors['suppoter2_error'] = "suppoter 2 name can't contain digits and special characters.";
+    }   
+   
 
   $sql = "SELECT * FROM registerstudent WHERE CRN = $CRN;";
   $result = mysqli_query($conn, $sql);
@@ -37,12 +53,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $searchstudent_id = $row['student_id'];
     }
   }
+  $sql = "SELECT * FROM candidates WHERE CRN = $CRN;";
+  $check_result = mysqli_query($conn, $sql);
 
+  if (mysqli_num_rows($check_result) > 0) {
+      $error_message = "Candidate already exists.";
+  }
   $bol = $searchprogram == $programs && $searchsemester == $semester && empty($errors);
   if ($bol) {
-    $sql = "INSERT INTO candidates(Name,CRN,programid,semester) VALUES ('$name','$CRN','$programs','$semester')";
+    $sql = "INSERT INTO candidates(Name,CRN,programid,semester,suppoter1,suppoter2) VALUES ('$name','$CRN','$programs','$semester','$suppoter1','$suppoter2')";
     $result = mysqli_query($conn, $sql);
     if ($result) {
+      $_SESSION['add_candidate']=1;
       header("Location: index.php");
       exit;
     }
@@ -70,6 +92,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['fetch_data']) && isset($
   <div class="wrapper">
     <form action="" method="POST">
       <h1 style="color:black;">Add Candidate</h1>
+      <?php
+        if (isset($error_message)) {
+            echo "<p style='color: red;'>$error_message</p>";
+        } 
+        ?>
       <?php if (isset($errors['msg_error'])): ?>
         <label style="color:red;float:left;"><?php echo $errors['msg_error']; ?></label>
       <?php endif; ?>
@@ -138,6 +165,21 @@ if ($_SERVER['REQUEST_METHOD'] == 'GET' && isset($_GET['fetch_data']) && isset($
       <?php if (isset($errors['semester_error'])): ?>
         <label style="color:red;float:left;"><?php echo $errors['semester_error']; ?></label>
       <?php endif; ?>
+      <div class="input-box">
+        <label for="name">Suppoter 1<span style="color:red;">*</span></label>
+        <input type="text" id="suppoter1" name="suppoter1" placeholder="Name" required>
+      </div>
+      <?php if (isset($errors['suppoter1_error'])): ?>
+        <label style="color:red;float:left;"><?php echo $errors['suppoter1_error']; ?></label>
+      <?php endif; ?>
+      <div class="input-box">
+        <label for="name">Suppoter 2<span style="color:red;">*</span></label>
+        <input type="text" id="suppoter2" name="suppoter2" placeholder="Name" required>
+      </div>
+      <?php if (isset($errors['suppoter2_error'])): ?>
+        <label style="color:red;float:left;"><?php echo $errors['suppoter2_error']; ?></label>
+      <?php endif; ?>
+
 
       <button type="submit" class="btn">Add</button>
     </form>

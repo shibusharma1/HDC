@@ -65,6 +65,7 @@ $sql = "CREATE TABLE IF NOT EXISTS registercmat(
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
             dob DATE NOT NULL,
+            gender ENUM('MALE','FEMALE','OTHERS') NOT NULL,
             phone BIGINT(10) NOT NULL UNIQUE,
             email VARCHAR(50) NOT NULL UNIQUE,   
             programid INT NOT NULL,
@@ -91,6 +92,7 @@ $sql = "CREATE TABLE IF NOT EXISTS registerstudent(
             middlename VARCHAR(30),   
             lastname VARCHAR(30) NOT NULL,   
             dob DATE NOT NULL,
+            gender ENUM('MALE','FEMALE','OTHERS') NOT NULL,
             phone BIGINT(10) NOT NULL UNIQUE,
             email VARCHAR(50) NOT NULL UNIQUE,
             programid INT NOT NULL,
@@ -119,6 +121,8 @@ $sql = "CREATE TABLE IF NOT EXISTS candidates(
         CRN BIGINT NOT NULL UNIQUE,
         programid INT NOT NULL,
         semester VARCHAR(30) NOT NULL,
+        suppoter1 VARCHAR(50) NOT NULL UNIQUE,
+        suppoter2 VARCHAR(50) NOT NULL UNIQUE,
         FOREIGN KEY (programid) REFERENCES programs(programid),
         created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
         )";
@@ -175,3 +179,19 @@ if (mysqli_query($conn, $sql)) {
     echo "Error Creating table" . mysqli_error($conn);
 }
 
+//feedback table
+$sql = "CREATE TABLE IF NOT EXISTS feedback(
+    feedback_id INT PRIMARY KEY AUTO_INCREMENT,
+    CRN BIGINT, 
+    email VARCHAR(255) NOT NULL,
+    message VARCHAR(255) NOT NULL,
+    FOREIGN KEY (CRN) REFERENCES registerstudent(CRN),
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    )";
+
+if (mysqli_query($conn, $sql)) {
+    //echo "Table Created Successfully.";
+} else {
+    echo "<br>";
+    echo "Error Creating table" . mysqli_error($conn);
+}
