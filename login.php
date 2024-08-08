@@ -4,6 +4,7 @@ $title = "Admin Login";
 session_start();
 
 require_once ('config/connection.php');
+include_once 'includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
   #Prevent from mysqli injection
@@ -24,14 +25,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['uid'] = $row['sid'];
       header("Location: admin/index.php");
     }
+    else{
+      $_SESSION['login_error'] = true;
+      header("Location: login.php");
+    }
   }
 }
 
 ?>
 
-<?php
-include_once 'includes/header.php';
-?>
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
@@ -61,6 +63,26 @@ include_once 'includes/header.php';
     </form>
   </div>
 </div>
+<?php if (isset($_SESSION['login_error'])): ?>
+<script>
+const Toast = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast.fire({
+  icon: "success",
+  title: "Login unsuccessfully"
+});
+</script>
+<?php unset($_SESSION['login_error']); ?>
+<?php endif; ?>
 <?php
 include_once 'includes/footer.php';
 ?>

@@ -162,14 +162,18 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php endif; ?>
 
       <div class="input-box">
-        <label>Gender<span style="color:red;">*</span></label>
-        <input type="radio" id="gender_male" name="gender" value="Male" required>
-        <label for="gender_male">Male</label>
-        <input type="radio" id="gender_female" name="gender" value="Female" required>
-        <label for="gender_female">Female</label>
-        <input type="radio" id="gender_other" name="gender" value="Other" required>
-        <label for="gender_other">Other</label>
-      </div>
+                <label for="gender">Gender<span style="color:red;">*</span></label>
+                <select id="gender" name="gender" required>
+                    <option value="" disabled selected>Select Gender</option>
+                    <option value="Male">Male</option>
+                    <option value="Female">Female</option>
+                    <option value="Other">Other</option>
+                </select>
+                <?php if (isset($errors['gender_error'])): ?>
+                    <label style="color:red;float:left;"><?= $errors['gender_error'] ?></label>
+                <?php endif; ?>
+            </div>
+
       <?php if (isset($errors['gender_error'])): ?>
         <label style="color:red;float:left;"><?php echo $errors['gender_error']; ?></label>
       <?php endif; ?>
