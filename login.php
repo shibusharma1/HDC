@@ -24,16 +24,34 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_SESSION['login_success'] = true;
       $_SESSION['uid'] = $row['sid'];
       header("Location: admin/index.php");
-    }
-    else{
+    }}
+    
       $_SESSION['login_error'] = true;
       $error_message="Invalid Credentials";
-      // header("Location: login.php");
-    }
-  }
-}
-
-?>
+     if (isset($_SESSION['login_error'])): ?>
+        <script>
+        const Toast = Swal.mixin({
+          toast: true,
+          position: "top-end",
+          showConfirmButton: false,
+          timer: 4000,
+          timerProgressBar: true,
+          didOpen: (toast) => {
+            toast.onmouseenter = Swal.stopTimer;
+            toast.onmouseleave = Swal.resumeTimer;
+          }
+        });
+        Toast.fire({
+          icon: "warning",
+          title: "Login unsuccessfully"
+        });
+        </script>
+        <?php unset($_SESSION['login_error']); ?>
+        <?php endif;} ?>
+        
+      
+    
+  
 
 <div class="body-login">
   <div class="wrapper">
@@ -67,26 +85,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
   </div>
 </div>
-<?php if (isset($_SESSION['login_error'])): ?>
-<script>
-const Toast = Swal.mixin({
-  toast: true,
-  position: "top-end",
-  showConfirmButton: false,
-  timer: 4000,
-  timerProgressBar: true,
-  didOpen: (toast) => {
-    toast.onmouseenter = Swal.stopTimer;
-    toast.onmouseleave = Swal.resumeTimer;
-  }
-});
-Toast.fire({
-  icon: "success",
-  title: "Login unsuccessfully"
-});
-</script>
-<?php unset($_SESSION['login_error']); ?>
-<?php endif; ?>
 <?php
 include_once 'includes/footer.php';
 ?>

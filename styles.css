@@ -134,6 +134,8 @@ a:hover {
   border: 1px solid #128db8;
   padding: 6px;
   border-radius: 50%;
+  background-color: white;
+
 }
 .header-top-text {
   line-height: 0.7rem;
@@ -312,17 +314,30 @@ footer {
 .foot-panel1 {
   background-color: #333;
   color: white;
-  height: 300px;
+  /* height: 300px; */
   display: flex;
   justify-content: space-evenly;
+  padding: 4.5rem;
 }
 
+.foot-panel1 .col1{
+  width: 30%;
+}
+.foot-panel1 .footer-title{
+  margin-top: 5px;
+  font-size: 1.8rem;
+}
+.foot-panel1 .col1 p{
+  padding-top:1rem;
+  font-size: 0.85rem;
+  text-align: justify;
+}
 .foot-panel2 p {
   font-weight: 700;
 }
 
 ul {
-  margin-top: 20px;
+  /* margin-top: 20px; */
 }
 
 ul a {

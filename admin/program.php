@@ -26,6 +26,28 @@ $result = mysqli_query($conn, $sql);
     </script>
     <?php unset($_SESSION['add_program']); ?>
     <?php endif; ?>
+    <!-- Program delete messsage -->
+  <?php  
+ if (isset($_SESSION['delete_error'])): ?>
+    <script>
+    const Toast1 = Swal.mixin({
+      toast: true,
+      position: "top-end",
+      showConfirmButton: false,
+      timer: 4000,
+      timerProgressBar: true,
+      didOpen: (toast) => {
+        toast.onmouseenter = Swal.stopTimer;
+        toast.onmouseleave = Swal.resumeTimer;
+      }
+    });
+    Toast1.fire({
+      icon: "warning",
+      title: "Program Deleted successfully"
+    });
+    </script>
+    <?php unset($_SESSION['delete_error']); ?>
+    <?php endif; ?>
     
 <div class="table-container">
 
