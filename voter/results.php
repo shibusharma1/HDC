@@ -74,6 +74,24 @@ if ($top_candidate !== null) {
                     </tbody>
                 </table>
               </div>";
+              ?>
+            
+              <!-- Displaying the winner -->
+              <div class="winner-container">
+        <div class="winner-card">
+            <h2 style="text-align: center; font-size: 3rem;margin-bottom:1rem;">Winner</h2>
+          <div class="winner-image">
+            <img src="../assets/maleimg.png" alt="Shibu Sharma">
+          </div>
+          <div class="winner-info">
+            <h2><?php echo htmlspecialchars($row['Name']);?></h2>
+            <p><strong>Program:</strong> BIM</p>
+            <p><strong>Semester:</strong> 2</p>
+            <p><strong>Votes:</strong> 2</p>
+          </div>
+        </div>
+      </div>
+<?php
     }
 } else {
     echo "<p>No data found</p>";
@@ -82,6 +100,9 @@ if ($top_candidate !== null) {
 }else{
 ?>
 <h1 style="margin:1px 0px;text-align: center;padding:10rem; background-color:#E2E7E6;">No Results Found</h1>
+
+
+
 
 <?php
 }

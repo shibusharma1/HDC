@@ -27,6 +27,30 @@ $result = mysqli_query($conn, $sql);
         }
 
 </script>
+
+<!-- Update student successfully -->
+<?php if (isset($_SESSION['update_success'])): ?>
+<script>
+const Toast3 = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast3.fire({
+  icon: "success",
+  title: "Student Updated successfully"
+});
+</script>
+<?php unset($_SESSION['update_success']); ?>
+<?php endif; ?>
+
+
 <div class="table-container">
 
     <div class="table-title">

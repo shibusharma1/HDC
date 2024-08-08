@@ -109,6 +109,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 WHERE student_id = '$student_id'";
 
         if (mysqli_query($conn, $sql)) {
+            $_SESSION['update_success']=1;
             header("Location: students.php");
             exit;
         } else {

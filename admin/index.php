@@ -32,6 +32,28 @@ Toast.fire({
 <?php unset($_SESSION['login_success']); ?>
 <?php endif; ?>
 
+<!-- Vote started successfully -->
+<?php if (isset($_SESSION['votestart_success'])): ?>
+<script>
+const Toast3 = Swal.mixin({
+  toast: true,
+  position: "top-end",
+  showConfirmButton: false,
+  timer: 4000,
+  timerProgressBar: true,
+  didOpen: (toast) => {
+    toast.onmouseenter = Swal.stopTimer;
+    toast.onmouseleave = Swal.resumeTimer;
+  }
+});
+Toast3.fire({
+  icon: "success",
+  title: "Vote Started successfully"
+});
+</script>
+<?php unset($_SESSION['votestart_success']); ?>
+<?php endif; ?>
+
 
 <!-- Candidate added successfully -->
 <?php if (isset($_SESSION['add_candidate'])): ?>
