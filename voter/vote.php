@@ -1,5 +1,5 @@
 <?php
-$title = "Vote";
+$title = "Vote ";
 require_once '../config/connection.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {

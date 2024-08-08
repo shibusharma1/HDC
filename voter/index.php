@@ -1,6 +1,6 @@
 <?php
 // Set the page title
-$title = "Candidates";
+$title = "Voter";
 // Include the database connection configuration
 require_once '../config/connection.php';
 // Include the header file for the candidates page

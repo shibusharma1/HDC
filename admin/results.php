@@ -87,16 +87,9 @@ if (!$result) {
             ?>
         </tbody>
     </table>
-
-    <!-- Modal for displaying students -->
-    <div id="studentsModal">
-        <div id="studentsModalContent">
-            <span onclick="closeModal()">&times;</span>
-            <!-- Student details will be inserted here -->
-        </div>
     </div>
     </div>
-    </div>
+    
 
     <script>
         document.addEventListener("DOMContentLoaded", function() {

@@ -110,6 +110,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
         if (mysqli_query($conn, $sql)) {
             $_SESSION['update_success']=1;
+            $fullname = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
+
+            $sql = "UPDATE candidates SET 
+                    Name = '$fullname', 
+                    CRN = '$CRN', 
+                     
+                    programid = '$programid', 
+                    semester = '$semester' 
+                     
+                WHERE CRN = '$CRN'";
+
             header("Location: students.php");
             exit;
         } else {
@@ -117,4 +128,4 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         }
     }
 }
-?>
+
