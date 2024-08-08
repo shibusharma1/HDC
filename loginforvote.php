@@ -22,11 +22,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($row['CRN'] == $CRN && $row['random_code'] == $random_code) {
       $_SESSION['login_success'] = true;
       $_SESSION['crn'] = $row['CRN'];
-      header("Location: voter/index.php");
-      
+      header("Location: voter/index.php");  
+    }
+    else{
+      $error_message="Invalid Credentials";
+    }
     }
   }
-}
+
 
 
 ?>
@@ -49,6 +52,9 @@ include_once 'includes/header.php';
         <input type="random_code" placeholder="Please enter your Random Code" name="random_code" required>
 
       </div>
+      <?php if (isset($error_message)): ?>
+                    <label style="color:red;float:left;"><?= $error_message ?></label>
+                <?php endif; ?>
       <div class="remember-forget">
         <label><input type="checkbox"> Remember me</label>
         <a href="forgetrandom_code.php">Forgot random code?</a>

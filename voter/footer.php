@@ -2,7 +2,7 @@
 
         <div class="foot-panel1">
             <ul>
-                <p>Contact us</p>
+                <p>Get In Touch</p>
                 <a href="#">Email</a>
                 <a href="mailto:himalayadarshan5@gmail.com">himalayadarshan5@gmail.com</a>
                 <a href="#">Phone Number:</a>

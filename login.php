@@ -27,7 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }
     else{
       $_SESSION['login_error'] = true;
-      header("Location: login.php");
+      $error_message="Invalid Credentials";
+      // header("Location: login.php");
     }
   }
 }
@@ -50,6 +51,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         <input type="password" placeholder="Password" name="password" required>
         <box-icon name='lock'></box-icon>
       </div>
+      <?php if (isset($error_message)): ?>
+                    <label style="color:red;float:left;"><?= $error_message ?></label>
+                <?php endif; ?>
       <div class="remember-forget">
         <label><input type="checkbox"> Remember me</label>
         <a href="forgetpassword.php">Forget password?</a>
