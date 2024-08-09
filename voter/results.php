@@ -5,10 +5,17 @@ require_once '../config/connection.php';
 
 $crn = $_SESSION['crn'];
 
+// check the status from vote
+$sql = "SELECT * FROM vote_status WHERE status = 'T'";
+$sresults = mysqli_query($conn, $sql);
+$vcount = mysqli_num_rows($sresults);
+// mysqli_close();
+
+
 $sql = "SELECT * FROM result_update WHERE status = 'T'";
 $sresults = mysqli_query($conn, $sql);
 $scount = mysqli_num_rows($sresults);
-if ($scount > 0) {
+if ($scount > 0 && $vcount>0) {
 
     // Fetch the student details from the registerstudent table using the CRN from the session
     $sql = "SELECT rs.*, p.programname 
