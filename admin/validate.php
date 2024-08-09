@@ -109,23 +109,24 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 WHERE student_id = '$student_id'";
 
         if (mysqli_query($conn, $sql)) {
-            $_SESSION['update_success']=1;
-            $fullname = $row['firstname'] . ' ' . $row['middlename'] . ' ' . $row['lastname'];
+            $_SESSION['update_success'] = 1;
+            $fullname = $firstname . ' ' . $middlename . ' ' . $lastname;
 
-            $sql = "UPDATE candidates SET 
-                    Name = '$fullname', 
-                    CRN = '$CRN', 
-                     
-                    programid = '$programid', 
-                    semester = '$semester' 
-                     
-                WHERE CRN = '$CRN'";
+            // Update the candidate if the student is also a candidate
+            $sql_candidate = "UPDATE candidates SET 
+                                Name = '$fullname', 
+                                CRN = '$CRN', 
+                                programid = '$programid', 
+                                semester = '$semester' 
+                            WHERE CRN = '$CRN'";
+
+            mysqli_query($conn, $sql_candidate);
 
             header("Location: students.php");
             exit;
         } else {
-            echo "Error updating the details: " . $sql . "<br>" . mysqli_error($conn);
+            echo "Error updating the details: " . mysqli_error($conn);
         }
     }
 }
-
+?>

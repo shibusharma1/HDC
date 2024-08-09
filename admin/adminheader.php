@@ -26,7 +26,7 @@ if (!isset($_SESSION['uid'])) {
         <!-- sweetalert cdn -->
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
-<body>
+<body style="background-color:#E2E7E6;">
 <div class="logo-contact">
         <div class="logo">
             <a href="">
@@ -58,7 +58,7 @@ if (!isset($_SESSION['uid'])) {
             </ul>
         </div>
     </div>
-    <nav class="navbar">
+    <nav class="navbar" style="background-color:#EEEEEE;">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
             <li><a href="program.php">Program</a></li>
