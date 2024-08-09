@@ -53,24 +53,24 @@ if ($scount > 0) {
         if ($row = mysqli_fetch_assoc($result)) {
             ?>
             <!-- <div class="winner" style="display:flex;"> -->
-            <div style="display: flex; justify-content: space-between;">
+            <div style="display: flex; justify-content: space-evenly;">
 
         
             <div class="winner-container">
-                <div class="winner-card">
-                    <h2 style="text-align: center; font-size: 3rem;margin-bottom:1rem;">Winner</h2>
-                    <div class="winner-image">
-                        <img src="../assets/maleimg.png" alt="Shibu Sharma">
-                    </div>
-                    <div class="winner-info">
-                        <h2><?php echo htmlspecialchars($row['Name']); ?></h2>
-                        <p><strong>Program:</strong><?php echo htmlspecialchars($row['programname']); ?> </p>
-                        <p><strong>Semester:</strong> <?php echo htmlspecialchars($row['semester']); ?></p>
-                        <p><strong>Votes:</strong> <?php echo htmlspecialchars($max_votes); ?></p>
-                    </div>
+        <div class="winner-background">
+            <div class="winner-content">
+                <h2 class="winner-title">HIMALAYA DARSHAN COLLEGE</h2>
+                <h1 class="winner-name"><?php echo htmlspecialchars($row['Name']); ?></h1>
+                <p><?php echo htmlspecialchars($row['programname'])." "; echo htmlspecialchars($row['semester']);?></p>
+                <div class="winner-subtitle">ON WINNING CR-ELECTION</div>
+                <div class="winner-congratulations">
+                    <h2>CONGRATULATIONS</h2>
+                    <p>TO THE CR WHO WON THE ELECTIONS ON BY <?php echo htmlspecialchars($max_votes); ?></p>
                 </div>
             </div>
-            <!-- <br> -->
+        </div>
+    </div>
+            
 
             <?php
             // Query to fetch candidates with vote counts
@@ -86,8 +86,8 @@ if ($scount > 0) {
                 die('Query Error: ' . $conn->error);
             }
             ?>
-            <div class="table-container">
-                <div class="table-title" style="display: flex; align-items: center; background-color:#52AB90;">
+            <div class="table-container-winner">
+                <div class="table-title" style="display: flex; align-items: center;">
                     <h2 style="flex: 1; text-align: center; margin: 0;">Vote Results</h2>
 
                 </div>
