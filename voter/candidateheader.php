@@ -25,7 +25,7 @@ if (!isset($_SESSION['crn'])) {
     <!-- sweetalert cdn -->
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     </head>
-<body>
+<body style="background-color:#E2E7E6;">
 <div class="logo-contact">
         <div class="logo">
             <a href="">
@@ -57,7 +57,7 @@ if (!isset($_SESSION['crn'])) {
             </ul>
         </div>
     </div>
-    <nav class="navbar" style="background-color:#F7F7F7;">
+    <nav class="navbar" style="background-color:#EEEEEE;padding:0;">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>

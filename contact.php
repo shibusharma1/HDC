@@ -53,7 +53,8 @@ include_once 'includes/header.php';
                 </tr>
                 <tr>
                     <td>College Landline</td>
-                    <td colspan="2"><a href="tel:021-590571">021-590571</a></td>
+                    <td style="padding-left:80px;">-</td>
+                    <td><a href="tel:021-590571">021-590571</a></td>
                 </tr>
             </tbody>
         </table>

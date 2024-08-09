@@ -58,7 +58,7 @@ if (!isset($_SESSION['uid'])) {
             </ul>
         </div>
     </div>
-    <nav class="navbar" style="background-color:#EEEEEE;">
+    <nav class="navbar" style="background-color:#EEEEEE;padding:0;">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
             <li><a href="program.php">Program</a></li>

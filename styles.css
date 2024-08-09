@@ -317,7 +317,7 @@ footer {
   /* height: 300px; */
   display: flex;
   justify-content: space-evenly;
-  padding: 4.5rem;
+  padding: 1.5rem;
 }
 
 .foot-panel1 .col1{
@@ -336,9 +336,7 @@ footer {
   font-weight: 700;
 }
 
-ul {
-  /* margin-top: 20px; */
-}
+
 
 ul a {
   display: block;
@@ -474,7 +472,7 @@ ul a {
 
 /* Css for register.php */
 .register-body {
-  margin-top: 20px;
+  /* margin-top: 20px; */
   display: flex;
   justify-content: center;
   align-items: center;
@@ -955,7 +953,7 @@ a:hover {
   border: 1px solid #ddd;
   border-radius: 8px;
   overflow: hidden;
-  background-color: #fff;
+  background-color: #14BDC4;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
   transition: transform 0.3s, box-shadow 0.3s;
 }
@@ -990,5 +988,5 @@ a:hover {
 }
 
 .winner-info p strong {
-  color: #007bff;
+  color: rgb(19, 57, 115);
 }

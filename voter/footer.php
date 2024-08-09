@@ -16,29 +16,29 @@
         </div>
         <ul>
             <p class="footer-title" style="margin-left:6px;">Get In Touch</p>
-            <div style="display:flex;align-items:center;margin-left:0.3rem;">
+            <div style="display:flex;align-items:center;margin-left:0.3rem;padding:0.5rem;">
                 <span><i class="fa-solid fa-envelope text-color"></i></span>
                 <div>
-                    <a href="#">
-                        Email</a>
+                    <!-- <a href="#">
+                        Email</a> -->
                     <a href="mailto:himalayadarshan5@gmail.com">himalayadarshan5@gmail.com</a>
                 </div>
             </div>
-            <div style="display:flex;align-items:center;margin-left:0.3rem;">
+            <div style="display:flex;align-items:center;margin-left:0.3rem;padding:0.5rem;">
                 <span><i class="fa-solid fa-phone text-color"></i>
                 </i></span>
                 <div>
 
-            <a href="#">Phone Number:</a>
+            <!-- <a href="#">Phone Number:</a> -->
             <a href="tel:021-590471">021-590471</a>
             </div>
             </div>
-            <div style="display:flex;align-items:center;margin-left:0.3rem;">
+            <div style="display:flex;align-items:center;margin-left:0.3rem;padding:0.5rem;">
                 <span><i class="fa-solid fa-location-dot text-color"></i></span>
                 <div>
 
 
-            <a href="#">Address</a>
+            <!-- <a href="#">Address</a> -->
             <a href="https://maps.app.goo.gl/1n8EmcytJQgj1LVH8"> Main Road,Biratnagar-09</a>
             </div>
             </div>
