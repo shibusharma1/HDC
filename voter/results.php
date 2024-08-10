@@ -2,7 +2,6 @@
 $title = "Results ";
 include_once ('./candidateheader.php');
 require_once '../config/connection.php';
-
 $crn = $_SESSION['crn'];
 
 // check the status from vote
@@ -15,7 +14,7 @@ $vcount = mysqli_num_rows($sresults);
 $sql = "SELECT * FROM result_update WHERE status = 'T'";
 $sresults = mysqli_query($conn, $sql);
 $scount = mysqli_num_rows($sresults);
-if ($scount > 0 && $vcount>0) {
+if ($scount > 0 && $vcount == 0) {
 
     // Fetch the student details from the registerstudent table using the CRN from the session
     $sql = "SELECT rs.*, p.programname 
