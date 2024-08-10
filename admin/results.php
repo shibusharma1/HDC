@@ -5,7 +5,7 @@ include_once 'adminheader.php';
 
 // Query to fetch candidates with vote counts
 $query = "SELECT c.candidate_id, c.Name, c.CRN, c.programid, c.semester, COUNT(v.vote_id) as vote_count
-          FROM candidates c
+          FROM candidates c 
           LEFT JOIN votes v ON c.candidate_id = v.candidate_id
           GROUP BY c.candidate_id";
 

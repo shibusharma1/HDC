@@ -584,10 +584,11 @@ form {
 
 /* Css for body Login.php*/
 .body-login {
+  margin-top: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 100vh;
+  /* min-height: 100vh; */
   background: none;
   background-size: cover;
   background-position: center;
@@ -770,6 +771,19 @@ td {
   text-align: left;
   border-bottom: 1px solid #e2e2e2;
 }
+/* th:hover,
+td:hover {
+  padding: 14px;
+  text-align: left;
+  font-size: large;
+  /* border-bottom: 1px solid #4979e1; 
+} */
+ tr:hover{
+  padding: 14px;
+  text-align: left;
+  font-size: large;
+
+ }
 
 th {
   background-color: #f9f9f9;
@@ -955,12 +969,12 @@ a:hover {
 .winner-container {
   width: 450px;
   height: 500px;
-  background: url('assets/img.jpg') no-repeat center center;
+  background: url('assets/result_background.png') no-repeat center center;
   background-size:cover;
   /* background-color: #3165be; */
   position: relative;
   overflow: hidden;
-  box-shadow: 0 0 20px rgba(0, 0, 0, 0.7);
+  /* box-shadow: 0 0 20px rgba(0, 0, 0, 0.7); */
   border-radius: 5px;
   display: flex;
   justify-content: center;
@@ -982,7 +996,7 @@ a:hover {
   align-items: center;
   flex-direction: column;
   text-align: center;
-  color: white;
+  color: rgb(255, 255, 255);
   padding: 20px;
   opacity: 0;
   animation: winner-fadeIn 2s ease forwards;

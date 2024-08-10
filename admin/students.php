@@ -2,9 +2,6 @@
 $title = "Student";
 require_once '../config/connection.php';
 include_once 'adminheader.php';
-
-$sql = "SELECT * FROM registerstudent JOIN programs ON registerstudent.programid = programs.programid";
-$result = mysqli_query($conn, $sql);
 ?>
 <script>
             // Search candidates in the table
@@ -66,6 +63,34 @@ Toast3.fire({
 
             <thead>
                 <tr>
+                    <th>Total Students</th>
+                    <th colspan="5"><?php 
+                     $sql="SELECT count(*) from registerstudent";
+                     $result = mysqli_query($conn, $sql);
+                     $row1 = mysqli_fetch_assoc($result);
+                     $total=$row1['count(*)'];
+                     echo $row1['count(*)'];
+                     ?></th>
+                    
+                </tr>
+                <tr>
+                    <th>Voted Students</th>
+                    <th colspan="5"><?php 
+                     $sql="SELECT count(*) from votes";
+                     $result = mysqli_query($conn, $sql);
+                     $row1 = mysqli_fetch_assoc($result);
+                     $voted=$row1['count(*)'];
+                     echo $row1['count(*)'];
+                     ?></th>
+                </tr>
+                <tr>
+                    <th>Not Voted Students</th>
+                    <th colspan="5"><?php echo $total-$voted;?></th>
+                </tr>
+                <tr>
+                    <th colspan="6"></th>
+                </tr>
+                <tr>
                     <th>Student Name</th>
                     <th style="text-align:center;">Program</th>
                     <th style="text-align:center;">Semester</th>
@@ -77,6 +102,10 @@ Toast3.fire({
             </thead>
             <tbody>
                 <?php
+                
+$sql = "SELECT * FROM registerstudent JOIN programs ON registerstudent.programid = programs.programid";
+$result = mysqli_query($conn, $sql);
+
                 if (mysqli_num_rows($result) > 0) {
                     while ($row = mysqli_fetch_assoc($result)) {
                         ?>

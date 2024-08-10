@@ -65,13 +65,13 @@ if ($scount > 0 && $vcount == 0) {
             <div class="winner-container">
         <div class="winner-background">
             <div class="winner-content">
-                <h2 class="winner-title">HIMALAYA DARSHAN COLLEGE</h2>
+                <!-- <h2 class="winner-title">HIMALAYA DARSHAN COLLEGE</h2> -->
                 <h1 class="winner-name"><?php echo htmlspecialchars($row['Name']); ?></h1>
                 <p><?php echo htmlspecialchars($row['programname'])." "; echo htmlspecialchars($row['semester']);?></p>
                 <div class="winner-subtitle">ON WINNING CR-ELECTION</div>
                 <div class="winner-congratulations">
                     <h2>CONGRATULATIONS</h2>
-                    <p>TO THE CR WHO WON THE ELECTIONS ON BY <?php echo htmlspecialchars($max_votes); ?></p>
+                    <p>TO THE CR WHO WON THE ELECTIONS BY <?php echo htmlspecialchars($max_votes); ?></p>
                 </div>
             </div>
         </div>
@@ -104,7 +104,7 @@ if ($scount > 0 && $vcount == 0) {
                     <table id="candidatesTable">
                         <thead>
                             <tr>
-                                <th>Candidate ID</th>
+                                <!-- <th>Candidate ID</th> -->
                                 <th>Name</th>
                                 <th>CRN</th>
                                 <th>Program</th>
@@ -118,7 +118,7 @@ if ($scount > 0 && $vcount == 0) {
                             // Generate the table rows
                             while ($row = $result->fetch_assoc()) {
                                 echo '<tr>';
-                                echo '<td>' . htmlspecialchars($row['candidate_id']) . '</td>';
+                                // echo '<td>' . htmlspecialchars($row['candidate_id']) . '</td>';
                                 echo '<td>' . htmlspecialchars($row['Name']) . '</td>';
                                 echo '<td style="text-align:center;">' . htmlspecialchars($row['CRN']) . '</td>';
                                 echo '<td style="text-align:center;">' . htmlspecialchars($row['programid']) . '</td>';
