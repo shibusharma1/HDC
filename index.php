@@ -100,12 +100,13 @@ include_once 'includes/header.php';
     <p>TIE-UPS & MOUS</p>
 </div>
 <div class="tie-up-section">
+    <div class="box-content">
+        
     <div class="box1 tie-up">
-        <div class="box-content">
-
             <div class="tie-up-img" style="background-image:url('assets/tie1.png');"></div>
-        </div>
+             </div>
     </div>
+    
     <div class="box2 tie-up">
         <div class="box-content">
             <div class="tie-up-img" style="background-image: url('assets/tie2.gif');"></div>
