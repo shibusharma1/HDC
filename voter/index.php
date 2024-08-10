@@ -29,6 +29,7 @@ if (!$result) {
 
 ?>
 <?php 
+   
     $sql = "SELECT * FROM vote_status WHERE status = 'T'";
     $sresults = mysqli_query($conn, $sql); 
     $scount = mysqli_num_rows($sresults);
