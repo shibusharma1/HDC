@@ -34,7 +34,7 @@ include_once 'includes/header.php';
 <div class="body-login">
   <div class="wrapper">
     <form action="" method="POST">
-      <h1>LOGIN for Vote</h1>
+      <h1>LOGIN FOR VOTE</h1>
       <div class="input-box">
         <label for="CRN">Enter your CRN</label>
         <input type="CRN" placeholder="Please enter your CRN" name="CRN" required>
