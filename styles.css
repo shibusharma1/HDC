@@ -1074,3 +1074,21 @@ a:hover {
       opacity: 1;
   }
 }
+
+
+/* button for download and generate report */
+#downloadBtn {
+  display: block;
+  text-align: center;
+  justify-content: center;
+  width: 200px;
+  margin:20px 0 20px 350px;
+  padding: 8px;
+  background-color: #024699;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+}
