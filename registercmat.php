@@ -123,33 +123,33 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $sql = "INSERT INTO registercmat (firstname, middlename, lastname, dob, phone, email, programid, collegename, passed_out_year, gpa, referred_by, gender) VALUES ('$firstname', '$middlename', '$lastname', '$dob', '$phone', '$email', '$programs', '$collegename', '$passed_out_year', '$gpa', '$referred_by', '$gender')";
     if (mysqli_query($conn, $sql)) {
       $_SESSION['form_success'] = true;
-      
+
       //Gmail sending after form submission
       try {
         // Server settings
         $mail->isSMTP();                                            // Send using SMTP
-        $mail->Host       = 'smtp.gmail.com';                       // Set the SMTP server to send through
-        $mail->SMTPAuth   = true;                                   // Enable SMTP authentication
-        $mail->Username   = 'hdcvoting@gmail.com';                 // SMTP username
-        $mail->Password   = 'ygcp xbpo pwnn civc';                    // SMTP password (Use App Password if 2FA is enabled)
+        $mail->Host = 'smtp.gmail.com';                       // Set the SMTP server to send through
+        $mail->SMTPAuth = true;                                   // Enable SMTP authentication
+        $mail->Username = 'hdcvoting@gmail.com';                 // SMTP username
+        $mail->Password = 'ygcp xbpo pwnn civc';                    // SMTP password (Use App Password if 2FA is enabled)
         $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;         // Enable TLS encryption; `PHPMailer::ENCRYPTION_SMTPS` also accepted
-        $mail->Port       = 587;                                    // TCP port to connect to
-    
+        $mail->Port = 587;                                    // TCP port to connect to
+
         // Recipients
         $mail->setFrom('hdcvoting@gmail.com', 'HDC');        // Sender's email and name
         $mail->addAddress($email, $firstname); // Add a recipient
-    
+
         // Content
         $mail->isHTML(true);                                        // Set email format to HTML
         $mail->Subject = 'Successfully Enrolled in Free CMAT';                     // Email subject
-        $mail->Body    = '<h4>Dear '.$firstname.',You have been Successfuly enrolled in <strong> FREE CMAT 2081</strong></h4><br><br><br><br>With regards,<br><h5>Himalaya Darshan College<br>Biratnagar-09</h5>' ; // HTML message body
+        $mail->Body = '<h4>Dear ' . $firstname . ',You have been Successfuly enrolled in <strong> FREE CMAT 2081</strong>. For more details, Please contact us : <a href="tel:021-590471">021-590471</a></h4><br><br><br><br>With regards,<br><h5>Himalaya Darshan College<br>Biratnagar-09</h5>'; // HTML message body
         $mail->AltBody = 'Please Contact with College administration for your Voting Details.';     // Plain text message body for non-HTML email clients
-    
+
         $mail->send();
         echo 'Email has been sent successfully';
-    } catch (Exception $e) {
+      } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";
-    }
+      }
 
       header("Location: registercmat.php");
       exit;
@@ -162,7 +162,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <div class="register-body">
   <div class="wrapper">
     <form action="" method="POST">
-      <img src="assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College" style="display:block;margin:auto;">
+      <img src="assets/logo.png" alt="Himalaya Darshan College" title="Himalaya Darshan College"
+        style="display:block;margin:auto;">
       <h2 style="color:black;">Register for Free CMAT</h2>
       <p>Please enter your details into the fields below.</p>
 
@@ -199,17 +200,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       <?php endif; ?>
 
       <div class="input-box">
-                <label for="gender">Gender<span style="color:red;">*</span></label>
-                <select id="gender" name="gender" required>
-                    <option value="" disabled selected>Select Gender</option>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                    <option value="Other">Other</option>
-                </select>
-                <?php if (isset($errors['gender_error'])): ?>
-                    <label style="color:red;float:left;"><?= $errors['gender_error'] ?></label>
-                <?php endif; ?>
-            </div>
+        <label for="gender">Gender<span style="color:red;">*</span></label>
+        <select id="gender" name="gender" required>
+          <option value="" disabled selected>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Other">Other</option>
+        </select>
+        <?php if (isset($errors['gender_error'])): ?>
+          <label style="color:red;float:left;"><?= $errors['gender_error'] ?></label>
+        <?php endif; ?>
+      </div>
 
       <?php if (isset($errors['gender_error'])): ?>
         <label style="color:red;float:left;"><?php echo $errors['gender_error']; ?></label>
@@ -239,9 +240,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
           $sql = "SELECT * FROM programs";
           $result = mysqli_query($conn, $sql);
           if (mysqli_num_rows($result) > 0) {
-              while ($row = mysqli_fetch_assoc($result)) {
-                  echo '<option value="' . $row['programid'] . '">' . $row['programname'] . '</option>';
-              }
+            while ($row = mysqli_fetch_assoc($result)) {
+              echo '<option value="' . $row['programid'] . '">' . $row['programname'] . '</option>';
+            }
           }
           ?>
         </select>
@@ -310,7 +311,7 @@ include_once 'includes/footer.php';
     Toast.fire({
       icon: "success",
       title: "Form Submitted successfully"
-    }).then(function() {
+    }).then(function () {
       window.location.href = 'registercmat.php'; // Redirect after user closes the alert
     });
   </script>
