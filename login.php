@@ -1,4 +1,10 @@
 <?php
+// Get the client's IP address
+$ipAddress = $_SERVER['REMOTE_ADDR'];
+
+// Get the client's device name (hostname)
+$deviceName = gethostbyaddr($ipAddress);
+$detail="You have been login in by ".$deviceName ." and it's IP Address is ".$ipAddress;
 $title = "Admin Login";
 //starting the session
 session_start();
@@ -23,6 +29,52 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
       $_SESSION['login_success'] = true;
       $_SESSION['uid'] = $row['sid'];
+
+      // SMS ALERT FOR LOGIN
+      // URL for the API endpoint
+$url = "https://sms.api.sinch.com/xms/v1/cdd67d05519f49b685338453378b1735/batches";
+
+// The data you want to send in the POST request
+$data = array(
+    "from" => "447441421754",
+    "to" => array("9779745864024"),
+    "body" => $detail
+);
+
+// Convert the data to JSON format
+$jsonData = json_encode($data);
+
+// Initialize cURL session
+$ch = curl_init($url);
+
+// Set the Authorization header
+$headers = array(
+    "Authorization: Bearer e1e61d634e7c4ccaa79b9c365999c17e",
+    "Content-Type: application/json"
+);
+
+// Set the cURL options
+curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // Add headers
+curl_setopt($ch, CURLOPT_POST, true);           // Set method to POST
+curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData); // Add the JSON data
+curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return the response as a string
+
+// Execute the POST request
+$response = curl_exec($ch);
+
+// Check if any error occurred
+if (curl_errno($ch)) {
+    echo 'Error:' . curl_error($ch);
+} else {
+    // Print the response from the server
+    echo 'Response: ' . $response;
+}
+
+// Close the cURL session
+curl_close($ch);
+
+
+
       header("Location: admin/index.php");
     }}
     
