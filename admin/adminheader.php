@@ -2,7 +2,7 @@
 session_start();
 
 if (!isset($_SESSION['uid'])) {
-   header("Location: ../logout.php");
+    header("Location: ../logout.php");
 
 }
 ?>
@@ -13,21 +13,24 @@ if (!isset($_SESSION['uid'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="../assets/logo.png" type="image/x-icon" />
     <title><?php echo $title; ?> | HDC</title>
     <link rel="stylesheet" href="../styles.css">
     <!-- Font Awesome CDN -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-     <!-- Font Awesome CDN -->
-     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
+    <!-- Font Awesome CDN -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css"
         integrity="sha512-SnH5WK+bZxgPHs44uWIX+LLJAJ9/2PkPKZ5QiAj6Ta86w+fsb2TkcmfRyVX3pBnMFcV7oQPJkl9QevSCWr3W6A=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <!-- sweetalert cdn -->
-     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-    </head>
+    <!-- sweetalert cdn -->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+</head>
+
 <body style="background-color:#E2E7E6;">
-<div class="logo-contact">
+    <div class="logo-contact">
         <div class="logo">
             <a href="">
                 <img src="../assets/logo.png" alt="Himalaya Darshan College">
@@ -70,4 +73,3 @@ if (!isset($_SESSION['uid'])) {
         </ul>
     </nav>
     </div>
-

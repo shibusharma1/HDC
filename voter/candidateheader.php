@@ -24,6 +24,8 @@ if (!isset($_SESSION['crn'])) {
     <!-- <link rel="stylesheet" href="feedback.css"> -->
     <!-- sweetalert cdn -->
      <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <link rel="shortcut icon" href="../assets/result_background.png" type="image/x-icon"/>
+
     </head>
 <body style="background-color:#E2E7E6;">
 <div class="logo-contact">

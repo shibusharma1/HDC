@@ -14,7 +14,7 @@
     <!-- sweet alert CDN -->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
-
+    <link rel="shortcut icon" href="assets/result_background.png" type="image/x-icon"/>
 </head>
 
 <body>
