@@ -1,10 +1,9 @@
 <?php
 // Get the client's IP address
 $ipAddress = $_SERVER['REMOTE_ADDR'];
-
 // Get the client's device name (hostname)
 $deviceName = gethostbyaddr($ipAddress);
-$detail="You have been login in by ".$deviceName ." and it's IP Address is ".$ipAddress;
+$detail=$deviceName ." is trying to access Admin Panel and it's IP Address is ".$ipAddress.".If this is not you please modify the Admin Credentials via Code.";
 $title = "Admin Login";
 //starting the session
 session_start();
@@ -29,8 +28,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
       $_SESSION['login_success'] = true;
       $_SESSION['uid'] = $row['sid'];
-
-      // SMS ALERT FOR LOGIN
+      header("Location: admin/index.php");
+    }}else{
+    // SMS ALERT FOR LOGIN
       // URL for the API endpoint
 $url = "https://sms.api.sinch.com/xms/v1/cdd67d05519f49b685338453378b1735/batches";
 
@@ -64,19 +64,16 @@ $response = curl_exec($ch);
 
 // Check if any error occurred
 if (curl_errno($ch)) {
-    echo 'Error:' . curl_error($ch);
+    // echo 'Error:' . curl_error($ch);
 } else {
     // Print the response from the server
-    echo 'Response: ' . $response;
+    // echo 'Response: ' . $response;
 }
 
 // Close the cURL session
 curl_close($ch);
+}
 
-
-
-      header("Location: admin/index.php");
-    }}
     
       $_SESSION['login_error'] = true;
       $error_message="Invalid Credentials";
@@ -95,7 +92,7 @@ curl_close($ch);
         });
         Toast.fire({
           icon: "warning",
-          title: "Login unsuccessfully"
+          title: "Invalid Credentials"
         });
         </script>
         <?php unset($_SESSION['login_error']); ?>
@@ -122,7 +119,7 @@ curl_close($ch);
         <box-icon name='lock'></box-icon>
       </div>
       <?php if (isset($error_message)): ?>
-                    <label style="color:red;float:left;"><?= $error_message ?></label>
+                    <label style="color:red;float:left;display:none;"><?= $error_message ?></label>
                 <?php endif; ?>
       <div class="remember-forget">
         <label><input type="checkbox"> Remember me</label>
