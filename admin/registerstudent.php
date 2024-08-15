@@ -114,9 +114,6 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                 VALUES ('$firstname', '$middlename', '$lastname', '$dob', '$phone', '$email', '$programid', '$semester', '$admitted_year', '$referred_by', '$gender', '$CRN', '$random_code')";
 
         if (mysqli_query($conn, $sql)) {
-
-
-
             try {
                 // Server settings
                 $mail->isSMTP();                                            // Send using SMTP

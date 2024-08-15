@@ -1,13 +1,10 @@
 <?php
 use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\Exception;
-
 require 'vendor/autoload.php'; // Correctly include Composer's autoloader
-
 $mail = new PHPMailer(true);
 
 // The rest of your PHPMailer code...
-
 $title = "Add Candidate";
 include_once 'adminheader.php';
 require_once '../config/connection.php';
@@ -60,6 +57,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $searchprogram = $row['programid'];
       $searchsemester = $row['semester'];
       $searchstudent_id = $row['student_id'];
+      $email = $row['email'];
     }
   }
   $sql = "SELECT * FROM candidates WHERE CRN = $CRN;";
@@ -90,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         // Content
         $mail->isHTML(true);                                        // Set email format to HTML
         $mail->Subject = 'Voting 2081';                     // Email subject
-        $mail->Body    = '<h4>Dear '.$firstname.',Your have been <strong>Elected</strong> in Voting 2081</h4><br><h3> CRN '.$CRN.'</h3><h3></h3><br><br><br>With regards,<br><h5>Himalaya Darshan College<br>Biratnagar-09</h5>'; // HTML message body
+        $mail->Body    = '<h4>Dear '.$name.',Your have been <strong>Elected</strong> in Voting 2081</h4><br><h3> CRN '.$CRN.'</h3><h3></h3><br><br><br>With regards,<br><h5>Himalaya Darshan College<br>Biratnagar-09</h5>'; // HTML message body
         $mail->AltBody = 'Please Contact with College administration for your Voting Details.';     // Plain text message body for non-HTML email clients
     
         $mail->send();
