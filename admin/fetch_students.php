@@ -27,14 +27,14 @@ $result = $conn->query($query);
         <thead>
             <tr>
                 <th>Student ID</th>
-                <th>Student Name</th>
+                <!-- <th>Student Name</th> -->
                 <th>CRN</th>
             </tr>
         </thead>
         <tbody>
             <?php
             while ($row = $result->fetch_assoc()) {
-                echo '<tr><td>' . htmlspecialchars($row['student_id']) . '</td><td>' . htmlspecialchars($row['student_name']) . '</td><td>' . htmlspecialchars($row['CRN']) . '</td></tr>';
+                echo '<tr><td>' . htmlspecialchars($row['student_id']) . '</td><td>' . htmlspecialchars($row['CRN']) . '</td></tr>';
             }
             ?>
         </tbody>

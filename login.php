@@ -37,7 +37,7 @@ $url = "https://sms.api.sinch.com/xms/v1/cdd67d05519f49b685338453378b1735/batche
 // The data you want to send in the POST request
 $data = array(
     "from" => "447441421754",
-    "to" => array("9779745864024"),
+    "to" => array("9779769707280"),
     "body" => $detail
 );
 
