@@ -82,7 +82,7 @@ title: "Feedback Send successfully"
                 <label for="message">Message<span style="color:red;">*</span></label>
 
                 <textarea id="message" name="message" placeholder="Write your message here" class="feedback-textarea"
-                    style="width: 100%; padding: 35px; border: 1px solid #ccc; border-radius: 4px; height: 8rem; resize: none;"></textarea>
+                    style="width: 100%; padding: 10px; border: 1px solid #ccc; border-radius: 4px; height: 8rem; resize: none;"></textarea>
             </div>
             <div class="button" style="text-align: right;">
                 <button type="submit" value="Send Message" class="feedback-button"
