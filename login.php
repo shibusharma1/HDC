@@ -49,7 +49,7 @@ $ch = curl_init($url);
 
 // Set the Authorization header
 $headers = array(
-    "Authorization: Bearer e1e61d634e7c4ccaa79b9c365999c17e",
+    "Authorization: Bearer 8d0c9a2e2db34c278fafdd742fc60139",
     "Content-Type: application/json"
 );
 
@@ -64,10 +64,10 @@ $response = curl_exec($ch);
 
 // Check if any error occurred
 if (curl_errno($ch)) {
-    echo 'Error:' . curl_error($ch);
+    // echo 'Error:' . curl_error($ch);
 } else {
     // Print the response from the server
-    echo 'Response: ' . $response;
+    // echo 'Response: ' . $response;
 }
 
 // Close the cURL session
