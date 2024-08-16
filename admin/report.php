@@ -195,40 +195,56 @@
         }
         echo "</table><br>";
 
-        // Percentage of Voters by Program & Semester
-        $sql = "SELECT p.programname, rs.semester, COUNT(DISTINCT v.student_id) AS voted_count,
-            (SELECT COUNT(*) FROM registerstudent WHERE programid = p.programid AND semester = rs.semester) AS total_count
-            FROM programs p
-            LEFT JOIN registerstudent rs ON p.programid = rs.programid
-            LEFT JOIN votes v ON rs.student_id = v.student_id
-            GROUP BY p.programname, rs.semester";
-        $result = $conn->query($sql);
+        // Percentage of Voters by Program & Semester including Top Candidate
+$sql = "SELECT p.programname, rs.semester, COUNT(DISTINCT v.student_id) AS voted_count,
+(SELECT COUNT(*) FROM registerstudent WHERE programid = p.programid AND semester = rs.semester) AS total_count,
+c.Name, COUNT(v.vote_id) AS candidate_votes
+FROM programs p
+LEFT JOIN registerstudent rs ON p.programid = rs.programid
+LEFT JOIN votes v ON rs.student_id = v.student_id
+LEFT JOIN candidates c ON v.candidate_id = c.candidate_id
+WHERE rs.programid = p.programid AND rs.semester = rs.semester
+GROUP BY p.programname, rs.semester, c.candidate_id
+ORDER BY candidate_votes DESC";
 
-        echo "<h2>Percentage of Voters by Program & Semester</h2>";
-        echo "<table>
-    <tr>
-        <th>Program</th>
-        <th>Semester</th>
-        <th>Total Students</th>
-        <th>Voted Students</th>
-        <th>Voting Percentage</th>
-    </tr>";
-        while ($row = $result->fetch_assoc()) {
-            $percentage = calculatePercentage($row['voted_count'], $row['total_count']);
-            echo "<tr>
-                <td>{$row['programname']}</td>
-                <td>{$row['semester']}</td>
-                <td>{$row['total_count']}</td>
-                <td>{$row['voted_count']}</td>
-                <td>{$percentage}%</td>";
-        }
-        echo "</table><br>";
+$result = $conn->query($sql);
 
-        // Close the connection
-        $conn->close();
-        ?>
-    </div>
+echo "<h2>Percentage of Voters by Program & Semester with Top Candidate</h2>";
+echo "<table>
+<tr>
+<th>Program</th>
+<th>Semester</th>
+<th>Total Students</th>
+<th>Voted Students</th>
+<th>Voting Percentage</th>
+<th>Top Candidate</th>
+<th>Top Candidate Votes</th>
+</tr>";
 
+$currentProgramSemester = '';  // To track program and semester for grouping
+while ($row = $result->fetch_assoc()) {
+$percentage = calculatePercentage($row['voted_count'], $row['total_count']);
+
+// Ensure only the first row for each program and semester is displayed
+if ($row['programname'] . $row['semester'] != $currentProgramSemester) {
+$currentProgramSemester = $row['programname'] . $row['semester'];
+
+echo "<tr>
+    <td>{$row['programname']}</td>
+    <td>{$row['semester']}</td>
+    <td>{$row['total_count']}</td>
+    <td>{$row['voted_count']}</td>
+    <td>{$percentage}%</td>
+    <td>{$row['Name']}</td>
+    <td>{$row['candidate_votes']}</td>
+</tr>";
+}
+}
+echo "</table><br>";
+
+// Close the connection
+$conn->close();
+?>
     <!-- Include html2canvas and jsPDF from CDN -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/0.4.1/html2canvas.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.debug.js"></script>
