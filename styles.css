@@ -778,12 +778,12 @@ td:hover {
   font-size: large;
   /* border-bottom: 1px solid #4979e1; 
 } */
- tr:hover{
+ /* tr:hover{
   padding: 14px;
   text-align: left;
   font-size: large;
 
- }
+ } */
 
 th {
   background-color: #f9f9f9;
