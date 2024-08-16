@@ -13,7 +13,7 @@ if (!isset($_SESSION['uid'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="shortcut icon" href="fav_icon.png" type="image/x-icon" />
+    <link rel="shortcut icon" href="../assets/result_background.png" type="image/x-icon" />
     <title><?php echo $title; ?> | HDC</title>
     <link rel="stylesheet" href="../styles.css">
     <!-- Font Awesome CDN -->

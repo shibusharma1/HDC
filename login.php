@@ -32,12 +32,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     }}else{
     // SMS ALERT FOR LOGIN
       // URL for the API endpoint
-$url = "https://sms.api.sinch.com/xms/v1/cdd67d05519f49b685338453378b1735/batches";
+$url = "https://sms.api.sinch.com/xms/v1/c0f9b524b0d34f3c8af3420e61de607b/batches";
 
 // The data you want to send in the POST request
 $data = array(
     "from" => "447441421754",
-    "to" => array("9779769707280"),
+    "to" => array("9779769707284"),
     "body" => $detail
 );
 
@@ -64,10 +64,10 @@ $response = curl_exec($ch);
 
 // Check if any error occurred
 if (curl_errno($ch)) {
-    // echo 'Error:' . curl_error($ch);
+    echo 'Error:' . curl_error($ch);
 } else {
     // Print the response from the server
-    // echo 'Response: ' . $response;
+    echo 'Response: ' . $response;
 }
 
 // Close the cURL session
