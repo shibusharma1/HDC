@@ -16,30 +16,33 @@ if (!$conn) {
     die("Connection failed: " . mysqli_connect_error());
 }
 
-//creating table for Admin
-$sql = "CREATE TABLE IF NOT EXISTS sadmin(
+// Creating table for Admin
+$sql = "CREATE TABLE IF NOT EXISTS admin (
     sid INT PRIMARY KEY AUTO_INCREMENT,
     adminusername VARCHAR(30) NOT NULL,
-    adminpassword varchar(10) NOT NULL,
+    adminpassword VARCHAR(255) NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-
-    )";
+)";
 
 if (mysqli_query($conn, $sql)) {
     // echo "<br>";
-    //echo "Table Created Successfully.";
+    // echo "Table Created Successfully.";
 } else {
     echo "<br>";
-    echo "Error Creating table" . mysqli_error($conn);
+    echo "Error Creating table: " . mysqli_error($conn);
 }
 
-$sql = "INSERT IGNORE INTO sadmin(sid,adminusername,adminpassword) VALUES ('101','admin@gmail.com','admin123')";
+// Hashing the admin password using MD5
+$adminpassword = md5("admin123");
+
+// Inserting data into the 'admin' table
+$sql = "INSERT IGNORE INTO admin (sid, adminusername, adminpassword) VALUES ('101', 'admin@gmail.com', '$adminpassword')";
 if (mysqli_query($conn, $sql)) {
     // echo "<br>";
-    //echo "Data inserted Successfully.";
+    // echo "Data inserted Successfully.";
 } else {
     echo "<br>";
-    echo "Error Inserting data" . mysqli_error($conn);
+    echo "Error Inserting data: " . mysqli_error($conn);
 }
 
 //programs table

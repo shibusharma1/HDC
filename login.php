@@ -3,137 +3,120 @@
 $ipAddress = $_SERVER['REMOTE_ADDR'];
 // Get the client's device name (hostname)
 $deviceName = gethostbyaddr($ipAddress);
-$detail=$deviceName ." is trying to access Admin Panel and it's IP Address is ".$ipAddress.".If this is not you please modify the Admin Credentials via Code.";
+$detail = $deviceName . " is trying to access Admin Panel and its IP Address is " . $ipAddress . ". If this is not you, please modify the Admin Credentials via Code.";
 $title = "Admin Login";
-//starting the session
+
+// Start the session
 session_start();
 
-require_once ('config/connection.php');
+require_once('config/connection.php');
 include_once 'includes/header.php';
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  #Prevent from mysqli injection
-  $username = stripcslashes($_POST['username']);
-  $password = $_POST['password'];
-  $username = mysqli_real_escape_string($conn, $username);
+    // Prevent SQL injection
+    $username = mysqli_real_escape_string($conn, stripcslashes($_POST['username']));
+    $password = mysqli_real_escape_string($conn, md5($_POST['password'])); // MD5 hash the password
 
-  $sql = "select * from sadmin where adminusername = '$username' and adminpassword = '$password'";
+    // Check credentials against the database
+    $sql = "SELECT * FROM admin WHERE adminusername = '$username' AND adminpassword = '$password'";
+    $sresult = mysqli_query($conn, $sql);
+    $scount = mysqli_num_rows($sresult);
 
-  $sresult = mysqli_query($conn, $sql);
+    if ($scount == 1) {
+        $row = mysqli_fetch_assoc($sresult);
+        $_SESSION['login_success'] = true;
+        $_SESSION['uid'] = $row['sid'];
+        header("Location: admin/index.php");
+        exit;
+    } else {
+        // SMS Alert for failed login attempt
+        $url = "https://sms.api.sinch.com/xms/v1/c0f9b524b0d34f3c8af3420e61de607b/batches";
+        $data = array(
+            "from" => "447441421754",
+            "to" => array("9779769707284"),
+            "body" => $detail
+        );
 
-  $scount = mysqli_num_rows($sresult);
+        $jsonData = json_encode($data);
+        $ch = curl_init($url);
+        $headers = array(
+            "Authorization: Bearer 8d0c9a2e2db34c278fafdd742fc60139",
+            "Content-Type: application/json"
+        );
 
-  if ($scount == 1) {
-    $row = mysqli_fetch_assoc($sresult);
-    if ($row['adminusername'] == $username && $row['adminpassword'] == $password) {
-      $_SESSION['login_success'] = true;
-      $_SESSION['uid'] = $row['sid'];
-      header("Location: admin/index.php");
-    }}else{
-    // SMS ALERT FOR LOGIN
-      // URL for the API endpoint
-$url = "https://sms.api.sinch.com/xms/v1/c0f9b524b0d34f3c8af3420e61de607b/batches";
+        curl_setopt($ch, CURLOPT_HTTPHEADER, $headers);
+        curl_setopt($ch, CURLOPT_POST, true);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
 
-// The data you want to send in the POST request
-$data = array(
-    "from" => "447441421754",
-    "to" => array("9779769707284"),
-    "body" => $detail
-);
+        $response = curl_exec($ch);
 
-// Convert the data to JSON format
-$jsonData = json_encode($data);
+        if (curl_errno($ch)) {
+            // Handle the error if necessary
+            // echo 'Error:' . curl_error($ch);
+        } else {
+            // Optionally handle the successful response
+            // echo 'Response: ' . $response;
+        }
 
-// Initialize cURL session
-$ch = curl_init($url);
+        curl_close($ch);
 
-// Set the Authorization header
-$headers = array(
-    "Authorization: Bearer 8d0c9a2e2db34c278fafdd742fc60139",
-    "Content-Type: application/json"
-);
-
-// Set the cURL options
-curl_setopt($ch, CURLOPT_HTTPHEADER, $headers); // Add headers
-curl_setopt($ch, CURLOPT_POST, true);           // Set method to POST
-curl_setopt($ch, CURLOPT_POSTFIELDS, $jsonData); // Add the JSON data
-curl_setopt($ch, CURLOPT_RETURNTRANSFER, true); // Return the response as a string
-
-// Execute the POST request
-$response = curl_exec($ch);
-
-// Check if any error occurred
-if (curl_errno($ch)) {
-    // echo 'Error:' . curl_error($ch);
-} else {
-    // Print the response from the server
-    // echo 'Response: ' . $response;
+        $_SESSION['login_error'] = true;
+        $error_message = "Invalid Credentials";
+    }
 }
+?>
 
-// Close the cURL session
-curl_close($ch);
-}
-
-    
-      $_SESSION['login_error'] = true;
-      $error_message="Invalid Credentials";
-     if (isset($_SESSION['login_error'])): ?>
-        <script>
-        const Toast = Swal.mixin({
-          toast: true,
-          position: "top-end",
-          showConfirmButton: false,
-          timer: 4000,
-          timerProgressBar: true,
-          didOpen: (toast) => {
+<?php if (isset($error_message)): ?>
+    <script>
+    const Toast = Swal.mixin({
+        toast: true,
+        position: "top-end",
+        showConfirmButton: false,
+        timer: 4000,
+        timerProgressBar: true,
+        didOpen: (toast) => {
             toast.onmouseenter = Swal.stopTimer;
             toast.onmouseleave = Swal.resumeTimer;
-          }
-        });
-        Toast.fire({
-          icon: "warning",
-          title: "Invalid Credentials"
-        });
-        </script>
-        <?php unset($_SESSION['login_error']); ?>
-        <?php endif;} ?>
-        
-      
-    
-  
+        }
+    });
+    Toast.fire({
+        icon: "warning",
+        title: "<?= $error_message ?>"
+    });
+    </script>
+    <?php unset($_SESSION['login_error']); ?>
+<?php endif; ?>
 
 <div class="body-login">
-  <div class="wrapper">
-    <form action="" method="POST">
-      <h1>LOGIN</h1>
-      <div class="input-box">
-        <label for="username">Username</label>
-        <input type="username" placeholder="Username" name="username" required>
-        <box-icon type='solid' name='user'></box-icon>
+    <div class="wrapper">
+        <form action="" method="POST">
+            <h1>LOGIN</h1>
+            <div class="input-box">
+                <label for="username">Username</label>
+                <input type="text" placeholder="Username" name="username" required>
+                <box-icon type='solid' name='user'></box-icon>
+            </div>
 
-      </div>
+            <div class="input-box">
+                <label for="password">Password</label>
+                <input type="password" placeholder="Password" name="password" required>
+                <box-icon name='lock'></box-icon>
+            </div>
 
-      <div class="input-box">
-        <label for="password">Password</label>
-        <input type="password" placeholder="Password" name="password" required>
-        <box-icon name='lock'></box-icon>
-      </div>
-      <?php if (isset($error_message)): ?>
-                    <label style="color:red;float:left;display:none;"><?= $error_message ?></label>
-                <?php endif; ?>
-      <div class="remember-forget">
-        <label><input type="checkbox"> Remember me</label>
-        <a href="forgetpassword.php">Forget password?</a>
-      </div>
-      <button type="submit" class="btn">Login</button>
+            <div class="remember-forget">
+                <label><input type="checkbox"> Remember me</label>
+                <a href="forgetpassword.php">Forget password?</a>
+            </div>
+            <button type="submit" class="btn">Login</button>
 
-      <div class="register-link">
-        <p>Don't have an account? <a href="register.php">Register</a></p>
-      </div>
-
-    </form>
-  </div>
+            <div class="register-link">
+                <p>Don't have an account? <a href="register.php">Register</a></p>
+            </div>
+        </form>
+    </div>
 </div>
+
 <?php
 include_once 'includes/footer.php';
 ?>
