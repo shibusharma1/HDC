@@ -59,7 +59,7 @@ if (!isset($_SESSION['crn'])) {
             </ul>
         </div>
     </div>
-    <nav class="navbar" style="background-color:#EEEEEE;padding:0;">
+    <nav class="navbar" style="background-color:#EEEEEE;    ">
         <ul class="navbar-links">
             <li><a href="index.php">Home</a></li>
             <li><a href="profile.php">Profile</a></li>
