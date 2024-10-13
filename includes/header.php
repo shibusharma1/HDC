@@ -56,7 +56,7 @@
             <li><a href="./index.php">Home</a></li>
             <li><a href="./registercmat.php">Admission<sup class="apply">Apply Now</sup></a></li>
             <li><a href="./contact.php">Contact</a></li>
-            <li><a href="./vote.php">CR Election</a></li>
+            <li><a href="./loginforvote.php">CR Election</a></li>
             <li><a href="./about.php">About us</a></li>
         </ul>
     </nav>

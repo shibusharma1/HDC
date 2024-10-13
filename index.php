@@ -137,6 +137,14 @@ include_once 'includes/header.php';
     </div>
 </div>
 
+<!-- Sticky note -->
+<div class="sticky-note" id="messengerLink">
+    <div class="sticky-content">
+        <span>Need Help?</span>
+        <div class="notification-dot"></div>
+    </div>
+</div>
+
 
 <?php
 // include_once 'model/hdcmodel.php';
@@ -146,3 +154,4 @@ include_once 'includes/footer.php';
 <!-- Link to the external JavaScript file -->
 <script src="modelscript.js"></script>
 <script src="carousel.js"></script>
+<script src="stickynote.js"></script>

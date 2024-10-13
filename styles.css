@@ -1081,3 +1081,39 @@ a:hover {
   font-weight: bold;
   cursor: pointer;
 }
+
+/* css for sticky note */
+.sticky-note {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: #007bff; /* Blue background color */
+  color: #ffffff; /* White text color */
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-family: Arial, sans-serif;
+  font-size: 16px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  z-index: 1000;
+  text-decoration: none; /* No underline on the text */
+}
+
+.sticky-content {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.notification-dot {
+  position: absolute;
+  top: -5px;
+  right: -10px;
+  width: 10px;
+  height: 10px;
+  background-color: #ff0000; /* Red color for notification dot */
+  border-radius: 50%;
+  border: 2px solid #ffffff; /* White border around the dot */
+}
